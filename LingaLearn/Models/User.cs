@@ -3,7 +3,7 @@
 
 namespace LingaLearn.Models
 {
-    public class Users : IUsers
+    public class User
     {
         public int Id { get; set; }
 

@@ -11,13 +11,13 @@ namespace LingaLearn.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class UserController : ControllerBase
     {
 
-        private readonly IUsersRepository _usersRepository;
-        public UsersController(IUsersRepository usersRepository)
+        private readonly IUserRepository _userRepository;
+        public UserController(IUserRepository userRepository)
         {
-            _usersRepository = usersRepository;
+            _userRepository = userRepository;
         }
 
 
@@ -27,7 +27,7 @@ namespace LingaLearn.Controllers
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetUserProfile(string firebaseUserId)
         {
-            return Ok(_usersRepository.GetByFirebaseUserId(firebaseUserId));
+            return Ok(_userRepository.GetByFirebaseUserId(firebaseUserId));
         }
 
 
@@ -38,7 +38,7 @@ namespace LingaLearn.Controllers
         public IActionResult Post(User user)
         {
             user.CreateDateTime = DateTime.Now;
-            _usersRepository.Add(user);
+            _userRepository.Add(user);
             return CreatedAtAction(
                 nameof(GetUser),
                 new { firebaseUserId = user.FirebaseUserId },
@@ -52,7 +52,7 @@ namespace LingaLearn.Controllers
         [HttpGet("{firebaseUserId}")]
         public IActionResult GetUser(string firebaseUserId)
         {
-            return Ok(_usersRepository.GetByFirebaseUserId(firebaseUserId));
+            return Ok(_userRepository.GetByFirebaseUserId(firebaseUserId));
         }
 
 
@@ -63,7 +63,7 @@ namespace LingaLearn.Controllers
         public IActionResult Post(User user)
         {
             user.CreateDateTime = DateTime.Now;
-            _usersRepository.Add(user);
+            _userRepository.Add(user);
             return CreatedAtAction(
                 nameof(GetUser),
                 new { firebaseUserId = user.FirebaseUserId },
@@ -77,7 +77,7 @@ namespace LingaLearn.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            return Ok(_usersRepository.GetAllUsers());
+            return Ok(_userRepository.GetAllUsers());
         }
 
 
@@ -87,7 +87,7 @@ namespace LingaLearn.Controllers
         [HttpGet("getById/{id}")]
         public IActionResult Get(int id)
         {
-            var user = _usersRepository.GetUserById(id);
+            var user = _userRepository.GetUserById(id);
             if (user == null)
             {
                 return NotFound();
