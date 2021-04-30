@@ -24,7 +24,7 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpGet("/users")]
+        [HttpGet("/getAllUsers")]
         public IActionResult Get()
         {
             return Ok(_userRepository.GetAllUsers());
@@ -46,11 +46,18 @@ namespace LingaLearn.Controllers
         }
 
 
-        //[HttpGet("{firebaseUserId}")]
-        //public IActionResult GetUserProfile(string firebaseUserId)
-        //{
-        //    return Ok(_userProfileRepository.GetByFirebaseUserId(firebaseUserId));
-        //}
+
+
+
+        [HttpGet("/getByFirebaseId/{firebaseUserId}")]
+        public IActionResult GetUserByFirebaseId(string firebaseUserId)
+        {
+            return Ok(_userRepository.GetByFirebaseUserId(firebaseUserId));
+        }
+
+
+
+
 
         //[HttpPost]
         //public IActionResult Post(UserProfile userProfile)

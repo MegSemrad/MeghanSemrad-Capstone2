@@ -6,7 +6,7 @@ namespace LingaLearn.Repositories
     public interface IUserRepository
     {
         List<User> GetAllUsers();
+        User GetByFirebaseUserId(string firebaseUserId);
         User GetUserById(int id);
-        //User GetByFirebaseUserId(string firebaseUserId);
     }
 }

@@ -46,6 +46,9 @@ namespace LingaLearn.Repositories
         }
 
 
+
+
+
         public User GetUserById(int id)
         {
             using (var conn = Connection)
@@ -81,38 +84,46 @@ namespace LingaLearn.Repositories
         }
 
 
-        //public User GetByFirebaseUserId(string firebaseUserId)
-        //{
-        //    using (var conn = Connection)
-        //    {
-        //        conn.Open();
-        //        using (var cmd = conn.CreateCommand())
-        //        {
-        //            cmd.CommandText = @"
-        //                SELECT u.Id, u.UserName, u.Email, u.FirebaseUserId
-        //                FROM User u
-        //                WHERE u.FirebaseUserId = @FirebaseuserId";
 
-        //            DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
 
-        //            User user = null;
 
-        //            var reader = cmd.ExecuteReader();
-        //            if (reader.Read())
-        //            {
-        //                user = new User()
-        //                {
-        //                    Id = DbUtils.GetInt(reader, "Id"),
-        //                    FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
-        //                    UserName = DbUtils.GetString(reader, "UserName"),
-        //                    Email = DbUtils.GetString(reader, "Email")
-        //                };
-        //            }
-        //            reader.Close();
+        public User GetByFirebaseUserId(string firebaseUserId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT u.Id, u.UserName, u.Email, u.FirebaseUserId
+                        FROM [User] u
+                        WHERE u.FirebaseUserId = @FirebaseuserId";
 
-        //            return user;
-        //        }
-        //    }
-        //}
+                    DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
+
+                    User user = null;
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        user = new User()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
+                            UserName = DbUtils.GetString(reader, "UserName"),
+                            Email = DbUtils.GetString(reader, "Email")
+                        };
+                    }
+                    reader.Close();
+
+                    return user;
+                }
+            }
+        }
+
+
+
+
+
     }
 }
