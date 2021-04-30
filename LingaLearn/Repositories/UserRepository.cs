@@ -97,7 +97,7 @@ namespace LingaLearn.Repositories
                     cmd.CommandText = @"
                         SELECT u.Id, u.UserName, u.Email, u.FirebaseUserId
                         FROM [User] u
-                        WHERE u.FirebaseUserId = @FirebaseuserId";
+                        WHERE u.FirebaseUserId = @FirebaseUserId";
 
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
 
@@ -132,7 +132,7 @@ namespace LingaLearn.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"INSERT INTO User (FirebaseUserId, UserName, Email)
+                    cmd.CommandText = @"INSERT INTO [User] (FirebaseUserId, UserName, Email)
                                         OUTPUT INSERTED.ID
                                         VALUES (@FirebaseUserId, @UserName, @Email)";
                     DbUtils.AddParameter(cmd, "@FirebaseUserId", user.FirebaseUserId);

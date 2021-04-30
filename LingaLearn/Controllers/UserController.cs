@@ -59,7 +59,7 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpPost("addUser")]
+        [HttpPost]
         public IActionResult Post(User user)
         {
             _userRepository.Add(user);
