@@ -19,7 +19,7 @@ export default function NavBar() {
     return (
         <div>
             <Navbar className="nav-bar-link-container" color="light" light expand="md">
-                <NavbarBrand tag={RRNavLink} to="/">Tabloid</NavbarBrand>
+                <NavbarBrand tag={RRNavLink} to="/">LingaLearn</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>

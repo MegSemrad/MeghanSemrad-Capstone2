@@ -49,7 +49,7 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpGet("user/{firebaseUserId}")]
+        [HttpGet("{firebaseUserId}")]
         public IActionResult GetUserByFirebaseId(string firebaseUserId)
         {
             return Ok(_userRepository.GetByFirebaseUserId(firebaseUserId));

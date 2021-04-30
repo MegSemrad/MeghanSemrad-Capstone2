@@ -4,7 +4,8 @@ import ApplicationViews from "./ApplicationViews";
 import { Route, Redirect } from "react-router-dom";
 import { UserContext } from "../providers/UserProvider";
 import Login from "./login.js";
-// import { NavBar } from "./NavBar";
+import Register from "./register.js";
+import NavBar from "../components/NavBar.js";
 
 
 
@@ -20,7 +21,7 @@ function LingaLearn(props) {
         <Route>
           {isLoggedIn ?
             <>
-              {/* <NavBar /> */}
+              <NavBar />
               <ApplicationViews />
             </>
             : <Redirect to="/login" />
@@ -31,6 +32,10 @@ function LingaLearn(props) {
 
         <Route path="/login">
           <Login />
+        </Route>
+
+        <Route path="/register">
+          <Register />
         </Route>
       </UserProvider>
     </>
