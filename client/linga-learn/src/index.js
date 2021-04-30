@@ -1,8 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import LingaLearn from './components/LingaLearn';
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router } from "react-router-dom";
+import { UserProvider } from "./providers/UserProvider";
 import firebase from "firebase";
 
 
@@ -14,8 +16,11 @@ firebase.initializeApp(firebaseConfig);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Router>
+      <UserProvider>
+        <LingaLearn />
+      </UserProvider>
+    </Router>
   </React.StrictMode>,
   document.getElementById('root')
 );
-

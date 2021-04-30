@@ -8,7 +8,7 @@ using LingaLearn.Repositories;
 
 namespace LingaLearn.Controllers
 {
-    // [Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -24,7 +24,7 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpGet("/getAllUsers")]
+        [HttpGet("getAllUsers")]
         public IActionResult Get()
         {
             return Ok(_userRepository.GetAllUsers());
@@ -34,7 +34,7 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpGet("/getById/{id}")]
+        [HttpGet("getById/{id}")]
         public IActionResult Get(int id)
         {
             var user = _userRepository.GetUserById(id);
@@ -49,7 +49,7 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpGet("/getByFirebaseId/{firebaseUserId}")]
+        [HttpGet("user/{firebaseUserId}")]
         public IActionResult GetUserByFirebaseId(string firebaseUserId)
         {
             return Ok(_userRepository.GetByFirebaseUserId(firebaseUserId));
@@ -59,7 +59,7 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpPost("/addUser")]
+        [HttpPost("addUser")]
         public IActionResult Post(User user)
         {
             _userRepository.Add(user);

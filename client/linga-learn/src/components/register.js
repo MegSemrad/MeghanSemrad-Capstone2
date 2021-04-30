@@ -1,11 +1,11 @@
 import React, { useState, useContext } from "react";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useHistory } from "react-router-dom";
-import { UserProfileContext } from "../providers/UserProvider";
+import { UserContext } from "../providers/UserProvider";
 
 export default function Register() {
     const history = useHistory();
-    const { register } = useContext(UserProfileContext);
+    const { register } = useContext(UserContext);
 
     const [userName, setUserName] = useState();
     const [email, setEmail] = useState();
@@ -17,8 +17,8 @@ export default function Register() {
         if (password && password !== confirmPassword) {
             alert("Passwords don't match. Please try again.");
         } else {
-            const userProfile = { userName, email };
-            register(userProfile, password)
+            const user = { userName, email };
+            register(user, password)
                 .then(() => history.push("/"));
         }
     };
