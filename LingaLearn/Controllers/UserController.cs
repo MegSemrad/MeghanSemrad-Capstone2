@@ -59,16 +59,14 @@ namespace LingaLearn.Controllers
 
 
 
-        //[HttpPost]
-        //public IActionResult Post(UserProfile userProfile)
-        //{
-        //    userProfile.CreateDateTime = DateTime.Now;
-        //    userProfile.UserTypeId = UserType.AUTHOR_ID;
-        //    _userProfileRepository.Add(userProfile);
-        //    return CreatedAtAction(
-        //        nameof(GetUserProfile),
-        //        new { firebaseUserId = userProfile.FirebaseUserId },
-        //        userProfile);
-        //}
+        [HttpPost("/addUser")]
+        public IActionResult Post(User user)
+        {
+            _userRepository.Add(user);
+            return CreatedAtAction(
+                nameof(GetUserByFirebaseId),
+                new { firebaseUserId = user.FirebaseUserId },
+                user);
+        }
     }
 }

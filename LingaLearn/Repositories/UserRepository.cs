@@ -125,5 +125,26 @@ namespace LingaLearn.Repositories
 
 
 
+        public void Add(User user)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"INSERT INTO User (FirebaseUserId, UserName, Email)
+                                        OUTPUT INSERTED.ID
+                                        VALUES (@FirebaseUserId, @UserName, @Email)";
+                    DbUtils.AddParameter(cmd, "@FirebaseUserId", user.FirebaseUserId);
+                    DbUtils.AddParameter(cmd, "@UserName", user.UserName);
+                    DbUtils.AddParameter(cmd, "@Email", user.Email);
+                
+
+                    user.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+
     }
 }
