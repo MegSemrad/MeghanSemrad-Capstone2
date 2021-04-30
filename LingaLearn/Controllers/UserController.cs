@@ -8,7 +8,7 @@ using LingaLearn.Repositories;
 
 namespace LingaLearn.Controllers
 {
-    [Authorize]
+    // [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
@@ -24,75 +24,10 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpGet("{firebaseUserId}")]
-        public IActionResult GetUserProfile(string firebaseUserId)
-        {
-            return Ok(_userRepository.GetByFirebaseUserId(firebaseUserId));
-        }
-
-
-
-
-
-        [HttpPost]
-        public IActionResult Post(User user)
-        {
-            user.CreateDateTime = DateTime.Now;
-            _userRepository.Add(user);
-            return CreatedAtAction(
-                nameof(GetUser),
-                new { firebaseUserId = user.FirebaseUserId },
-                user);
-        }
-
-
-
-
-
-        [HttpGet("{firebaseUserId}")]
-        public IActionResult GetUser(string firebaseUserId)
-        {
-            return Ok(_userRepository.GetByFirebaseUserId(firebaseUserId));
-        }
-
-
-
-
-
-        [HttpPost]
-        public IActionResult Post(User user)
-        {
-            user.CreateDateTime = DateTime.Now;
-            _userRepository.Add(user);
-            return CreatedAtAction(
-                nameof(GetUser),
-                new { firebaseUserId = user.FirebaseUserId },
-                user);
-        }
-
-
-
-
-
-        [HttpGet]
+        [HttpGet("/users")]
         public IActionResult Get()
         {
             return Ok(_userRepository.GetAllUsers());
-        }
-
-
-
-
-
-        [HttpGet("getById/{id}")]
-        public IActionResult Get(int id)
-        {
-            var user = _userRepository.GetUserById(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            return Ok(user);
         }
     }
 }

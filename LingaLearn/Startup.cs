@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Microsoft.IdentityModel.Tokens;
+using LingaLearn.Repositories;
 
 namespace LingaLearn
 {
@@ -22,8 +23,7 @@ namespace LingaLearn
         public void ConfigureServices(IServiceCollection services)
         {
 
-
-
+            services.AddTransient<IUserRepository, UserRepository>();
 
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");
