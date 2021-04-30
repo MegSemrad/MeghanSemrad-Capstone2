@@ -29,5 +29,39 @@ namespace LingaLearn.Controllers
         {
             return Ok(_userRepository.GetAllUsers());
         }
+
+
+
+
+
+        [HttpGet("/getById/{id}")]
+        public IActionResult Get(int id)
+        {
+            var user = _userRepository.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
+
+
+        //[HttpGet("{firebaseUserId}")]
+        //public IActionResult GetUserProfile(string firebaseUserId)
+        //{
+        //    return Ok(_userProfileRepository.GetByFirebaseUserId(firebaseUserId));
+        //}
+
+        //[HttpPost]
+        //public IActionResult Post(UserProfile userProfile)
+        //{
+        //    userProfile.CreateDateTime = DateTime.Now;
+        //    userProfile.UserTypeId = UserType.AUTHOR_ID;
+        //    _userProfileRepository.Add(userProfile);
+        //    return CreatedAtAction(
+        //        nameof(GetUserProfile),
+        //        new { firebaseUserId = userProfile.FirebaseUserId },
+        //        userProfile);
+        //}
     }
 }

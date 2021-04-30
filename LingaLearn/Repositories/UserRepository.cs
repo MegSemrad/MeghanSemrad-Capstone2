@@ -1,9 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using LingaLearn.Models;
-using LingaLearn.DbUtils;
-
-
+using LingaLearn.Utils.cs;
 
 namespace LingaLearn.Repositories
 {
@@ -48,7 +46,39 @@ namespace LingaLearn.Repositories
         }
 
 
+        public User GetUserById(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                    SELECT u.Id, u.UserName, u.Email, u.FirebaseUserId
+                    FROM [User] u
+                    WHERE u.Id = @Id";
 
+                    DbUtils.AddParameter(cmd, "@Id", id);
+
+                    User user = null;
+
+                    var reader = cmd.ExecuteReader();
+                    if (reader.Read())
+                    {
+                        user = new User()
+                        {
+                            Id = DbUtils.GetInt(reader, "Id"),
+                            FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
+                            UserName = DbUtils.GetString(reader, "UserName"),
+                            Email = DbUtils.GetString(reader, "Email")
+                        };
+                    }
+                    reader.Close();
+
+                    return user;
+                }
+            }
+        }
 
 
         //public User GetByFirebaseUserId(string firebaseUserId)

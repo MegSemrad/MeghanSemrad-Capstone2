@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Data.SqlClient;
 
-namespace LingaLearn.DbUtils.cs
+namespace LingaLearn.Utils.cs
 {
     /// <summary>
     ///  A set of useful function for interacting with ADO.NET
