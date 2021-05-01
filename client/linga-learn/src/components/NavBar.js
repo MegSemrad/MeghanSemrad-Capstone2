@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { NavLink as RRNavLink } from "react-router-dom";
+import { NavLink as RRNavLink, Redirect } from "react-router-dom";
 import {
     Collapse,
     Navbar,
@@ -42,14 +42,7 @@ export default function NavBar() {
                             </>
                         }
                         {!isLoggedIn &&
-                            <>
-                                <NavItem>
-                                    <NavLink tag={RRNavLink} to="/login">Login</NavLink>
-                                </NavItem>
-                                <NavItem>
-                                    <NavLink tag={RRNavLink} to="/register">Register</NavLink>
-                                </NavItem>
-                            </>
+                            <Redirect to="/login" />
                         }
                     </Nav>
                 </Collapse>
