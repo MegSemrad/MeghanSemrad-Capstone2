@@ -7,7 +7,11 @@ import {
     NavbarBrand,
     Nav,
     NavItem,
-    NavLink
+    NavLink,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
 } from 'reactstrap';
 import { UserContext } from "../providers/UserProvider";
 
@@ -17,21 +21,45 @@ export default function NavBar() {
     const toggle = () => setIsOpen(!isOpen);
 
     return (
+
         <div>
-            <Navbar className="nav-bar-link-container" color="light" light expand="md">
+            <Navbar color="light" light expand="md">
                 <NavbarBrand tag={RRNavLink} to="/">LingaLearn</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
-                        { /* When isLoggedIn === true, we will render the Home link */}
-                        {isLoggedIn &&
-                            <NavItem className="nav-bar-link-container">
-                                <NavLink tag={RRNavLink} className="nav-link" to="/">Home</NavLink>
-                                <NavLink tag={RRNavLink} className="nav-link" to="/userProfiles">Study Time</NavLink>
-                                <NavLink tag={RRNavLink} className="nav-link" to="/tags">Resources</NavLink>
-                            </NavItem>
-                        }
+
+                        <UncontrolledDropdown nav inNavbar>
+
+                            <DropdownToggle nav caret>
+                                Study Time
+                            </DropdownToggle>
+
+                            <DropdownMenu right>
+                                <UncontrolledDropdown nav inNavbar>
+                                    <DropdownToggle nav caret>
+                                        Flashcards
+                                    </DropdownToggle>
+
+                                    <DropdownMenu>
+                                        <DropdownItem>
+                                            Study
+                                            </DropdownItem>
+                                        <DropdownItem>
+                                            Add
+                                            </DropdownItem>
+                                    </DropdownMenu>
+                                </UncontrolledDropdown>
+                            </DropdownMenu>
+
+                        </UncontrolledDropdown>
+
+                        <NavItem>
+                            <NavLink href="/resources/">Resources</NavLink>
+                        </NavItem>
+
                     </Nav>
+
                     <Nav navbar>
                         {isLoggedIn &&
                             <>
@@ -47,6 +75,6 @@ export default function NavBar() {
                     </Nav>
                 </Collapse>
             </Navbar>
-        </div>
+        </div >
     );
 }
