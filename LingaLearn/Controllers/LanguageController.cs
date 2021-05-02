@@ -55,6 +55,23 @@ namespace LingaLearn.Controllers
 
 
 
+        [HttpPut("Edit/{languageId}")]
+        public IActionResult Put(int languageId, Language language)
+        {
+            if (languageId != language.Id)
+            {
+                return BadRequest();
+            }
+            var currentUser = GetCurrentUser();
+            language.UserId = currentUser.Id;
+            _languageRepository.Update(language);
+            return NoContent();
+        }
+
+
+
+
+
         private User GetCurrentUser()
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
