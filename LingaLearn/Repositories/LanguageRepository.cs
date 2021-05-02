@@ -61,5 +61,30 @@ namespace LingaLearn.Repositories
             }
         }
 
+
+
+
+
+        public void Add(Language language)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Language (LanguageName, LanguageProficiencyId, UserId)
+                        OUTPUT INSERTED.ID
+                        VALUES (@LanguageName, @Content, @UserId)";
+
+                    DbUtils.AddParameter(cmd, "@Title", language.LanguageName);
+                    DbUtils.AddParameter(cmd, "@LanguageProficicenyId", language.LanguageProficiencyId);
+                    DbUtils.AddParameter(cmd, "@UserId", language.UserId);
+
+                    language.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
     }
 }

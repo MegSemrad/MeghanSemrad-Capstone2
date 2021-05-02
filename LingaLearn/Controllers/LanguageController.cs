@@ -42,12 +42,23 @@ namespace LingaLearn.Controllers
 
 
 
+        [HttpPost("Create")]
+        public IActionResult Language(Language language)
+        {
+            var currentUser = GetCurrentUser();
+            language.UserId = currentUser.Id;
+            _languageRepository.Add(language);
+            return CreatedAtAction("GetByUser", new { userId = language.UserId }, language);
+        }
+
+
+
+
+
         private User GetCurrentUser()
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _userRepository.GetByFirebaseUserId(firebaseUserId);
         }
-
-
     }
 }
