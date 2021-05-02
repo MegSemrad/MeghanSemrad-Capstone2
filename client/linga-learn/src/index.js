@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from "react-router-dom";
+import firebase from "firebase";
 import LingaLearn from './components/LingaLearn';
+import { UserProvider } from "./providers/UserProvider";
 import './index.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter as Router } from "react-router-dom";
-import { UserProvider } from "./providers/UserProvider";
-import firebase from "firebase";
 
 
 const firebaseConfig = {

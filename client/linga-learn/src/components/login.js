@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
-import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useHistory, Link } from "react-router-dom";
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { UserContext } from "../providers/UserProvider";
 
 export default function Login() {
@@ -37,4 +37,4 @@ export default function Login() {
             </fieldset>
         </Form>
     );
-}
+};

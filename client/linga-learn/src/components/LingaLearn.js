@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
-import { UserProvider } from "../providers/UserProvider";
-import ApplicationViews from "./ApplicationViews";
 import { Route, Redirect } from "react-router-dom";
-import { UserContext } from "../providers/UserProvider";
 import Login from "./login.js";
 import Register from "./register.js";
 import NavBar from "../components/NavBar.js";
-
-
+import ApplicationViews from "./ApplicationViews";
+import { UserProvider } from "../providers/UserProvider";
+import { UserContext } from "../providers/UserProvider";
 
 
 
@@ -18,7 +16,7 @@ function LingaLearn(props) {
   return (
     <>
       <UserProvider>
-        <Route>
+        <Route path="/">
           {isLoggedIn ?
             <>
               <NavBar />
@@ -27,8 +25,6 @@ function LingaLearn(props) {
             : <Redirect to="/login" />
           }
         </Route>
-
-
 
         <Route path="/login">
           <Login />

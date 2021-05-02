@@ -3,7 +3,11 @@ import { Spinner } from "reactstrap";
 import firebase from "firebase";
 import "firebase/auth";
 
+
+
 export const UserContext = createContext();
+
+
 
 export function UserProvider(props) {
     const apiUrl = "/api/user";
@@ -13,10 +17,10 @@ export function UserProvider(props) {
 
     const [users, setUsers] = useState([])
 
+
+
     const getAllUsers = () => {
-
         return getToken().then((token) =>
-
             fetch(`${apiUrl}/getAllUsers`, {
                 method: "GET",
                 headers: {
@@ -27,12 +31,16 @@ export function UserProvider(props) {
                 .then(setUsers))
     }
 
+
+
     const [isFirebaseReady, setIsFirebaseReady] = useState(false);
     useEffect(() => {
         firebase.auth().onAuthStateChanged((u) => {
             setIsFirebaseReady(true);
         });
     }, []);
+
+
 
     const login = (email, pw) => {
         return firebase.auth().signInWithEmailAndPassword(email, pw)
@@ -43,6 +51,8 @@ export function UserProvider(props) {
             });
     };
 
+
+
     const logout = () => {
         return firebase.auth().signOut()
             .then(() => {
@@ -50,6 +60,8 @@ export function UserProvider(props) {
                 setIsLoggedIn(false);
             });
     };
+
+
 
     const register = (user, password) => {
         return firebase.auth().createUserWithEmailAndPassword(user.email, password)
@@ -60,7 +72,11 @@ export function UserProvider(props) {
             });
     };
 
+
+
     const getToken = () => firebase.auth().currentUser.getIdToken();
+
+
 
     const getUser = (firebaseUserId) => {
         return getToken().then((token) =>
@@ -75,6 +91,8 @@ export function UserProvider(props) {
             }));
     };
 
+
+
     const getUserById = (userId) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/getById/${userId}`, {
@@ -85,6 +103,8 @@ export function UserProvider(props) {
             })
                 .then(res => res.json()))
     }
+
+
 
     const saveUser = (user) => {
         return getToken().then((token) =>
@@ -97,6 +117,8 @@ export function UserProvider(props) {
                 body: JSON.stringify(user)
             }).then(resp => resp.json()));
     };
+
+
 
     return (
         <UserContext.Provider value={{ users, isLoggedIn, login, logout, register, getToken, getUser, getAllUsers, getUserById }}>

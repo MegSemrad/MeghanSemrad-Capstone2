@@ -24,9 +24,11 @@ namespace LingaLearn.Repositories
                     FROM [User] u";
 
                     User user = null;
+
                     var reader = cmd.ExecuteReader();
 
                     var users = new List<User>();
+
                     while (reader.Read())
                     {
                         user = new User()
@@ -66,6 +68,7 @@ namespace LingaLearn.Repositories
                     User user = null;
 
                     var reader = cmd.ExecuteReader();
+
                     if (reader.Read())
                     {
                         user = new User()
@@ -77,7 +80,6 @@ namespace LingaLearn.Repositories
                         };
                     }
                     reader.Close();
-
                     return user;
                 }
             }
@@ -104,6 +106,7 @@ namespace LingaLearn.Repositories
                     User user = null;
 
                     var reader = cmd.ExecuteReader();
+
                     if (reader.Read())
                     {
                         user = new User()
@@ -115,7 +118,6 @@ namespace LingaLearn.Repositories
                         };
                     }
                     reader.Close();
-
                     return user;
                 }
             }
@@ -139,7 +141,6 @@ namespace LingaLearn.Repositories
                     DbUtils.AddParameter(cmd, "@UserName", user.UserName);
                     DbUtils.AddParameter(cmd, "@Email", user.Email);
                 
-
                     user.Id = (int)cmd.ExecuteScalar();
                 }
             }
