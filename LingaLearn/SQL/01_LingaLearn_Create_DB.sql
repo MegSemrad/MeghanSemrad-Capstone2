@@ -28,7 +28,7 @@ CREATE TABLE [LanguageProficiencies] (
 CREATE TABLE [Languages] (
   [Id] INTEGER IDENTITY PRIMARY KEY NOT NULL,
   [UserId] INTEGER NOT NULL,
-  [Language] NVARCHAR(80) NOT NULL,
+  [LanguageName] NVARCHAR(80) NOT NULL,
   [LanguageProficiencyId] INTEGER NOT NULL,
   CONSTRAINT FK_Languages_Users FOREIGN KEY (UserId) REFERENCES Users(Id),
   CONSTRAINT FK_Languages_LanguageProficiencies FOREIGN KEY (LanguageProficiencyId) REFERENCES LanguageProficiencies(Id)
@@ -55,20 +55,20 @@ CREATE TABLE [JournalEntries] (
   [UserId] INTEGER NOT NULL,
   [LanguageId] INTEGER NOT NULL,
   [Date] DATETIME NOT NULL,
-  [JournalEntry] NVARCHAR(4000) NOT NULL,
+  [Entry] NVARCHAR(4000) NOT NULL,
   CONSTRAINT FK_JournalEntries_Users FOREIGN KEY (UserId) REFERENCES Users(Id),
   CONSTRAINT FK_JournalEntries_Languages FOREIGN KEY (LanguageId) REFERENCES Languages(Id)
 )
 CREATE TABLE [ResourceTypes] (
   [Id] INTEGER IDENTITY PRIMARY KEY NOT NULL,
-  [ResourceType] NVARCHAR(20) NOT NULL
+  [Type] NVARCHAR(20) NOT NULL
 )
 CREATE TABLE [Resources] (
   [Id] INTEGER IDENTITY PRIMARY KEY NOT NULL,
   [UserId] INTEGER NOT NULL,
   [LanguageId] INTEGER NOT NULL,
   [ResourceTypeId] INTEGER NOT NULL,
-  [Resource] NVARCHAR(300) NOT NULL,
+  [Source] NVARCHAR(300) NOT NULL,
   CONSTRAINT FK_Resources_Users FOREIGN KEY (UserId) REFERENCES Users(Id),
   CONSTRAINT FK_Resources_Languages FOREIGN KEY (LanguageId) REFERENCES Languages(Id),
   CONSTRAINT FK_Resources_ResourceTypes FOREIGN KEY (ResourceTypeId) REFERENCES ResourceTypes(Id)
