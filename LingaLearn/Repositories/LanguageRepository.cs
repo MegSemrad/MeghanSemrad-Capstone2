@@ -75,7 +75,7 @@ namespace LingaLearn.Repositories
                     cmd.CommandText = @"
                         INSERT INTO Language (LanguageName, LanguageProficiencyId, UserId)
                         OUTPUT INSERTED.ID
-                        VALUES (@LanguageName, @Content, @UserId)";
+                        VALUES (@LanguageName, @LanguageProficicenyId, @UserId)";
 
                     DbUtils.AddParameter(cmd, "@Title", language.LanguageName);
                     DbUtils.AddParameter(cmd, "@LanguageProficicenyId", language.LanguageProficiencyId);
@@ -107,6 +107,24 @@ namespace LingaLearn.Repositories
                     DbUtils.AddParameter(cmd, "@LanguageProficiencyId", language.LanguageProficiencyId);
                     DbUtils.AddParameter(cmd, "@id", language.Id);
 
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
+
+        public void Delete(int languageId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM Language WHERE Id = @Id";
+                    DbUtils.AddParameter(cmd, "@id", languageId);
                     cmd.ExecuteNonQuery();
                 }
             }

@@ -72,6 +72,17 @@ namespace LingaLearn.Controllers
 
 
 
+        [HttpDelete("Delete/{languageId}")]
+        public IActionResult Delete(int languageId)
+        {
+            _languageRepository.Delete(languageId);
+            return NoContent();
+        }
+
+
+
+
+
         private User GetCurrentUser()
         {
             var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;

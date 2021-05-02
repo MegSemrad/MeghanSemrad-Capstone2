@@ -8,5 +8,6 @@ namespace LingaLearn.Repositories
         List<Language> GetUserLanguages(int userId);
         void Add(Language language);
         void Update(Language language);
+        void Delete(int languageId);
     }
 }
