@@ -46,9 +46,42 @@ export const LanguageProvider = (props) => {
 
 
 
+
+    const EditLanguage = (language) => {
+        return getToken().then((token) =>
+            fetch(`${apiUrl}/Edit/${languageId}`, {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(language),
+            })
+        )
+    };
+
+
+
+
+
+    const DeleteLanguage = (languageId) => {
+        return getToken().then((token) =>
+            fetch(`${apiUrl}/Delete/${languageId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }))
+    };
+
+
+
+
+
     return (
         <LanguageContext.Provider value={{
-            languages, GetUserLanguages, AddLanguage
+            languages, GetUserLanguages, AddLanguage,
+            EditLanguage, DeleteLanguage
         }}>
             {props.children}
         </LanguageContext.Provider>
