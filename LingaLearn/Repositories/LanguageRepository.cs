@@ -1,0 +1,65 @@
+﻿using System;
+using System.Linq;
+using System.Collections.Generic;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Data.SqlClient;
+using LingaLearn.Models;
+using LingaLearn.Utils.cs;
+
+namespace LingaLearn.Repositories
+{
+    public class LanguageRepository : BaseRepository, ILanguageRepository
+    {
+        public LanguageRepository(IConfiguration configuration) : base(configuration) { }
+
+        public List<Language> GetUserLanguages(int userId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT l.Id AS LanguageId, l.LanguageName,
+                        lp.Id AS LanguageProficiencyId, lp.Proficiency,
+                        u.Id AS UserId, u.UserName
+                        FROM Language l
+                        LEFT JOIN LanguageProficiency lp ON lp.Id = l.LanguageProficiencyId
+                        LEFT JOIN [User] u ON u.Id = l.UserId
+                        WHERE u.id = @UserId";
+
+                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    var reader = cmd.ExecuteReader();
+
+                    var languages = new List<Language>();
+
+                    while (reader.Read())
+                    {
+                        languages.Add(new Language()
+                        {
+                            Id = DbUtils.GetInt(reader, "LanguageId"),
+                            LanguageName = DbUtils.GetString(reader, "LanguageName"),
+                            LanguageProficiencyId = DbUtils.GetInt(reader, "LanguageProficiencyId"),
+                            LanguageProficiency = new LanguageProficiency()
+                            {
+                                Id = DbUtils.GetInt(reader, "LanguageProficiencyId"),
+                                Proficiency = DbUtils.GetString(reader, "Proficiency")
+                            },
+                            UserId = DbUtils.GetInt(reader, "UserId"),
+                            User = new User()
+                            {
+                                Id = DbUtils.GetInt(reader, "UserId"),
+                                UserName = DbUtils.GetString(reader, "UserName")
+                            }
+                        });
+                    }
+
+                    reader.Close();
+
+                    return languages;
+                }
+            }
+        }
+
+    }
+}

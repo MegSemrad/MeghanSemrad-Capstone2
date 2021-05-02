@@ -7,7 +7,7 @@ using LingaLearn.Repositories;
 
 namespace LingaLearn.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ControllerBase
