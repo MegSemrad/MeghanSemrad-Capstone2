@@ -18,7 +18,7 @@ VALUES
 SET IDENTITY_INSERT [LanguageProficiencies] OFF
 SET IDENTITY_INSERT [Languages] ON
 INSERT INTO [Languages]
-  ([Id], [UserId], [Language], [LanguageProficiencyId])
+  ([Id], [UserId], [LanguageName], [LanguageProficiencyId])
 VALUES 
   (1, 2, 'Welsh', 2), 
   (2, 1, 'Afrikaans', 2),
@@ -69,7 +69,7 @@ VALUES
 SET IDENTITY_INSERT [Flashcards] OFF
 SET IDENTITY_INSERT [JournalEntries] ON
 INSERT INTO [JournalEntries]
-  ([Id], [UserId], [LanguageId], [Date], [JournalEntry])
+  ([Id], [UserId], [LanguageId], [Date], [Entry])
 VALUES 
   (1, 2, 9, '2020-12-10 17:35:00', 'Bonjour! Je m''appelle Beth. J''ai 26ans. Je viens de Londres. Je suis professeur d''histoire.'),  
   (2, 1, 2, '2020-07-17 11:24:00', 'My naam is Adam. Ek is in Londen gebore. Ek het 6 maande terug Afrikaans begin leer. Ek ken net ''n paar woorde Afrikaans'),
@@ -78,7 +78,7 @@ VALUES
 SET IDENTITY_INSERT [JournalEntries] OFF
 SET IDENTITY_INSERT [ResourceTypes] ON
 INSERT INTO [ResourceTypes]
-  ([Id], [ResourceType])
+  ([Id], [Type])
 VALUES 
   (1, 'Online'), 
   (2, 'Videos'),
@@ -89,7 +89,7 @@ VALUES
 SET IDENTITY_INSERT [ResourceTypes] OFF
 SET IDENTITY_INSERT [Resources] ON
 INSERT INTO [Resources]
-  ([Id], [UserId], [LanguageId], [ResourceTypeId], [Resource])
+  ([Id], [UserId], [LanguageId], [ResourceTypeId], [Source])
 VALUES 
   (1, 2, 1, 6, 'https://www.gweiadur.com/en/Pawb'), 
   (2, 2, 1, 1, 'https://learnwelsh.cymru/'), 
