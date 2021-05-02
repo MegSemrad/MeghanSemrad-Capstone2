@@ -1,8 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microsoft.Extensions.Configuration;
-using Microsoft.Data.SqlClient;
 using LingaLearn.Models;
 using LingaLearn.Utils.cs;
 
@@ -123,8 +120,9 @@ namespace LingaLearn.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM Language WHERE Id = @Id";
-                    DbUtils.AddParameter(cmd, "@id", languageId);
+                    cmd.CommandText = @"DELETE FROM Language WHERE Id = @Id;
+                                        DELETE FROM Resource WHERE LanguageId = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", languageId);
                     cmd.ExecuteNonQuery();
                 }
             }

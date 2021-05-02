@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using LingaLearn.Models;
 using LingaLearn.Repositories;
-
+using Microsoft.AspNetCore.Authorization;
 
 namespace LingaLearn.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class LanguageController : ControllerBase
@@ -47,7 +45,7 @@ namespace LingaLearn.Controllers
         {
             var currentUser = GetCurrentUser();
             language.UserId = currentUser.Id;
-            _languageRepository.Add(language);
+            _languageRepository.AddLanguage(language);
             return CreatedAtAction("GetByUser", new { userId = language.UserId }, language);
         }
 
@@ -64,7 +62,7 @@ namespace LingaLearn.Controllers
             }
             var currentUser = GetCurrentUser();
             language.UserId = currentUser.Id;
-            _languageRepository.Update(language);
+            _languageRepository.UpdateLanguage(language);
             return NoContent();
         }
 
@@ -75,7 +73,7 @@ namespace LingaLearn.Controllers
         [HttpDelete("Delete/{languageId}")]
         public IActionResult Delete(int languageId)
         {
-            _languageRepository.Delete(languageId);
+            _languageRepository.DeleteLanguage(languageId);
             return NoContent();
         }
 
