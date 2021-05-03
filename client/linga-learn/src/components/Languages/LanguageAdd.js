@@ -11,22 +11,25 @@ const LanguageAdd = (props) => {
     const { GetUserLanguages, AddLanguage } = useContext(LanguageContext)
     const [languages, setLanguages] = useState([]);
 
+
     useEffect(() => {
         GetUserLanguages()
             .then(resp => setLanguages(resp))
     }, []);
+
+
 
     const [language, setLanguage] = useState({
         languageName: "",
         languageProficiencyId: 0,
     });
 
+
     const handleControlledInputChange = (event) => {
         const newLanguage = { ...language }
         newLanguage[event.target.id] = event.target.value
         setLanguage(newLanguage)
     }
-
 
 
 
@@ -40,23 +43,22 @@ const LanguageAdd = (props) => {
 
 
 
+
     return (
         <Form>
             <FormGroup>
-                <Label for="exampleSelect">Language</Label>
-                <Input type="select" id="languageName" onChange={handleControlledInputChange}>
-                    {
-                        languages.map(language => {
-                            return <option key={language.id}>{language.languageName}</option>
-                        })
-                    }
-                </Input>
+                <Label for="examplePassword">Language</Label>
+                <Input type="text" id="languageName" placeholder="language" />
             </FormGroup>
 
             <FormGroup>
                 <Label for="exampleSelect">Proficiency</Label>
                 <Input type="select" id="languageProficiencyId" onChange={handleControlledInputChange}>
-                    <option>1</option>
+                    {
+                        languages.map(language => {
+                            return <option key={language.id}>{language.languageProficiency?.proficiency}</option>
+                        })
+                    }
                 </Input>
             </FormGroup>
 
