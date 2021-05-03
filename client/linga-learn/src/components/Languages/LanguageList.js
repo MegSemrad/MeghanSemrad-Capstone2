@@ -6,7 +6,9 @@ import { Card, Button, CardTitle, CardText, CardDeck, CardBody } from 'reactstra
 const LanguageList = () => {
     const { GetUserLanguages } = useContext(LanguageContext);
     const [languages, setLanguages] = useState([]);
-    const [matchedLanguages, setMatchedLanguages] = useState([]);
+    const [knownLanguages, setKnownLanguages] = useState([]);
+    const [learningLanguages, setLearningLanguages] = useState([]);
+    const [futureLanguages, setFutureLanguages] = useState([]);
 
     //get user specific languages - works server side 
     //filter to find ones under "know" category 
@@ -19,8 +21,13 @@ const LanguageList = () => {
     }, []);
 
     useEffect(() => {
-        const matchedLanguages = languages.filter(language => language.languageProficiencyId === 1)
-        setMatchedLanguages(matchedLanguages)
+        const knownLanguages = languages.filter(language => language.languageProficiencyId === 1)
+        setKnownLanguages(knownLanguages)
+    }, [languages]);
+
+    useEffect(() => {
+        const learningLanguages = languages.filter(language => language.languageProficiencyId === 2)
+        setLearningLanguages(learningLanguages)
     }, [languages]);
 
     return (
@@ -29,8 +36,8 @@ const LanguageList = () => {
                 <CardBody>
                     <CardTitle tag="h5">Know</CardTitle>
                     {
-                        matchedLanguages.map(matchedLanguage => {
-                            return <CardText key={matchedLanguage.id}>{matchedLanguage.languageName}</CardText>
+                        knownLanguages.map(knownLanguage => {
+                            return <CardText key={knownLanguage.id}>{knownLanguage.languageName}</CardText>
                         })
                     }
 
@@ -39,7 +46,11 @@ const LanguageList = () => {
             <Card>
                 <CardBody>
                     <CardTitle tag="h5">Learning</CardTitle>
-                    <CardText>Languages learning</CardText>
+                    {
+                        learningLanguages.map(learningLanguage => {
+                            return <CardText key={learningLanguage.id}>{learningLanguage.languageName}</CardText>
+                        })
+                    }
                 </CardBody>
             </Card>
             <Card>
