@@ -51,7 +51,7 @@ const LanguageAdd = (props) => {
         <Form>
             <FormGroup>
                 <Label for="examplePassword">Language</Label>
-                <Input type="text" id="languageName" placeholder="language" />
+                <Input type="text" id="languageName" value={language.languageName} onChange={handleControlledInputChange} requiredAutoClassName="form-control" placeholder="language" />
             </FormGroup>
 
             <FormGroup>
@@ -59,13 +59,23 @@ const LanguageAdd = (props) => {
                 <Input type="select" id="languageProficiencyId" onChange={handleControlledInputChange}>
                     {
                         languageProficiencies.map(languageProficiency => {
-                            return <option key={languageProficiency.id}>{languageProficiency.proficiency}</option>
+                            return (
+                                <>
+                                    <option value="0"></option>
+                                    <option key={languageProficiency.id} value={languageProficiency.id}>
+                                        {languageProficiency.proficiency}
+                                    </option>
+                                </>
+                            )
                         })
                     }
                 </Input>
             </FormGroup>
 
-            <Button onClick={() => handleClickAddLanguage}>Add</Button>
+            <Button onClick={event => {
+                event.preventDefault()
+                handleClickAddLanguage()
+            }}>Add</Button>
         </Form>
     );
 };

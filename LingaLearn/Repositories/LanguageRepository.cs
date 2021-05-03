@@ -75,7 +75,7 @@ namespace LingaLearn.Repositories
                         OUTPUT INSERTED.ID
                         VALUES (@LanguageName, @LanguageProficicenyId, @UserId)";
 
-                    DbUtils.AddParameter(cmd, "@Title", language.LanguageName);
+                    DbUtils.AddParameter(cmd, "@LanguageName", language.LanguageName);
                     DbUtils.AddParameter(cmd, "@LanguageProficicenyId", language.LanguageProficiencyId);
                     DbUtils.AddParameter(cmd, "@UserId", language.UserId);
 
