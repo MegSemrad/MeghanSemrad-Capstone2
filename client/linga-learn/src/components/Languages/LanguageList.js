@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "../../providers/LanguageProvider.js";
-import { Card, Button, CardTitle, CardText, CardDeck, CardBody } from 'reactstrap';
+import { Card, CardTitle, CardText, CardDeck, CardBody, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 
 const LanguageList = () => {
@@ -9,6 +9,12 @@ const LanguageList = () => {
     const [knownLanguages, setKnownLanguages] = useState([]);
     const [learningLanguages, setLearningLanguages] = useState([]);
     const [futureLanguages, setFutureLanguages] = useState([]);
+
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+
+    const toggle = () => setDropdownOpen(prevState => !prevState);
+    const [lastClicked, setLastClicked] = useState(null);
+
 
 
     useEffect(() => {
@@ -64,7 +70,15 @@ const LanguageList = () => {
                     }
                 </CardBody>
             </Card>
-            <Button>...</Button>
+            <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                <DropdownToggle>
+                    ...
+                    </DropdownToggle>
+                <DropdownMenu container="body">
+                    <DropdownItem onClick={() => setLastClicked(1)}>Add</DropdownItem>
+                    <DropdownItem onClick={() => setLastClicked(2)}>Manage</DropdownItem>
+                </DropdownMenu>
+            </Dropdown>
         </CardDeck>
     );
 };
