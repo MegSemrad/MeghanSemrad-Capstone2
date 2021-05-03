@@ -11,9 +11,7 @@ const LanguageList = () => {
     const [futureLanguages, setFutureLanguages] = useState([]);
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
-
     const toggle = () => setDropdownOpen(prevState => !prevState);
-    const [lastClicked, setLastClicked] = useState(null);
 
 
 
@@ -37,6 +35,8 @@ const LanguageList = () => {
         setFutureLanguages(futureLanguages)
     }, [languages]);
 
+
+
     return (
         <CardDeck>
             <Card>
@@ -47,7 +47,6 @@ const LanguageList = () => {
                             return <CardText key={knownLanguage.id}>{knownLanguage.languageName}</CardText>
                         })
                     }
-
                 </CardBody>
             </Card>
             <Card>
@@ -75,12 +74,14 @@ const LanguageList = () => {
                     ...
                     </DropdownToggle>
                 <DropdownMenu container="body">
-                    <DropdownItem onClick={() => setLastClicked(1)}>Add</DropdownItem>
-                    <DropdownItem onClick={() => setLastClicked(2)}>Manage</DropdownItem>
+                    <DropdownItem to="/Add">Add</DropdownItem>
+                    <DropdownItem to="/Manage">Manage</DropdownItem>
                 </DropdownMenu>
             </Dropdown>
         </CardDeck>
     );
 };
+
+
 
 export default LanguageList;

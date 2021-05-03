@@ -22,7 +22,6 @@ export const LanguageProvider = (props) => {
                 }
             })
                 .then((res) => res.json())
-            //.then(setLanguages));
         )
     };
 
