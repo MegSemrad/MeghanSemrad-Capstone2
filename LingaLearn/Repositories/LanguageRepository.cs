@@ -9,7 +9,7 @@ namespace LingaLearn.Repositories
     {
         public LanguageRepository(IConfiguration configuration) : base(configuration) { }
 
-        public List<Language> GetUserLanguages(int userId)
+        public List<Language> GetUserLanguages(string firebaseUserId)
         {
             using (var conn = Connection)
             {
@@ -23,9 +23,9 @@ namespace LingaLearn.Repositories
                         FROM Language l
                         LEFT JOIN LanguageProficiency lp ON lp.Id = l.LanguageProficiencyId
                         LEFT JOIN [User] u ON u.Id = l.UserId
-                        WHERE u.id = @UserId";
+                        WHERE u.FirebaseUserId = @FirebaseUserId";
 
-                    cmd.Parameters.AddWithValue("@UserId", userId);
+                    cmd.Parameters.AddWithValue("@FirebaseUserId", firebaseUserId);
                     var reader = cmd.ExecuteReader();
 
                     var languages = new List<Language>();
@@ -46,13 +46,14 @@ namespace LingaLearn.Repositories
                             User = new User()
                             {
                                 Id = DbUtils.GetInt(reader, "UserId"),
-                                UserName = DbUtils.GetString(reader, "UserName")
+                                UserName = DbUtils.GetString(reader, "UserName"),
+                                FirebaseUserId = DbUtils.GetString(reader, "FirebaseUserId"),
+
                             }
                         });
                     }
 
                     reader.Close();
-
                     return languages;
                 }
             }

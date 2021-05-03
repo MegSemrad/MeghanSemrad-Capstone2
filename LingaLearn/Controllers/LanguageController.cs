@@ -25,10 +25,12 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpGet("GetByUser/{userId}")]
-        public IActionResult GetByUser(int userId)
+        [HttpGet("GetByUser")]
+        public IActionResult GetByUser()
         {
-            var userLanguages = _languageRepository.GetUserLanguages(userId);
+            User userObject = GetCurrentUser();
+            string firebaseUserId = userObject.FirebaseUserId;
+            var userLanguages = _languageRepository.GetUserLanguages(firebaseUserId);
             if (userLanguages == null)
             {
                 return NotFound();
@@ -45,7 +47,7 @@ namespace LingaLearn.Controllers
         {
             var currentUser = GetCurrentUser();
             language.UserId = currentUser.Id;
-            _languageRepository.AddLanguage(language);
+            _languageRepository.Add(language);
             return CreatedAtAction("GetByUser", new { userId = language.UserId }, language);
         }
 
@@ -62,7 +64,7 @@ namespace LingaLearn.Controllers
             }
             var currentUser = GetCurrentUser();
             language.UserId = currentUser.Id;
-            _languageRepository.UpdateLanguage(language);
+            _languageRepository.Update(language);
             return NoContent();
         }
 
@@ -73,7 +75,7 @@ namespace LingaLearn.Controllers
         [HttpDelete("Delete/{languageId}")]
         public IActionResult Delete(int languageId)
         {
-            _languageRepository.DeleteLanguage(languageId);
+            _languageRepository.Delete(languageId);
             return NoContent();
         }
 
@@ -83,7 +85,7 @@ namespace LingaLearn.Controllers
 
         private User GetCurrentUser()
         {
-            var firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            string firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
             return _userRepository.GetByFirebaseUserId(firebaseUserId);
         }
     }

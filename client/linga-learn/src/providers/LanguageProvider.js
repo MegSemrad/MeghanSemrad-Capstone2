@@ -9,13 +9,13 @@ export const LanguageProvider = (props) => {
     const [languages, setLanguages] = useState([]);
     const { getToken } = useContext(UserContext);
     const user = JSON.parse(sessionStorage.getItem("user"));
-    const apiUrl = "/api/category";
+    const apiUrl = "/api/Language";
 
 
 
     const GetUserLanguages = () => {
         return getToken().then((token) =>
-            fetch(`${apiUrl}/GetByUser/${user.id}`, {
+            fetch(`${apiUrl}/GetByUser`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -49,7 +49,7 @@ export const LanguageProvider = (props) => {
 
     const EditLanguage = (language) => {
         return getToken().then((token) =>
-            fetch(`${apiUrl}/Edit/${languageId}`, {
+            fetch(`${apiUrl}/Edit/${language.Id}`, {
                 method: "PUT",
                 headers: {
                     Authorization: `Bearer ${token}`,
