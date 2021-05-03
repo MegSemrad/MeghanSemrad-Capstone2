@@ -29,8 +29,8 @@ namespace LingaLearn.Controllers
         public IActionResult GetByUser()
         {
             User userObject = GetCurrentUser();
-            string firebaseUserId = userObject.FirebaseUserId;
-            var userLanguages = _languageRepository.GetUserLanguages(firebaseUserId);
+            string FirebaseUserId = userObject.FirebaseUserId;
+            var userLanguages = _languageRepository.GetUserLanguages(FirebaseUserId);
             if (userLanguages == null)
             {
                 return NotFound();
@@ -85,8 +85,8 @@ namespace LingaLearn.Controllers
 
         private User GetCurrentUser()
         {
-            string firebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-            return _userRepository.GetByFirebaseUserId(firebaseUserId);
+            string FirebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            return _userRepository.GetByFirebaseUserId(FirebaseUserId);
         }
     }
 }

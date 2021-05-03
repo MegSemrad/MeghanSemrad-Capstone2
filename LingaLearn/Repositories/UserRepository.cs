@@ -89,7 +89,7 @@ namespace LingaLearn.Repositories
 
 
 
-        public User GetByFirebaseUserId(string firebaseUserId)
+        public User GetByFirebaseUserId(string FirebaseUserId)
         {
             using (var conn = Connection)
             {
@@ -101,7 +101,7 @@ namespace LingaLearn.Repositories
                         FROM [User] u
                         WHERE u.FirebaseUserId = @FirebaseUserId";
 
-                    DbUtils.AddParameter(cmd, "@FirebaseUserId", firebaseUserId);
+                    DbUtils.AddParameter(cmd, "@FirebaseUserId", FirebaseUserId);
 
                     User user = null;
 

@@ -15,25 +15,23 @@ function LingaLearn(props) {
 
   return (
     <>
-      <UserProvider>
-        <Route path="/">
-          {isLoggedIn ?
-            <>
-              <NavBar />
-              <ApplicationViews />
-            </>
-            : <Redirect to="/login" />
-          }
-        </Route>
+      <Route path="/">
+        {isLoggedIn ?
+          <>
+            <NavBar />
+            <ApplicationViews />
+          </>
+          : <Redirect to="/login" />
+        }
+      </Route>
 
-        <Route path="/login">
-          <Login />
-        </Route>
+      <Route path="/login">
+        <Login />
+      </Route>
 
-        <Route path="/register">
-          <Register />
-        </Route>
-      </UserProvider>
+      <Route path="/register">
+        <Register />
+      </Route>
     </>
   )
 };

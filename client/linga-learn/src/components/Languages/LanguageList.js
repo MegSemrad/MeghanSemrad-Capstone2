@@ -4,15 +4,22 @@ import { Card, Button, CardTitle, CardText, CardDeck, CardBody } from 'reactstra
 
 
 const LanguageList = () => {
-    const { languages, GetUserLanguages } = useContext(LanguageContext);
+    const { GetUserLanguages } = useContext(LanguageContext);
+    const [languages, setLanguages] = useState([]);
     const [matchedLanguages, setMatchedLanguages] = useState([]);
+
+    //get user specific languages - works server side 
+    //filter to find ones under "know" category 
+    //then find language name
+    //post it to the card 
 
     useEffect(() => {
         GetUserLanguages()
+            .then(resp => setLanguages(resp))
     }, []);
 
     useEffect(() => {
-        const matchedLanguages = languages.filter(language => language.LanguageProficiency?.Proficiency === "Know")
+        const matchedLanguages = languages.filter(language => language.languageProficiencyId === 1)
         setMatchedLanguages(matchedLanguages)
     }, [languages]);
 
@@ -23,10 +30,10 @@ const LanguageList = () => {
                     <CardTitle tag="h5">Know</CardTitle>
                     {
                         matchedLanguages.map(matchedLanguage => {
-                            return <CardText>{matchedLanguage.LanguageName}</CardText>
+                            return <CardText key={matchedLanguage.id}>{matchedLanguage.languageName}</CardText>
                         })
                     }
-                    <CardText>Languages Know</CardText>
+
                 </CardBody>
             </Card>
             <Card>

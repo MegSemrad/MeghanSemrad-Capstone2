@@ -47,8 +47,9 @@ export function UserProvider(props) {
             .then((signInResponse) => getUser(signInResponse.user.uid))
             .then((user) => {
                 sessionStorage.setItem("user", JSON.stringify(user));
-                setIsLoggedIn(true);
-            });
+
+            })
+            .then(() => setIsLoggedIn(true));
     };
 
 
