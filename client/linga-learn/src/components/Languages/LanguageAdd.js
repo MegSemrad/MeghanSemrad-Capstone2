@@ -1,6 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { LanguageContext } from "../../providers/LanguageProvider";
+import { LanguageProficiencyContext } from "../../providers/LanguageProficiencyProvider";
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
@@ -8,13 +9,15 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 const LanguageAdd = (props) => {
 
     const history = useHistory();
-    const { GetUserLanguages, AddLanguage } = useContext(LanguageContext)
-    const [languages, setLanguages] = useState([]);
+    const { AddLanguage } = useContext(LanguageContext)
+    const { GetLanguageProficiencies } = useContext(LanguageProficiencyContext)
+
+    const [languageProficiencies, setLanguageProficiencies] = useState([]);
 
 
     useEffect(() => {
-        GetUserLanguages()
-            .then(resp => setLanguages(resp))
+        GetLanguageProficiencies()
+            .then(resp => setLanguageProficiencies(resp))
     }, []);
 
 
@@ -55,8 +58,8 @@ const LanguageAdd = (props) => {
                 <Label for="exampleSelect">Proficiency</Label>
                 <Input type="select" id="languageProficiencyId" onChange={handleControlledInputChange}>
                     {
-                        languages.map(language => {
-                            return <option key={language.id}>{language.languageProficiency?.proficiency}</option>
+                        languageProficiencies.map(languageProficiency => {
+                            return <option key={languageProficiency.id}>{languageProficiency.proficiency}</option>
                         })
                     }
                 </Input>

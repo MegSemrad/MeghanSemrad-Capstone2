@@ -74,7 +74,7 @@ const LanguageList = () => {
                     ...
                     </DropdownToggle>
                 <DropdownMenu container="body">
-                    <DropdownItem to="/Add">Add</DropdownItem>
+                    <DropdownItem to="/AddLanguage">Add</DropdownItem>
                     <DropdownItem to="/Manage">Manage</DropdownItem>
                 </DropdownMenu>
             </Dropdown>

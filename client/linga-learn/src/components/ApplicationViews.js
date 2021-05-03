@@ -4,6 +4,7 @@ import { UserContext } from "../providers/UserProvider";
 import { LanguageProvider } from "../providers/LanguageProvider.js";
 import LanguageList from "./Languages/LanguageList.js";
 import LanguageAdd from "./Languages/LanguageAdd";
+import { LanguageProficiencyProvider } from "../providers/LanguageProficiencyProvider";
 
 export default function ApplicationViews() {
 
@@ -16,9 +17,11 @@ export default function ApplicationViews() {
                     {isLoggedIn ? <LanguageList /> : <Redirect to="/login" />}
                 </LanguageProvider>
             </Route>
-            <Route path="/Add" exact>
+            <Route path="/AddLanguage" exact>
                 <LanguageProvider>
-                    {isLoggedIn ? <LanguageAdd /> : <Redirect to="/login" />}
+                    <LanguageProficiencyProvider>
+                        {isLoggedIn ? <LanguageAdd /> : <Redirect to="/login" />}
+                    </LanguageProficiencyProvider>
                 </LanguageProvider>
             </Route>
         </main >
