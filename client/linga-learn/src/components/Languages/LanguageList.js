@@ -10,10 +10,6 @@ const LanguageList = () => {
     const [learningLanguages, setLearningLanguages] = useState([]);
     const [futureLanguages, setFutureLanguages] = useState([]);
 
-    //get user specific languages - works server side 
-    //filter to find ones under "know" category 
-    //then find language name
-    //post it to the card 
 
     useEffect(() => {
         GetUserLanguages()
@@ -28,6 +24,11 @@ const LanguageList = () => {
     useEffect(() => {
         const learningLanguages = languages.filter(language => language.languageProficiencyId === 2)
         setLearningLanguages(learningLanguages)
+    }, [languages]);
+
+    useEffect(() => {
+        const futureLanguages = languages.filter(language => language.languageProficiencyId === 3)
+        setFutureLanguages(futureLanguages)
     }, [languages]);
 
     return (
@@ -56,7 +57,11 @@ const LanguageList = () => {
             <Card>
                 <CardBody>
                     <CardTitle tag="h5">Future</CardTitle>
-                    <CardText>Languages for the future </CardText>
+                    {
+                        futureLanguages.map(futureLanguage => {
+                            return <CardText key={futureLanguage.id}>{futureLanguage.languageName}</CardText>
+                        })
+                    }
                 </CardBody>
             </Card>
             <Button>...</Button>
