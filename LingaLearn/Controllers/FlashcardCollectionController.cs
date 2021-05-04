@@ -20,7 +20,11 @@ namespace LingaLearn.Controllers
             _userRepository = userRepository;
         }
 
-        [HttpGet("GetLanguagesByUser")]
+
+
+
+
+        [HttpGet("GetFlashcardCollectionsByUser")]
         public IActionResult GetByUser()
         {
             User userObject = GetCurrentUser();
@@ -32,6 +36,10 @@ namespace LingaLearn.Controllers
             }
             return Ok(userFlashcardCollections);
         }
+
+
+
+
 
         private User GetCurrentUser()
         {
