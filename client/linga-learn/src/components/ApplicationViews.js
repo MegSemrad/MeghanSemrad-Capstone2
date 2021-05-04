@@ -24,7 +24,12 @@ export default function ApplicationViews() {
                     </LanguageProficiencyProvider>
                 </LanguageProvider>
             </Route>
-        </main >
+
+            <Route path="/LanguageTopicList" >
+                <LanguageProvider>
+                    <LanguageTopicList />
+                </LanguageProvider>
+            </Route>
 
     );
 };
