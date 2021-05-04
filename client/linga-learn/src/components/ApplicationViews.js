@@ -2,9 +2,11 @@ import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { UserContext } from "../providers/UserProvider";
 import { LanguageProvider } from "../providers/LanguageProvider.js";
+import { LanguageProficiencyProvider } from "../providers/LanguageProficiencyProvider";
+import { FlashcardCollectionProvider } from "../providers/FlashcardCollectionProvider";
 import LanguageList from "./Languages/LanguageList.js";
 import LanguageAdd from "./Languages/LanguageAdd";
-import { LanguageProficiencyProvider } from "../providers/LanguageProficiencyProvider";
+import FlashcardCollectionList from "./FlashcardCollections/FlashcardCollectionList";
 
 export default function ApplicationViews() {
 
@@ -12,7 +14,8 @@ export default function ApplicationViews() {
 
     return (
         <main>
-            <Route path="/" >
+
+            <Route path="/" exact>
                 <LanguageProvider>
                     {isLoggedIn ? <LanguageList /> : <Redirect to="/login" />}
                 </LanguageProvider>
@@ -25,11 +28,15 @@ export default function ApplicationViews() {
                 </LanguageProvider>
             </Route>
 
+
             <Route path="/LanguageTopicList" >
-                <LanguageProvider>
-                    <LanguageTopicList />
-                </LanguageProvider>
+                <FlashcardCollectionProvider>
+                    <LanguageProvider>
+                        <FlashcardCollectionList />
+                    </LanguageProvider>
+                </FlashcardCollectionProvider>
             </Route>
 
+        </main>
     );
 };

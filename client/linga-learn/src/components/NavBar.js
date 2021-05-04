@@ -42,7 +42,7 @@ export default function NavBar() {
                                     </DropdownToggle>
 
                                     <DropdownMenu>
-                                        <DropdownItem>
+                                        <DropdownItem href="/LanguageTopicList">
                                             Study
                                             </DropdownItem>
                                         <DropdownItem>

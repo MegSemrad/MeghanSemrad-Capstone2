@@ -5,7 +5,7 @@ import { UserContext } from "./UserProvider.js";
 
 export const FlashcardCollectionContext = React.createContext();
 
-export const LanguageProvider = (props) => {
+export const FlashcardCollectionProvider = (props) => {
     const [flashcardCollections, setFlashcardCollections] = useState([]);
     const { getToken } = useContext(UserContext);
     const user = JSON.parse(sessionStorage.getItem("user"));
