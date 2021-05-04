@@ -8,6 +8,6 @@ namespace LingaLearn.Repositories
 {
     public interface IFlashcardCollectionRepository
     {
-        List<FlashcardCollection> GetFlashcardCollectionsByFirebaseUserId(int FirebaseUserId);
+        List<FlashcardCollection> GetFlashcardCollectionsByFirebaseUserId(string FirebaseUserId);
     }
 }

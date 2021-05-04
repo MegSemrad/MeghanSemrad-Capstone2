@@ -18,7 +18,7 @@ namespace LingaLearn.Models
         public Language Language { get; set; }
 
         [Required]
-        public string CreateDateTime { get; set; }
+        public string Date { get; set; }
 
         [Required]
         public string Topic { get; set; }

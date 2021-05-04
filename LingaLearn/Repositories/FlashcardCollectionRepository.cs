@@ -9,7 +9,7 @@ namespace LingaLearn.Repositories
     {
         public FlashcardCollectionRepository(IConfiguration configuration) : base(configuration) { }
 
-        public List<FlashcardCollection> GetFlashcardCollectionsByFirebaseUserId(int FirebaseUserId)
+        public List<FlashcardCollection> GetFlashcardCollectionsByFirebaseUserId(string FirebaseUserId)
         {
             using (var conn = Connection)
             {
