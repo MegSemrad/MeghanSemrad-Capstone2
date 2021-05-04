@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { LanguageContext } from "../../providers/LanguageProvider.js";
-import { Card, CardTitle, CardText, CardDeck, CardBody, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
+import { Container, Row, Col, Card, CardTitle, CardText, CardGroup, CardBody, Dropdown, DropdownToggle, DropdownMenu, DropdownItem } from 'reactstrap';
 
 
 const LanguageList = () => {
@@ -38,47 +38,59 @@ const LanguageList = () => {
 
 
     return (
-        <CardDeck>
-            <Card>
-                <CardBody>
-                    <CardTitle tag="h5">Know</CardTitle>
-                    {
-                        knownLanguages.map(knownLanguage => {
-                            return <CardText key={knownLanguage.id}>{knownLanguage.languageName}</CardText>
-                        })
-                    }
-                </CardBody>
-            </Card>
-            <Card>
-                <CardBody>
-                    <CardTitle tag="h5">Learning</CardTitle>
-                    {
-                        learningLanguages.map(learningLanguage => {
-                            return <CardText key={learningLanguage.id}>{learningLanguage.languageName}</CardText>
-                        })
-                    }
-                </CardBody>
-            </Card>
-            <Card>
-                <CardBody>
-                    <CardTitle tag="h5">Future</CardTitle>
-                    {
-                        futureLanguages.map(futureLanguage => {
-                            return <CardText key={futureLanguage.id}>{futureLanguage.languageName}</CardText>
-                        })
-                    }
-                </CardBody>
-            </Card>
-            <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                <DropdownToggle>
-                    ...
+        <Container className="languageContainer">
+            <Row xs="3">
+                <Col>
+                    <Card>
+                        <CardBody>
+                            <CardTitle tag="h5">Know</CardTitle>
+                            {
+                                knownLanguages.map(knownLanguage => {
+                                    return <CardText key={knownLanguage.id}>{knownLanguage.languageName}</CardText>
+                                })
+                            }
+                        </CardBody>
+                    </Card>
+                </Col>
+
+                <Col>
+                    <Card>
+                        <CardBody>
+                            <CardTitle tag="h5">Learning</CardTitle>
+                            {
+                                learningLanguages.map(learningLanguage => {
+                                    return <CardText key={learningLanguage.id}>{learningLanguage.languageName}</CardText>
+                                })
+                            }
+                        </CardBody>
+                    </Card>
+                </Col>
+
+                <Col>
+                    <Card>
+                        <CardBody>
+                            <CardTitle tag="h5">Future</CardTitle>
+                            {
+                                futureLanguages.map(futureLanguage => {
+                                    return <CardText key={futureLanguage.id}>{futureLanguage.languageName}</CardText>
+                                })
+                            }
+                        </CardBody>
+                    </Card>
+                </Col>
+            </Row>
+            <Row>
+                <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                    <DropdownToggle>
+                        <Col sm={{ size: 'auto', offset: 1 }}>...</Col>
                     </DropdownToggle>
-                <DropdownMenu container="body">
-                    <DropdownItem to="/AddLanguage">Add</DropdownItem>
-                    <DropdownItem to="/Manage">Manage</DropdownItem>
-                </DropdownMenu>
-            </Dropdown>
-        </CardDeck>
+                    <DropdownMenu container="body">
+                        <DropdownItem to="/AddLanguage">Add</DropdownItem>
+                        <DropdownItem to="/Manage">Manage</DropdownItem>
+                    </DropdownMenu>
+                </Dropdown>
+            </Row>
+        </Container>
     );
 };
 
