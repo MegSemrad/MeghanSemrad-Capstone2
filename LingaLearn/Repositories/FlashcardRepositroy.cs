@@ -19,7 +19,7 @@ namespace LingaLearn.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT f.Id AS FlashcardId, f.Word, f.Translation, f.IsStudying, f.FlashcardCollectionId,
+                        SELECT f.Id AS FlashcardId, f.Word, f.TranslatedWord, f.IsStudying, f.FlashcardCollectionId,
                         fc.Id AS FlashcardCollectionId, fc.UserId, fc.LanguageId, fc.Date, fc.Topic
                         FROM Flashcard f
                         LEFT JOIN FlashcardCollection fc ON fc.Id = f.FlashcardCollectionId
@@ -36,7 +36,7 @@ namespace LingaLearn.Repositories
                         {
                             Id = DbUtils.GetInt(reader, "FlashcardId"),
                             Word = DbUtils.GetString(reader, "Word"),
-                            Translation = DbUtils.GetString(reader, "Translation"),
+                            TranslatedWord = DbUtils.GetString(reader, "TranslatedWord"),
                             IsStudying = reader.GetBoolean(reader.GetOrdinal("IsStudying")),
                             FlashcardCollectionId = DbUtils.GetInt(reader, "FlashcardCollectionId"),
                             FlashcardCollection = new FlashcardCollection()

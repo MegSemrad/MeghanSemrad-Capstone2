@@ -22,8 +22,8 @@ const FlashcardList = () => {
 
     return (
         <Container className="flashcardContainer">
-            <Row xs="2">
-                <Col>
+            <Row>
+                <Col xs="2">
                     <>
                         <h4>Study It</h4>
                         {flashcards.map((flashcard) => (
@@ -35,10 +35,8 @@ const FlashcardList = () => {
                         ))}
                     </>
                 </Col>
-            </Row>
 
-            <Row xs="2">
-                <Col>
+                <Col xs="2">
                     <h4>Know It</h4>
                     <Card>
                         <CardBody>
