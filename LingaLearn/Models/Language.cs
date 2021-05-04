@@ -13,6 +13,7 @@ namespace LingaLearn.Models
         [Required]
         public string LanguageName { get; set; }
 
+        [Required]
         public int LanguageProficiencyId { get; set; }
 
         public LanguageProficiency LanguageProficiency { get; set; }

@@ -31,7 +31,7 @@ export default function NavBar() {
 
                         <UncontrolledDropdown nav inNavbar>
 
-                            <DropdownToggle nav caret>
+                            <DropdownToggle nav>
                                 Study Time
                             </DropdownToggle>
 

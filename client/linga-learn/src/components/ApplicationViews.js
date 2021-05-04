@@ -12,12 +12,12 @@ export default function ApplicationViews() {
 
     return (
         <main>
-            <Route path="/" exact>
+            <Route path="/" >
                 <LanguageProvider>
                     {isLoggedIn ? <LanguageList /> : <Redirect to="/login" />}
                 </LanguageProvider>
             </Route>
-            <Route path="/AddLanguage" exact>
+            <Route path="/AddLanguage" >
                 <LanguageProvider>
                     <LanguageProficiencyProvider>
                         {isLoggedIn ? <LanguageAdd /> : <Redirect to="/login" />}
