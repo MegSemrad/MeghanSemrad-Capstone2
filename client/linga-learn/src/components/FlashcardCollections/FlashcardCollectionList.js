@@ -25,7 +25,6 @@ const FlashcardCollectionList = () => {
 
     const handleControlledInputChange = (event) => {
         const newLanguageId = { ...languageId }
-        debugger
         newLanguageId[event.target.id] = event.target.value
         setLanguageId(newLanguageId)
     }
@@ -46,32 +45,17 @@ const FlashcardCollectionList = () => {
 
 
 
-
-
-
-
-    // const handleClickAddLanguage = () => {
-    //     AddLanguage({
-    //         languageName: language.languageName,
-    //         languageProficiencyId: language.languageProficiencyId
-    //     })
-    //         .then(() => history.push("/"))
-    // };
-
-
-
     return (
         <>
             <Form>
                 <FormGroup>
-                    <Label for="exampleSelect">Languages</Label>
+                    <Label for="exampleSelect">Sort by Language: </Label>
                     <Input type="select" onChange={handleControlledInputChange} id="languageId">
                         <option value="0" ></option>
                         {
                             languages.map(language => {
                                 return (
                                     <>
-
                                         <option key={language.id} value={language.id} >
                                             {language.languageName}
                                         </option>
@@ -86,7 +70,7 @@ const FlashcardCollectionList = () => {
 
             <Container >
                 <Col>
-                    {filteredFlashcardCollections.map(filteredFlashcardCollection => <Link>{filteredFlashcardCollection.topic}</Link>)}
+                    {filteredFlashcardCollections.map(filteredFlashcardCollection => <Link to={`/FlashcardList/${filteredFlashcardCollection.id}`}> {filteredFlashcardCollection.topic}</Link>)}
                 </Col>
             </Container>
         </>

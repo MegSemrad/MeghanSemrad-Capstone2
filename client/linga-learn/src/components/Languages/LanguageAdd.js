@@ -57,11 +57,11 @@ const LanguageAdd = (props) => {
             <FormGroup>
                 <Label for="exampleSelect">Proficiency</Label>
                 <Input type="select" id="languageProficiencyId" onChange={handleControlledInputChange}>
+                    <option value="0"></option>
                     {
                         languageProficiencies.map(languageProficiency => {
                             return (
                                 <>
-                                    <option value="0"></option>
                                     <option key={languageProficiency.id} value={languageProficiency.id}>
                                         {languageProficiency.proficiency}
                                     </option>

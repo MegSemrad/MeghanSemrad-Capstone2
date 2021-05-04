@@ -42,7 +42,7 @@ export default function NavBar() {
                                     </DropdownToggle>
 
                                     <DropdownMenu>
-                                        <DropdownItem href="/LanguageTopicList">
+                                        <DropdownItem href="/FlashcardCollectionList">
                                             Study
                                             </DropdownItem>
                                         <DropdownItem>

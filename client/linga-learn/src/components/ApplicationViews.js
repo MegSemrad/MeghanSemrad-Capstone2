@@ -2,11 +2,13 @@ import React, { useContext } from "react";
 import { Route, Redirect } from "react-router-dom";
 import { UserContext } from "../providers/UserProvider";
 import { LanguageProvider } from "../providers/LanguageProvider.js";
-import { LanguageProficiencyProvider } from "../providers/LanguageProficiencyProvider";
-import { FlashcardCollectionProvider } from "../providers/FlashcardCollectionProvider";
+import { LanguageProficiencyProvider } from "../providers/LanguageProficiencyProvider.js";
+import { FlashcardCollectionProvider } from "../providers/FlashcardCollectionProvider.js";
+import { FlashcardProvider } from "../providers/FlashcardProvider.js"
 import LanguageList from "./Languages/LanguageList.js";
-import LanguageAdd from "./Languages/LanguageAdd";
+import LanguageAdd from "./Languages/LanguageAdd.js";
 import FlashcardCollectionList from "./FlashcardCollections/FlashcardCollectionList";
+import FlashcardList from "./Flashcards/FlashcardList.js"
 
 export default function ApplicationViews() {
 
@@ -29,12 +31,19 @@ export default function ApplicationViews() {
             </Route>
 
 
-            <Route path="/LanguageTopicList" >
+            <Route path="/FlashcardCollectionList" >
                 <FlashcardCollectionProvider>
                     <LanguageProvider>
-                        <FlashcardCollectionList />
+                        {isLoggedIn ? <FlashcardCollectionList /> : <Redirect to="/login" />}
                     </LanguageProvider>
                 </FlashcardCollectionProvider>
+            </Route>
+
+
+            <Route path="/FlashcardList/:FlashcardCollectionId(\d+)" >
+                <FlashcardProvider>
+                    {isLoggedIn ? <FlashcardList /> : <Redirect to="/login" />}
+                </FlashcardProvider>
             </Route>
 
         </main>
