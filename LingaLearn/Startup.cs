@@ -27,6 +27,7 @@ namespace LingaLearn
             services.AddTransient<ILanguageRepository, LanguageRepository>();
             services.AddTransient<ILanguageProficiencyRepository, LanguageProficiencyRepository>();
             services.AddTransient<IFlashcardRepository, FlashcardRepository>();
+            services.AddTransient<IFlashcardCollectionRepository, FlashcardCollectionRepository>();
 
 
             var firebaseProjectId = Configuration.GetValue<string>("FirebaseProjectId");

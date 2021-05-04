@@ -11,6 +11,10 @@ const FlashcardCollectionList = () => {
     const [languages, setLanguages] = useState([]);
     const [flashcardCollections, setFlashcardCollections] = useState([]);
     const [filteredFlashcardCollections, setfilteredFlashcardCollections] = useState([]);
+    const [languageId, setLanguageId] = useState({
+        languageId: 0,
+    });
+
 
     useEffect(() => {
         GetUserLanguages()
@@ -18,28 +22,30 @@ const FlashcardCollectionList = () => {
     }, []);
 
 
-    const [languageId, setLanguageId] = useState({
-        languageId: 0,
-    });
 
     const handleControlledInputChange = (event) => {
         const newLanguageId = { ...languageId }
+        debugger
         newLanguageId[event.target.id] = event.target.value
         setLanguageId(newLanguageId)
     }
 
+
+
     useEffect(() => {
         GetUserFlashcardCollections()
             .then(resp => setFlashcardCollections(resp))
-            .then((flashcardCollections) => {
-                flashcardCollections.filter(flashcardCollection => flashcardCollection.LanguageId === languageId)
+            .then(() => {
+                const filteredCollections = flashcardCollections.filter((flashcardCollection) => {
+                    return flashcardCollection.languageId === parseInt(languageId.languageId)
+                })
+                setfilteredFlashcardCollections(filteredCollections)
             })
     }, [languageId]);
 
-    useEffect(() => {
-        const filteredCollections = flashcardCollections.filter(flashcardCollection => flashcardCollection.LanguageId === languageId)
-            .then(setfilteredFlashcardCollections(filteredCollections))
-    }, [flashcardCollections]);
+
+
+
 
 
 
@@ -58,15 +64,16 @@ const FlashcardCollectionList = () => {
         <>
             <Form>
                 <FormGroup>
-                    <Label for="exampleSelect">Proficiency</Label>
-                    <Input type="select" id="languageProficiencyId">
+                    <Label for="exampleSelect">Languages</Label>
+                    <Input type="select" onChange={handleControlledInputChange} id="languageId">
+                        <option value="0" ></option>
                         {
                             languages.map(language => {
                                 return (
                                     <>
-                                        <option value="0"></option>
-                                        <option key={language.id} value={language.id} onChange={handleControlledInputChange}>
-                                            {language.langaugeName}
+
+                                        <option key={language.id} value={language.id} >
+                                            {language.languageName}
                                         </option>
                                     </>
                                 )
@@ -79,7 +86,7 @@ const FlashcardCollectionList = () => {
 
             <Container >
                 <Col>
-                    {filteredFlashcardCollections.forEach(filteredFlashcardCollection => <Link>{filteredFlashcardCollection.Topic}</Link>)}
+                    {filteredFlashcardCollections.map(filteredFlashcardCollection => <Link>{filteredFlashcardCollection.topic}</Link>)}
                 </Col>
             </Container>
         </>

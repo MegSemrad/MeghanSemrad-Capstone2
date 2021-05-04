@@ -17,13 +17,12 @@ namespace LingaLearn.Repositories
                 using (var cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                        SELECT fc.Id AS FlashcardCollectionId, fc.UserId, fc.User, fc.LanguageId, fc.Language, fc.Topic,
+                        SELECT fc.Id AS FlashcardCollectionId, fc.UserId, fc.LanguageId, fc.Topic,
                         u.Id AS UserId, u.FirebaseUserId,
                         l.Id AS LanguageId, l.LanguageName
                         FROM FlashcardCollection fc
                         LEFT JOIN [User] u ON u.Id = fc.UserId
                         LEFT JOIN Language l ON l.Id = fc.LanguageId
-                        
                         WHERE u.FirebaseUserId = @FirebaseUserId";
 
                     cmd.Parameters.AddWithValue("@FirebaseUserId", FirebaseUserId);
