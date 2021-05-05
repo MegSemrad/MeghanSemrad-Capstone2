@@ -14,7 +14,6 @@ namespace LingaLearn.Models
         [Required]
         public int LanguageId { get; set; }
 
-        [Required]
         public Language Language { get; set; }
 
         [Required]

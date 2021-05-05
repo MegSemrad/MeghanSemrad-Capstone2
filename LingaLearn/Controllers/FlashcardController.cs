@@ -36,6 +36,7 @@ namespace LingaLearn.Controllers
         [HttpPost("Create")]
         public IActionResult Flashcard(Flashcard flashcard)
         {
+            flashcard.IsStudying = true;
             _flashcardRepository.Add(flashcard);
             return CreatedAtAction("Get", new { id = flashcard.Id }, flashcard);
         }
