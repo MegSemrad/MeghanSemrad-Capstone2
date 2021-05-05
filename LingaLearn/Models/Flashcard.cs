@@ -14,7 +14,7 @@ namespace LingaLearn.Models
         public string Word { get; set; }
 
         [Required]
-        public string TranslatedWord { get; set; }
+        public string TranslatedWord  { get; set; }
 
         public bool IsStudying { get; set; }
     }

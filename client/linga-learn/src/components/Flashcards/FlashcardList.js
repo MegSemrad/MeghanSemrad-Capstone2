@@ -7,6 +7,8 @@ import { useParams } from "react-router-dom";
 const FlashcardList = () => {
     const { GetFlashcardsByCollectionId } = useContext(FlashcardContext);
     const [flashcards, setFlashcards] = useState([]);
+    const [studyItFlashcards, setStudyItFlashcards] = useState([]);
+    const [knowItFlashcards, setKnowItFlashcards] = useState([]);
     const { FlashcardCollectionId } = useParams();
 
 
@@ -17,7 +19,15 @@ const FlashcardList = () => {
     }, []);
 
 
+    useEffect(() => {
+        const flashcardsToStudy = flashcards.filter(flashcard => flashcard.isStudying === true)
+        setStudyItFlashcards(flashcardsToStudy)
+    }, [flashcards]);
 
+    useEffect(() => {
+        const flashcardsKnow = flashcards.filter(flashcard => flashcard.isStudying === false)
+        setKnowItFlashcards(flashcardsKnow)
+    }, [flashcards]);
 
 
     return (
@@ -26,10 +36,10 @@ const FlashcardList = () => {
                 <Col xs="2">
                     <>
                         <h4>Study It</h4>
-                        {flashcards.map((flashcard) => (
-                            <Card key={flashcard.id}>
+                        {studyItFlashcards.map((studyItFlashcard) => (
+                            <Card key={studyItFlashcard.id}>
                                 <CardBody>
-                                    {flashcard.word}
+                                    {studyItFlashcard.word}
                                 </CardBody>
                             </Card>
                         ))}
@@ -37,12 +47,16 @@ const FlashcardList = () => {
                 </Col>
 
                 <Col xs="2">
-                    <h4>Know It</h4>
-                    <Card>
-                        <CardBody>
-
-                        </CardBody>
-                    </Card>
+                    <>
+                        <h4>Know It</h4>
+                        {knowItFlashcards.map((knowItFlashcard) => (
+                            <Card key={knowItFlashcard.id}>
+                                <CardBody>
+                                    {knowItFlashcard.word}
+                                </CardBody>
+                            </Card>
+                        ))}
+                    </>
                 </Col>
             </Row>
 
