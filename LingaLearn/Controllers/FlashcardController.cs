@@ -27,7 +27,20 @@ namespace LingaLearn.Controllers
         {
             return Ok(_flashcardRepository.GetFlashcardsFromCollection(FlashcardCollectionId));
         }
-      
+
+
+
+
+
+
+        [HttpDelete("Delete/{flashcardId}")]
+        public IActionResult Delete(int flashcardId)
+        {
+            _flashcardRepository.DeleteSingleFlashcardCollection(flashcardId);
+            return NoContent();
+        }
+
+
 
 
 

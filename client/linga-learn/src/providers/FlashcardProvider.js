@@ -13,7 +13,7 @@ export const FlashcardProvider = (props) => {
 
 
 
-    const GetFlashcardsByCollectionId = (FlashcardCollectionId) => {
+    const getFlashcardsByCollectionId = (FlashcardCollectionId) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/GetFlashcardsByCollection/${FlashcardCollectionId}`, {
                 method: "GET",
@@ -29,9 +29,23 @@ export const FlashcardProvider = (props) => {
 
 
 
+    const deleteSingleFlashcard = (flashcardId) => {
+        return getToken().then((token) =>
+            fetch(`${apiUrl}/Delete/${flashcardId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }))
+    };
+
+
+
+
+
     return (
         <FlashcardContext.Provider value={{
-            flashcards, GetFlashcardsByCollectionId
+            flashcards, getFlashcardsByCollectionId, deleteSingleFlashcard
         }}>
             {props.children}
         </FlashcardContext.Provider>

@@ -55,5 +55,24 @@ namespace LingaLearn.Repositories
                 }
             }
         }
+
+        
+
+        public void DeleteSingleFlashcardCollection(int flashcardId)
+            {
+                using (var conn = Connection)
+                {
+                    conn.Open();
+                    using (var cmd = conn.CreateCommand())
+                    {
+                        cmd.CommandText = "DELETE FROM Flashcard WHERE Id = @Id";
+                        DbUtils.AddParameter(cmd, "@id", flashcardId);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
+
+
+
     }
 }
