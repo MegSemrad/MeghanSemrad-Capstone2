@@ -61,7 +61,8 @@ const FlashcardCollectionAndFlashcardAdd = () => {
             topic: flashcardCollection.topic,
         })
             .then(() => {
-                hideOrShow()
+                const visible = "visible";
+                showFlashcardInput(visible)
             })
     };
 
@@ -78,12 +79,10 @@ const FlashcardCollectionAndFlashcardAdd = () => {
 
 
 
-    function hideOrShow() {
-        var x = document.getElementById("addFlashcardRow");
-        x.style.display = "block";
+    const showFlashcardInput = (visible) => {
+        const showFlashcardInputId = document.getElementById("AddFlashcardRowVisibility");
+        showFlashcardInputId.style.visibility = visible;
     }
-
-
 
 
     return (
@@ -145,7 +144,7 @@ const FlashcardCollectionAndFlashcardAdd = () => {
             </Row>
 
 
-            <Row id="addFlashcardRow">
+            <Row id="AddFlashcardRowVisibility">
                 <FormGroup>
                     <Label for="flashcard">Word</Label>
                     <Input

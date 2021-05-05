@@ -16,3 +16,7 @@ code {
 .languageContainer {
   border: black solid 1px;
 }
+
+#AddFlashcardRowVisibility {
+  visibility: hidden;
+}
