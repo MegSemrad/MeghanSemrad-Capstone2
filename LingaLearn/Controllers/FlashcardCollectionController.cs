@@ -41,6 +41,23 @@ namespace LingaLearn.Controllers
 
 
 
+        [HttpPut("Edit/{FlashcardCollectionId}")]
+        public IActionResult Put(int FlashcardCollectionId, FlashcardCollection flashcardCollection) 
+        {
+            if (FlashcardCollectionId != flashcardCollection.Id)
+            {
+                return BadRequest();
+            }
+            var currentUser = GetCurrentUser();
+            flashcardCollection.UserId = currentUser.Id;
+            _flashcardCollectionRepository.Update(flashcardCollection);
+            return NoContent();
+        }
+
+
+
+
+
         private User GetCurrentUser()
         {
             string FirebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;
