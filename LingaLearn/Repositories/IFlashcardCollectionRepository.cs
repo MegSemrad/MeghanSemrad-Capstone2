@@ -7,5 +7,6 @@ namespace LingaLearn.Repositories
     {
         List<FlashcardCollection> GetFlashcardCollectionsByFirebaseUserId(string FirebaseUserId);
         void Update(FlashcardCollection flashcardCollection);
+        void DeleteEntireCollection(int id);
     }
 }

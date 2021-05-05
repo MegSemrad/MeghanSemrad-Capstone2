@@ -58,6 +58,18 @@ namespace LingaLearn.Controllers
 
 
 
+
+        [HttpDelete("Delete/{id}")]
+        public IActionResult Delete(int id)
+        {
+            _flashcardCollectionRepository.DeleteEntireCollection(id);
+            return NoContent();
+        }
+
+
+
+
+
         private User GetCurrentUser()
         {
             string FirebaseUserId = User.FindFirst(ClaimTypes.NameIdentifier).Value;

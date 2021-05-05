@@ -74,12 +74,30 @@ namespace LingaLearn.Repositories
                                Date = @Date
                          WHERE Id = @Id";
 
-                    DbUtils.AddParameter(cmd, "@UserId", flashcardCollection.UserProfileId);
+                    DbUtils.AddParameter(cmd, "@UserId", flashcardCollection.UserId);
                     DbUtils.AddParameter(cmd, "@LanguageId", flashcardCollection.LanguageId);
                     DbUtils.AddParameter(cmd, "@Topic", flashcardCollection.Topic);
                     DbUtils.AddParameter(cmd, "@Date", flashcardCollection.Date);
                     DbUtils.AddParameter(cmd, "@Id", flashcardCollection.Id);
 
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
+
+        public void DeleteEntireCollection(int id)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = "DELETE FROM FlashcardCollection WHERE Id = @Id";
+                    DbUtils.AddParameter(cmd, "@id", id);
                     cmd.ExecuteNonQuery();
                 }
             }
