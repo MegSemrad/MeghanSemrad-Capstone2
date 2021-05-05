@@ -1,7 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FlashcardContext } from "../../providers/FlashcardProvider.js";
-import { Container, Row, Col, Card, CardBody } from 'reactstrap';
+import { Button, Card, CardBody, CardFooter, Col, Container, Row } from 'reactstrap';
 import { useParams } from "react-router-dom";
+
 
 
 const FlashcardList = () => {
@@ -41,6 +42,11 @@ const FlashcardList = () => {
                                 <CardBody>
                                     {studyItFlashcard.word}
                                 </CardBody>
+                                <CardFooter>
+                                    <div>◀</div>
+                                    <div>🔁</div>
+                                    <div>▶</div>
+                                </CardFooter>
                             </Card>
                         ))}
                     </>
@@ -54,6 +60,11 @@ const FlashcardList = () => {
                                 <CardBody>
                                     {knowItFlashcard.word}
                                 </CardBody>
+                                <CardFooter>
+                                    <div>◀</div>
+                                    <div>🔁</div>
+                                    <div>▶</div>
+                                </CardFooter>
                             </Card>
                         ))}
                     </>
