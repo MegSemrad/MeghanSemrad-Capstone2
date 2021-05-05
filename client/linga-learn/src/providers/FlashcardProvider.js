@@ -31,7 +31,7 @@ export const FlashcardProvider = (props) => {
 
 
 
-    const AddFlashcard = (flashcard) => {
+    const addFlashcard = (flashcard) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/Create`, {
                 method: "POST",
@@ -64,7 +64,7 @@ export const FlashcardProvider = (props) => {
 
     return (
         <FlashcardContext.Provider value={{
-            flashcards, getFlashcardsByCollectionId, AddFlashcard, deleteSingleFlashcard
+            flashcards, getFlashcardsByCollectionId, addFlashcard, deleteSingleFlashcard
         }}>
             {props.children}
         </FlashcardContext.Provider>

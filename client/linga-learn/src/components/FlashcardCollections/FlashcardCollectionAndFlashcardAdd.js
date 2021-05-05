@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import { LanguageContext } from "../../providers/LanguageProvider.js";
+import { FlashcardCollectionContext } from "../../providers/FlashcardCollectionProvider.js";
+import { FlashcardContext } from "../../providers/FlashcardProvider.js";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 const FlashcardCollectionAndFlashcardAdd = () => {
+    const history = useHistory();
     const { GetUserLanguages } = useContext(LanguageContext);
+    const { addFlashcardCollection } = useContext(FlashcardCollectionContext);
+    const { addFlashcard } = useContext(FlashcardContext);
 
     const [languages, setLanguages] = useState([]);
     const [flashcardCollection, setFlashcardCollection] = useState({
         languageId: 0,
         date: "",
         topic: "",
-        //will also need to add in individual card info 
+    });
+    const [flashcard, setFlashcard] = useState({
+        flashcardCollectionId: 0,
+        word: "",
+        translatedWord: "",
+        isStudying: "",
     });
 
 
@@ -20,18 +31,38 @@ const FlashcardCollectionAndFlashcardAdd = () => {
     }, []);
 
 
-    const handleControlledInputChange = (event) => {
+    const handleControlledInputChangeForFlashcardCollection = (event) => {
         const newFlashcardCollection = { ...flashcardCollection }
         newFlashcardCollection[event.target.id] = event.target.value
         setFlashcardCollection(newFlashcardCollection)
     }
 
-    const handleSaveFlashcardCollection = () => {
+
+    const handleControlledInputChangeForFlashcard = (event) => {
+        const newFlashcard = { ...flashcard }
+        newFlashcard[event.target.id] = event.target.value
+        setFlashcard(newFlashcard)
+    }
+
+    const handleSaveFlashcardCollectionWithFlashcards = () => {
         addFlashcardCollection({
+            languageId: flashcardCollection.languageId,
             date: flashcardCollection.date,
-            //will also need to add in individual card info 
+            topic: flashcardCollection.topic,
         })
+            .then((newFlashcardCollection) => {
+                addFlashcard({
+                    flashcardCollectionId: newFlashcardCollection.id,
+                    word: flashcard.word,
+                    translatedWord: flashcard.translatedWord,
+                    isStudying: flashcard.isStudying,
+                })
+            })
+            .then(() => history.push(`/FlashcardList/${newFlashcardCollection.id}))
     };
+
+
+
 
 
     return (
@@ -43,13 +74,15 @@ const FlashcardCollectionAndFlashcardAdd = () => {
                     <FormGroup row>
                         <Label for="languageSelect" sm={2}>Language</Label>
                         <Col sm={10}>
-                            <Input type="select" onChange={handleControlledInputChange} id="languageId">
+                            <Input type="select"
+                                onChange={handleControlledInputChangeForFlashcardCollection}
+                                id="languageId">
                                 <option value="0" ></option>
                                 {
                                     languages.map(language => {
                                         return (
                                             <>
-                                                <option key={language.id} value={language.id} >
+                                                <option key={language.id} value={flashcardCollection.languageId} >
                                                     {language.languageName}
                                                 </option>
                                             </>
@@ -61,29 +94,29 @@ const FlashcardCollectionAndFlashcardAdd = () => {
                     </FormGroup>
                 </Col>
 
+
                 <Col md={4}>
-                    <div className="form-group">
-                        <label htmlFor="publishDateTime">Publish Date:</label>
-                        <input
-                            type="date" id="publishDateTime"
-                            onChange={handleControlledInputChange}
-                            requiredAutoClassName="form-control"
-                            className="form-control"
-                            placeholder="Publish Date"
-                            value={flashcardCollection.date} />
-                    </div>
-
-
                     <FormGroup>
                         <Label for="dateState">Date</Label>
-                        <Input type="date" name="state" id="date" />
+                        <Input
+                            type="date"
+                            onChange={handleControlledInputChangeForFlashcardCollection}
+                            requiredAutoClassName="form-control"
+                            id="date"
+                            value={flashcardCollection.date} />
                     </FormGroup>
                 </Col>
+
 
                 <Col md={4}>
                     <FormGroup>
                         <Label for="topic">Topic</Label>
-                        <Input type="text" name="topic" id="topic" />
+                        <Input
+                            type="topic"
+                            onChange={handleControlledInputChangeForFlashcardCollection}
+                            requiredAutoClassName="form-control"
+                            id="topic"
+                            value={flashcardCollection.topic} />
                     </FormGroup>
                 </Col>
 
@@ -95,7 +128,7 @@ const FlashcardCollectionAndFlashcardAdd = () => {
 
 
             <Button>Add card</Button>
-            <Button onClick={handleSaveFlashcardCollection}>Save</Button>
+            <Button onClick={handleSaveFlashcardCollectionWithFlashcards}>Save</Button>
 
         </Form>
     );

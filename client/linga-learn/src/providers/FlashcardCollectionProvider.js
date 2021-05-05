@@ -29,7 +29,7 @@ export const FlashcardCollectionProvider = (props) => {
 
 
 
-    const AddFlashcardCollection = (flashcardCollection) => {
+    const addFlashcardCollection = (flashcardCollection) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/Create`, {
                 method: "POST",
@@ -39,6 +39,10 @@ export const FlashcardCollectionProvider = (props) => {
                 },
                 body: JSON.stringify(flashcardCollection),
             })
+                .then(res => res.json())
+                .then((newFlashcardCollection) => {
+                    return newFlashcardCollection
+                })
         )
     };
 
@@ -48,7 +52,7 @@ export const FlashcardCollectionProvider = (props) => {
 
     return (
         <FlashcardCollectionContext.Provider value={{
-            flashcardCollections, GetUserFlashcardCollections, AddFlashcardCollection
+            flashcardCollections, GetUserFlashcardCollections, addFlashcardCollection
         }}>
             {props.children}
         </FlashcardCollectionContext.Provider>

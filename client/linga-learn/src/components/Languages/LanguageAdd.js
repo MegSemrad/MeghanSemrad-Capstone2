@@ -51,7 +51,12 @@ const LanguageAdd = (props) => {
         <Form>
             <FormGroup>
                 <Label for="examplePassword">Language</Label>
-                <Input type="text" id="languageName" value={language.languageName} onChange={handleControlledInputChange} requiredAutoClassName="form-control" placeholder="language" />
+                <Input type="text"
+                    id="languageName"
+                    value={language.languageName}
+                    onChange={handleControlledInputChange}
+                    requiredAutoClassName="form-control"
+                    placeholder="language" />
             </FormGroup>
 
             <FormGroup>
