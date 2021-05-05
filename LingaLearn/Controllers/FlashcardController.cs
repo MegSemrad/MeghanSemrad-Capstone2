@@ -33,6 +33,18 @@ namespace LingaLearn.Controllers
 
 
 
+        [HttpPost("Create")]
+        public IActionResult Flashcard(Flashcard flashcard)
+        {
+            _flashcardRepository.Add(flashcard);
+            return CreatedAtAction("Get", new { id = flashcard.Id }, flashcard);
+        }
+
+
+
+
+
+
         [HttpDelete("Delete/{flashcardId}")]
         public IActionResult Delete(int flashcardId)
         {

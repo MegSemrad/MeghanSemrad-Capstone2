@@ -56,7 +56,35 @@ namespace LingaLearn.Repositories
             }
         }
 
-        
+
+
+
+
+        public void Add(Flashcard flashcard)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Flashcard (FlashcardCollectionId, Word, TranslatedWord, IsStudying)
+                        OUTPUT INSERTED.ID
+                        VALUES (@FlashcardCollectionId, @Word, @TranslatedWord, @IsStudying)";
+
+                    DbUtils.AddParameter(cmd, "@FlashcardCollectionId", flashcard.FlashcardCollectionId);
+                    DbUtils.AddParameter(cmd, "@Word", flashcard.Word);
+                    DbUtils.AddParameter(cmd, "@TranslatedWord", flashcard.TranslatedWord);
+                    DbUtils.AddParameter(cmd, "@Topic", flashcard.IsStudying);
+
+                    flashcard.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+
+
+
 
         public void DeleteSingleFlashcardCollection(int flashcardId)
             {

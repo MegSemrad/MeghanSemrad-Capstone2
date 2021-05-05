@@ -41,6 +41,21 @@ namespace LingaLearn.Controllers
 
 
 
+
+        [HttpPost("Create")]
+        public IActionResult FlashcardCollection(FlashcardCollection flashcardCollection)
+        {
+            var currentUser = GetCurrentUser();
+            flashcardCollection.UserId = currentUser.Id;
+            _flashcardCollectionRepository.Add(flashcardCollection);
+            return CreatedAtAction("GetByUser", new { userId = flashcardCollection.UserId }, flashcardCollection);
+        }
+
+
+
+
+
+
         [HttpPut("Edit/{FlashcardCollectionId}")]
         public IActionResult Put(int FlashcardCollectionId, FlashcardCollection flashcardCollection) 
         {

@@ -49,7 +49,7 @@ const FlashcardCollectionList = () => {
         <>
             <Form>
                 <FormGroup>
-                    <Label for="exampleSelect">Sort by Language: </Label>
+                    <Label for="languageSelect">Sort by Language: </Label>
                     <Input type="select" onChange={handleControlledInputChange} id="languageId">
                         <option value="0" ></option>
                         {
