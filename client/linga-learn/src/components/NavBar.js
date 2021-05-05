@@ -44,10 +44,10 @@ export default function NavBar() {
                                     <DropdownMenu>
                                         <DropdownItem href="/FlashcardCollectionList">
                                             Study
-                                            </DropdownItem>
-                                        <DropdownItem>
+                                        </DropdownItem>
+                                        <DropdownItem href="/AddFlashcardCollectionAndFlashcards">
                                             Add
-                                            </DropdownItem>
+                                        </DropdownItem>
                                     </DropdownMenu>
                                 </UncontrolledDropdown>
                             </DropdownMenu>

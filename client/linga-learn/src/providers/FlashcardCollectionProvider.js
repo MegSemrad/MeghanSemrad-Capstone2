@@ -29,9 +29,26 @@ export const FlashcardCollectionProvider = (props) => {
 
 
 
+    const AddFlashcardCollection = (flashcardCollection) => {
+        return getToken().then((token) =>
+            fetch(`${apiUrl}/Create`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(flashcardCollection),
+            })
+        )
+    };
+
+
+
+
+
     return (
         <FlashcardCollectionContext.Provider value={{
-            flashcardCollections, GetUserFlashcardCollections
+            flashcardCollections, GetUserFlashcardCollections, AddFlashcardCollection
         }}>
             {props.children}
         </FlashcardCollectionContext.Provider>

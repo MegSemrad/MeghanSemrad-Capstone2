@@ -2,7 +2,7 @@ import React from 'react';
 import { LanguageContext } from "../../providers/LanguageProvider.js";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-const FlashcardCollectionAdd = () => {
+const FlashcardCollectionAndFlashcardAdd = () => {
     const { GetUserLanguages } = useContext(LanguageContext);
 
     const [languages, setLanguages] = useState([]);
@@ -108,4 +108,4 @@ const FlashcardCollectionAdd = () => {
     // </Button>
 }
 
-export default FlashcardCollectionAdd;
+export default FlashcardCollectionAndFlashcardAdd;

@@ -5,6 +5,7 @@ import { UserContext } from "./UserProvider.js";
 
 export const FlashcardContext = React.createContext();
 
+
 export const FlashcardProvider = (props) => {
     const [flashcards, setFlashcards] = useState([]);
     const { getToken } = useContext(UserContext);
@@ -29,6 +30,24 @@ export const FlashcardProvider = (props) => {
 
 
 
+
+    const AddFlashcard = (flashcard) => {
+        return getToken().then((token) =>
+            fetch(`${apiUrl}/Create`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(flashcard),
+            })
+        )
+    };
+
+
+
+
+
     const deleteSingleFlashcard = (flashcardId) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/Delete/${flashcardId}`, {
@@ -45,7 +64,7 @@ export const FlashcardProvider = (props) => {
 
     return (
         <FlashcardContext.Provider value={{
-            flashcards, getFlashcardsByCollectionId, deleteSingleFlashcard
+            flashcards, getFlashcardsByCollectionId, AddFlashcard, deleteSingleFlashcard
         }}>
             {props.children}
         </FlashcardContext.Provider>
