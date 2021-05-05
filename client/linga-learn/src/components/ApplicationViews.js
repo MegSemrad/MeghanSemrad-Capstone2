@@ -55,7 +55,9 @@ export default function ApplicationViews() {
             <Route path="/AddFlashcardCollectionAndFlashcards" >
                 <FlashcardCollectionProvider>
                     <FlashcardProvider>
-                        {isLoggedIn ? <FlashcardCollectionAndFlashcardAdd /> : <Redirect to="/login" />}
+                        <LanguageProvider>
+                            {isLoggedIn ? <FlashcardCollectionAndFlashcardAdd /> : <Redirect to="/login" />}
+                        </LanguageProvider>
                     </FlashcardProvider>
                 </FlashcardCollectionProvider>
             </Route>

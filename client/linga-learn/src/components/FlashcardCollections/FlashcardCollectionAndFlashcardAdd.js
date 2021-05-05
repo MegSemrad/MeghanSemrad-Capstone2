@@ -57,8 +57,8 @@ const FlashcardCollectionAndFlashcardAdd = () => {
                     translatedWord: flashcard.translatedWord,
                     isStudying: flashcard.isStudying,
                 })
+                    .then(() => history.push(`/FlashcardList/${newFlashcardCollection.id}`))
             })
-            .then(() => history.push(`/FlashcardList/${newFlashcardCollection.id}))
     };
 
 
