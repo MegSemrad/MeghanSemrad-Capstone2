@@ -43,9 +43,11 @@ const FlashcardList = () => {
                                     {studyItFlashcard.word}
                                 </CardBody>
                                 <CardFooter>
-                                    <div>◀</div>
-                                    <div>🔁</div>
-                                    <div>▶</div>
+                                    <Row>
+                                        <div>◀</div>
+                                        <div>🔁</div>
+                                        <div>▶</div>
+                                    </Row>
                                 </CardFooter>
                             </Card>
                         ))}
@@ -61,14 +63,20 @@ const FlashcardList = () => {
                                     {knowItFlashcard.word}
                                 </CardBody>
                                 <CardFooter>
-                                    <div>◀</div>
-                                    <div>🔁</div>
-                                    <div>▶</div>
+                                    <Row>
+                                        <div>◀</div>
+                                        <div>🔁</div>
+                                        <div>▶</div>
+                                    </Row>
                                 </CardFooter>
                             </Card>
                         ))}
                     </>
                 </Col>
+            </Row>
+            <Row>
+                <div>✏</div>
+                <div>🗑</div>
             </Row>
 
         </Container >
