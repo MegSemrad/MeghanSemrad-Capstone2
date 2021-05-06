@@ -5,13 +5,14 @@ import { FlashcardCollectionContext } from "../../providers/FlashcardCollectionP
 import { FlashcardContext } from "../../providers/FlashcardProvider.js";
 import { Card, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
+
+
 const FlashcardCollectionAndFlashcardAdd = () => {
+
     const history = useHistory();
     const { GetUserLanguages } = useContext(LanguageContext);
     const { addFlashcardCollection } = useContext(FlashcardCollectionContext);
     const { addFlashcard } = useContext(FlashcardContext);
-
-
     const [languages, setLanguages] = useState([]);
     const [flashcardCollection, setFlashcardCollection] = useState({
         languageId: 0,
@@ -22,9 +23,10 @@ const FlashcardCollectionAndFlashcardAdd = () => {
         flashcardCollectionId: 0,
         word: "",
         translatedWord: "",
+        isStudying: true,
     });
-
-
+    let flashcardCollectionId = 0;
+    const newFlashcards = []
 
 
     useEffect(() => {
@@ -40,17 +42,11 @@ const FlashcardCollectionAndFlashcardAdd = () => {
         setFlashcardCollection(newFlashcardCollection)
     }
 
-
     const handleControlledInputChangeForFlashcard = (event) => {
         const newFlashcard = { ...flashcard }
         newFlashcard[event.target.id] = event.target.value
         setFlashcard(newFlashcard)
-        newFlashcards.push(newFlashcard)
     }
-
-
-    const newFlashcards = []
-
 
 
 
@@ -60,29 +56,35 @@ const FlashcardCollectionAndFlashcardAdd = () => {
             date: flashcardCollection.date,
             topic: flashcardCollection.topic,
         })
+            .then((returnedFlashcardCollectionObject) => {
+                flashcardCollectionId = returnedFlashcardCollectionObject.id
+            })
             .then(() => {
-                const visible = "visible";
-                showFlashcardInput(visible)
+                const showFlashcardInputId = document.getElementById("AddFlashcardRowVisibility");
+                showFlashcardInputId.style.visibility = "visible";
+            })
+    };
+
+    const handleSaveFlashcard = () => {
+        addFlashcard({
+            flashcardCollectionId: flashcardCollectionId,
+            word: flashcard.word,
+            translatedWord: flashcard.translatedWord,
+            isStudying: true,
+        })
+            .then((newFlashcard) => {
+                newFlashcards.push(newFlashcard)
             })
     };
 
 
-    const handleSaveFlashcard = (newFlashcardCollection) => {
-        addFlashcard({
-            flashcardCollectionId: newFlashcardCollection.id,
-            word: flashcard.word,
-            translatedWord: flashcard.translatedWord,
-        })
-    };
-
-    //        .then(() => history.push(`/FlashcardList/${newFlashcardCollection.id}`))
-
-
-
-    const showFlashcardInput = (visible) => {
-        const showFlashcardInputId = document.getElementById("AddFlashcardRowVisibility");
-        showFlashcardInputId.style.visibility = visible;
-    }
+    // ISSUES
+    // 1. clean up code
+    // 3. flashcardCollectionId is never fetched - fix this also in route at bottom
+    // 4. problem serverside with IsStudying
+    // 5. have flashcard input fields clear upon click save
+    // 6. Have 'save' button disappear after flashcard collection is made
+    // 7. fix date 
 
 
     return (
@@ -139,10 +141,10 @@ const FlashcardCollectionAndFlashcardAdd = () => {
                     </FormGroup>
                 </Col>
             </Row>
+
             <Row>
                 <Button onClick={handleSaveFlashcardCollection}>Save</Button>
             </Row>
-
 
             <Row id="AddFlashcardRowVisibility">
                 <FormGroup>
@@ -174,11 +176,13 @@ const FlashcardCollectionAndFlashcardAdd = () => {
                     })
                 }
             </Row>
-
-
+            <Button onClick={() => {
+                history.push(`/FlashcardList/${flashcardCollectionId}`)
+            }}>Study Time!</Button>
         </Form >
     );
 }
+
 
 
 
