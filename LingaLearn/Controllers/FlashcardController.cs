@@ -29,7 +29,11 @@ namespace LingaLearn.Controllers
         }
 
 
-
+        [HttpGet("GetFlashcardByFlashcardId/{id}")]
+        public IActionResult GetFlashcard(int id)
+        {
+            return Ok(_flashcardRepository.GetFlashcardByFlashcardId(id));
+        }
 
 
 
@@ -39,6 +43,22 @@ namespace LingaLearn.Controllers
             _flashcardRepository.Add(flashcard);
             return CreatedAtAction("Get", new { FlashcardCollectionId = flashcard.FlashcardCollectionId }, flashcard);
         }
+
+
+
+
+
+        [HttpPut("Edit/{FlashcardId}")]
+        public IActionResult Put(int FlashcardId, Flashcard flashcard)
+        {
+            if (FlashcardId != flashcard.Id)
+            {
+                return BadRequest();
+            }
+            _flashcardRepository.Update(flashcard);
+            return NoContent();
+        }
+
 
 
 

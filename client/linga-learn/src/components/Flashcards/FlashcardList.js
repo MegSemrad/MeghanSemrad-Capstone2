@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FlashcardContext } from "../../providers/FlashcardProvider.js";
-import { Button, Card, CardBody, CardFooter, Col, Container, Row } from 'reactstrap';
+import { Card, CardBody, CardFooter, Col, Container, Row } from 'reactstrap';
 import { useHistory, useParams } from "react-router-dom";
-
+import Flashcard from "./Flashcard.js"
 
 
 const FlashcardList = () => {
@@ -13,21 +13,33 @@ const FlashcardList = () => {
     const { FlashcardCollectionId } = useParams();
 
 
-
     useEffect(() => {
         getFlashcardsByCollectionId(FlashcardCollectionId)
     }, []);
 
-
     useEffect(() => {
+
         const flashcardsToStudy = flashcards.filter(flashcard => flashcard.isStudying === true)
         setStudyItFlashcards(flashcardsToStudy)
+
     }, [flashcards]);
 
     useEffect(() => {
-        const flashcardsKnow = flashcards.filter(flashcard => flashcard.isStudying === false)
-        setKnowItFlashcards(flashcardsKnow)
+        const flashcardsToKnow = flashcards.filter(flashcard => flashcard.isStudying === false)
+        setKnowItFlashcards(flashcardsToKnow)
     }, [flashcards]);
+
+    // const handleSwitchToKnowIt = (studyItFlashcard) => {
+    //     editFlashcard(studyItFlashcard)
+    //     getFlashcardsByCollectionId(FlashcardCollectionId)
+    // };
+
+    // const handleSwitchToStudyIt = (knowItFlashcard) => {
+    //     editFlashcard(knowItFlashcard)
+    //     getFlashcardsByCollectionId(FlashcardCollectionId)
+    // };
+
+
 
 
     return (
@@ -36,54 +48,46 @@ const FlashcardList = () => {
                 <Col xs="2">
                     <>
                         <h4>Study It</h4>
-                        {studyItFlashcards.map((studyItFlashcard) => (
-                            <Card key={studyItFlashcard.id}>
-                                <CardBody>
-                                    {studyItFlashcard.word}
-                                </CardBody>
-                                <CardFooter>
-                                    <Row>
-                                        <div>◀</div>
-                                        <div>🔁</div>
-                                        <div>▶</div>
-                                    </Row>
-                                </CardFooter>
-                            </Card>
-                        ))}
+                        {
+                            studyItFlashcards.map(studyItFlashcard => {
+                                return <Flashcard key={studyItFlashcard.id}
+                                    flashcard={studyItFlashcard}
+                                />
+                            })
+                        }
                     </>
                 </Col>
 
                 <Col xs="2">
                     <>
                         <h4>Know It</h4>
-                        {knowItFlashcards.map((knowItFlashcard) => (
-                            <Card key={knowItFlashcard.id}>
-                                <CardBody>
-                                    {knowItFlashcard.word}
-                                </CardBody>
-                                <CardFooter>
-                                    <Row>
-                                        <div>◀</div>
-                                        <div>🔁</div>
-                                        <div>▶</div>
-                                    </Row>
-                                </CardFooter>
-                            </Card>
-                        ))}
+                        {
+                            knowItFlashcards.map(knowItFlashcard => {
+                                return <Flashcard key={knowItFlashcard.id}
+                                    flashcard={knowItFlashcard}
+                                />
+                            })
+                        }
                     </>
                 </Col>
+
             </Row>
+
             <Row>
                 <div>✏</div>
                 <div onClick={() => {
                     history.push(`/Delete/${FlashcardCollectionId}`)
                 }}>🗑</div>
             </Row>
+        </Container>
+    )
 
-        </Container >
-    );
+
+
 };
 
 
 
+
 export default FlashcardList;
+

@@ -8,5 +8,7 @@ namespace LingaLearn.Repositories
         List<Flashcard> GetFlashcardsFromCollection(int FlashcardCollectionId);
         void Add(Flashcard flashcard);
         void DeleteSingleFlashcardCollection(int id);
+        Flashcard GetFlashcardByFlashcardId(int id);
+        void Update(Flashcard flashcard);
     }
 }

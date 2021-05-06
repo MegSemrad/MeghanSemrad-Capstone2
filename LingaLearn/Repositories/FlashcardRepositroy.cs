@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using LingaLearn.Models;
 using LingaLearn.Utils.cs;
+using Microsoft.Data.SqlClient;
 
 namespace LingaLearn.Repositories
 {
@@ -57,6 +58,54 @@ namespace LingaLearn.Repositories
         }
 
 
+     
+
+
+             public Flashcard GetFlashcardByFlashcardId(int id)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT  f.Id, 
+                                f.FlashcardCollectionId, 
+                                f.Word, 
+                                f.TranslatedWord, 
+                                f.IsStudying
+                        FROM Flashcard f
+                        WHERE f.Id = @id
+                    ";
+
+                    cmd.Parameters.AddWithValue("@id", id);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        Flashcard flashcard = new Flashcard
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            FlashcardCollectionId = reader.GetInt32(reader.GetOrdinal("FlashcardCollectionId")),
+                            Word = reader.GetString(reader.GetOrdinal("Word")),
+                            TranslatedWord = reader.GetString(reader.GetOrdinal("TranslatedWord")),
+                            IsStudying = reader.GetBoolean(reader.GetOrdinal("IsStudying"))
+                        };
+
+                        reader.Close();
+                        return flashcard;
+                    }
+                    else
+                    {
+                        reader.Close();
+                        return null;
+                    }
+                }
+            }
+        }
+
+
 
 
 
@@ -81,6 +130,38 @@ namespace LingaLearn.Repositories
                 }
             }
         }
+
+
+
+
+
+
+        public void Update(Flashcard flashcard)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Flashcard
+                           SET FlashcardCollectionId = @FlashcardCollectionId,
+                               Word = @Word,
+                               TranslatedWord = @TranslatedWord,
+                               IsStudying = @IsStudying
+                         WHERE Id = @Id";
+
+                    DbUtils.AddParameter(cmd, "@FlashcardCollectionId", flashcard.FlashcardCollectionId);
+                    DbUtils.AddParameter(cmd, "@Word", flashcard.Word);
+                    DbUtils.AddParameter(cmd, "@TranslatedWord", flashcard.TranslatedWord);
+                    DbUtils.AddParameter(cmd, "@IsStudying", flashcard.IsStudying);
+                    DbUtils.AddParameter(cmd, "@Id", flashcard.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
 
 
 
