@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, Button, CardBody, CardFooter, Col, Container, Row } from 'reactstrap';
+import { Card, CardBody, CardFooter, Row } from 'reactstrap';
 
 
 const Flashcard = ({ flashcard }) => {
@@ -16,9 +16,9 @@ const Flashcard = ({ flashcard }) => {
                 </CardBody>
                 <CardFooter>
                     <Row>
-
+                        <div>◀</div>
                         <div onClick={() => setFlipped(!flipped)}>🔁</div>
-
+                        <div>▶</div>
                     </Row>
                 </CardFooter>
             </Card>

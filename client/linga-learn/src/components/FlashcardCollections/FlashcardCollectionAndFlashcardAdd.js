@@ -59,8 +59,12 @@ const FlashcardCollectionAndFlashcardAdd = () => {
             .then(() => {
                 const showFlashcardInputId = document.getElementById("AddFlashcardRowVisibility");
                 showFlashcardInputId.style.visibility = "visible";
+
+                const showStudyTimeButtonId = document.getElementById("AddStudyTimeButtonVisibility");
+                showStudyTimeButtonId.style.visibility = "visible";
             })
     };
+
 
     const handleSaveFlashcard = () => {
         addFlashcard({
@@ -72,13 +76,6 @@ const FlashcardCollectionAndFlashcardAdd = () => {
     };
 
 
-    // ISSUES
-    // 1. clean up code
-    // 3. flashcardCollectionId is never fetched - fix this also in route at bottom
-    // 4. problem serverside with IsStudying
-    // 5. have flashcard input fields clear upon click save
-    // 6. Have 'save' button disappear after flashcard collection is made
-    // 7. fix date 
 
 
     return (
@@ -170,7 +167,7 @@ const FlashcardCollectionAndFlashcardAdd = () => {
                     })
                 }
             </Row>
-            <Button onClick={() => {
+            <Button id="AddStudyTimeButtonVisibility" onClick={() => {
                 history.push(`/FlashcardList/${flashcardCollection.id}`)
             }}>Study Time!</Button>
         </Form >

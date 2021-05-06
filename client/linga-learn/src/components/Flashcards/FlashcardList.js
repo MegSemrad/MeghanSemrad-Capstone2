@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FlashcardContext } from "../../providers/FlashcardProvider.js";
-import { Card, CardBody, CardFooter, Col, Container, Row } from 'reactstrap';
+import { Col, Container, Row } from 'reactstrap';
 import { useHistory, useParams } from "react-router-dom";
 import Flashcard from "./Flashcard.js"
 

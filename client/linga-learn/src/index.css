@@ -20,3 +20,7 @@ code {
 #AddFlashcardRowVisibility {
   visibility: hidden;
 }
+
+#AddStudyTimeButtonVisibility {
+  visibility: hidden;
+}
