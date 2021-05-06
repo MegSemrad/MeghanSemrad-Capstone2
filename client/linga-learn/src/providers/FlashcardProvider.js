@@ -23,6 +23,7 @@ export const FlashcardProvider = (props) => {
                 }
             })
                 .then((res) => res.json())
+                .then((res) => setFlashcards(res))
         )
     };
 
@@ -41,6 +42,10 @@ export const FlashcardProvider = (props) => {
                 },
                 body: JSON.stringify(flashcard),
             })
+                .then((res) => res.json())
+                .then((flashcard) => {
+                    getFlashcardsByCollectionId(flashcard.flashcardCollectionId)
+                })
         )
     };
 

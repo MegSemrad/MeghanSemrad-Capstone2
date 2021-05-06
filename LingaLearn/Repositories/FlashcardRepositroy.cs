@@ -75,7 +75,7 @@ namespace LingaLearn.Repositories
                     DbUtils.AddParameter(cmd, "@FlashcardCollectionId", flashcard.FlashcardCollectionId);
                     DbUtils.AddParameter(cmd, "@Word", flashcard.Word);
                     DbUtils.AddParameter(cmd, "@TranslatedWord", flashcard.TranslatedWord);
-                    DbUtils.AddParameter(cmd, "@Topic", flashcard.IsStudying);
+                    DbUtils.AddParameter(cmd, "@IsStudying", flashcard.IsStudying);
 
                     flashcard.Id = (int)cmd.ExecuteScalar();
                 }

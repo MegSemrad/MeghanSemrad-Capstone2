@@ -7,6 +7,7 @@ export const FlashcardCollectionContext = React.createContext();
 
 export const FlashcardCollectionProvider = (props) => {
     const [flashcardCollections, setFlashcardCollections] = useState([]);
+    const [flashcardCollection, setFlashcardCollection] = useState({});
     const { getToken } = useContext(UserContext);
     const user = JSON.parse(sessionStorage.getItem("user"));
     const apiUrl = "/api/FlashcardCollection";
@@ -40,8 +41,8 @@ export const FlashcardCollectionProvider = (props) => {
                 body: JSON.stringify(flashcardCollection),
             })
                 .then(res => res.json())
-                .then((newFlashcardCollection) => {
-                    return newFlashcardCollection
+                .then((returnedFlashcardCollectionObject) => {
+                    setFlashcardCollection(returnedFlashcardCollectionObject)
                 })
         )
     };
@@ -52,7 +53,7 @@ export const FlashcardCollectionProvider = (props) => {
 
     return (
         <FlashcardCollectionContext.Provider value={{
-            flashcardCollections, GetUserFlashcardCollections, addFlashcardCollection
+            flashcardCollections, flashcardCollection, GetUserFlashcardCollections, addFlashcardCollection
         }}>
             {props.children}
         </FlashcardCollectionContext.Provider>

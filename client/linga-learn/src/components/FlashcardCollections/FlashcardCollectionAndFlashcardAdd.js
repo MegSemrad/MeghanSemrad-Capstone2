@@ -11,10 +11,10 @@ const FlashcardCollectionAndFlashcardAdd = () => {
 
     const history = useHistory();
     const { GetUserLanguages } = useContext(LanguageContext);
-    const { addFlashcardCollection } = useContext(FlashcardCollectionContext);
-    const { addFlashcard } = useContext(FlashcardContext);
-    const [languages, setLanguages] = useState([]);
-    const [flashcardCollection, setFlashcardCollection] = useState({
+    const { flashcardCollection, addFlashcardCollection } = useContext(FlashcardCollectionContext);
+    const { flashcards, addFlashcard } = useContext(FlashcardContext);
+
+    const [newFlashcardCollection, setNewFlashcardCollection] = useState({
         languageId: 0,
         date: "",
         topic: "",
@@ -25,8 +25,8 @@ const FlashcardCollectionAndFlashcardAdd = () => {
         translatedWord: "",
         isStudying: true,
     });
-    let flashcardCollectionId = 0;
-    const newFlashcards = []
+    const [languages, setLanguages] = useState([]);
+
 
 
     useEffect(() => {
@@ -37,9 +37,9 @@ const FlashcardCollectionAndFlashcardAdd = () => {
 
 
     const handleControlledInputChangeForFlashcardCollection = (event) => {
-        const newFlashcardCollection = { ...flashcardCollection }
-        newFlashcardCollection[event.target.id] = event.target.value
-        setFlashcardCollection(newFlashcardCollection)
+        const newFlashcardColl = { ...newFlashcardCollection }
+        newFlashcardColl[event.target.id] = event.target.value
+        setNewFlashcardCollection(newFlashcardColl)
     }
 
     const handleControlledInputChangeForFlashcard = (event) => {
@@ -52,13 +52,10 @@ const FlashcardCollectionAndFlashcardAdd = () => {
 
     const handleSaveFlashcardCollection = () => {
         addFlashcardCollection({
-            languageId: flashcardCollection.languageId,
-            date: flashcardCollection.date,
-            topic: flashcardCollection.topic,
+            languageId: newFlashcardCollection.languageId,
+            date: newFlashcardCollection.date,
+            topic: newFlashcardCollection.topic,
         })
-            .then((returnedFlashcardCollectionObject) => {
-                flashcardCollectionId = returnedFlashcardCollectionObject.id
-            })
             .then(() => {
                 const showFlashcardInputId = document.getElementById("AddFlashcardRowVisibility");
                 showFlashcardInputId.style.visibility = "visible";
@@ -67,14 +64,11 @@ const FlashcardCollectionAndFlashcardAdd = () => {
 
     const handleSaveFlashcard = () => {
         addFlashcard({
-            flashcardCollectionId: flashcardCollectionId,
+            flashcardCollectionId: flashcardCollection.id,
             word: flashcard.word,
             translatedWord: flashcard.translatedWord,
             isStudying: true,
         })
-            .then((newFlashcard) => {
-                newFlashcards.push(newFlashcard)
-            })
     };
 
 
@@ -124,7 +118,7 @@ const FlashcardCollectionAndFlashcardAdd = () => {
                             onChange={handleControlledInputChangeForFlashcardCollection}
                             requiredAutoClassName="form-control"
                             id="date"
-                            value={flashcardCollection.date} />
+                            value={newFlashcardCollection.date} />
                     </FormGroup>
                 </Col>
 
@@ -137,7 +131,7 @@ const FlashcardCollectionAndFlashcardAdd = () => {
                             onChange={handleControlledInputChangeForFlashcardCollection}
                             requiredAutoClassName="form-control"
                             id="topic"
-                            value={flashcardCollection.topic} />
+                            value={newFlashcardCollection.topic} />
                     </FormGroup>
                 </Col>
             </Row>
@@ -171,13 +165,13 @@ const FlashcardCollectionAndFlashcardAdd = () => {
 
             <Row className="flashcardContainer">
                 {
-                    newFlashcards.map(newFlashcard => {
+                    flashcards.map(newFlashcard => {
                         return <><Card key={newFlashcard.id} >{newFlashcard.word}</Card><Card key={newFlashcard.id} >{newFlashcard.translatedWord}</Card></>
                     })
                 }
             </Row>
             <Button onClick={() => {
-                history.push(`/FlashcardList/${flashcardCollectionId}`)
+                history.push(`/FlashcardList/${flashcardCollection.id}`)
             }}>Study Time!</Button>
         </Form >
     );
