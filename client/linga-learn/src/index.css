@@ -24,3 +24,7 @@ code {
 #AddStudyTimeButtonVisibility {
   visibility: hidden;
 }
+
+#hideFlashcardCollectionButtonVisibility {
+  visibility: visible;
+}

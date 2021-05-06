@@ -62,6 +62,9 @@ const FlashcardCollectionAndFlashcardAdd = () => {
 
                 const showStudyTimeButtonId = document.getElementById("AddStudyTimeButtonVisibility");
                 showStudyTimeButtonId.style.visibility = "visible";
+
+                const hideFlashcardCollectionButtonId = document.getElementById("hideFlashcardCollectionButtonVisibility");
+                hideFlashcardCollectionButtonId.style.visibility = "hidden";
             })
     };
 
@@ -134,7 +137,7 @@ const FlashcardCollectionAndFlashcardAdd = () => {
             </Row>
 
             <Row>
-                <Button onClick={handleSaveFlashcardCollection}>Save</Button>
+                <Button id="hideFlashcardCollectionButtonVisibility" onClick={handleSaveFlashcardCollection}>Save</Button>
             </Row>
 
             <Row id="AddFlashcardRowVisibility">
