@@ -45,7 +45,7 @@ const FlashcardList = () => {
     return (
         <Container className="flashcardContainer">
             <Row>
-                <Col xs="2">
+                <Col xs="4">
                     <>
                         <h4>Study It</h4>
                         {
@@ -58,7 +58,7 @@ const FlashcardList = () => {
                     </>
                 </Col>
 
-                <Col xs="2">
+                <Col xs="4">
                     <>
                         <h4>Know It</h4>
                         {

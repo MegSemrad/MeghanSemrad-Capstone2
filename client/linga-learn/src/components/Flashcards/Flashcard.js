@@ -3,7 +3,7 @@ import { Card, Button, CardBody, CardFooter, Col, Container, Row } from 'reactst
 
 
 const Flashcard = ({ flashcard }) => {
-    const [flipped, setFlipped] = useState(false);
+    const [flipped, setFlipped] = useState(true);
 
     return (
         <>
