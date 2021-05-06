@@ -118,15 +118,17 @@ namespace LingaLearn.Repositories
 
 
 
-        public void DeleteEntireCollection(int id)
+        public void DeleteEntireCollection(int FlashcardCollectionId)
         {
             using (var conn = Connection)
             {
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = "DELETE FROM FlashcardCollection WHERE Id = @Id";
-                    DbUtils.AddParameter(cmd, "@id", id);
+                    cmd.CommandText = @"DELETE FROM Flashcard WHERE FlashcardCollectionId= @Id;
+                                        DELETE FROM FlashcardCollection WHERE Id = @Id; 
+                                        ";
+                    DbUtils.AddParameter(cmd, "@Id", FlashcardCollectionId);
                     cmd.ExecuteNonQuery();
                 }
             }

@@ -13,6 +13,7 @@ import LanguageAdd from "./Languages/LanguageAdd.js";
 import FlashcardCollectionList from "./FlashcardCollections/FlashcardCollectionList";
 import FlashcardList from "./Flashcards/FlashcardList.js"
 import FlashcardCollectionAndFlashcardAdd from "./FlashcardCollections/FlashcardCollectionAndFlashcardAdd.js"
+import FlashcardCollectionDeletionConfirmation from "./FlashcardCollections/FlashcardDeletionConfirmation.js";
 
 
 
@@ -57,6 +58,16 @@ export default function ApplicationViews() {
                     <FlashcardProvider>
                         <LanguageProvider>
                             {isLoggedIn ? <FlashcardCollectionAndFlashcardAdd /> : <Redirect to="/login" />}
+                        </LanguageProvider>
+                    </FlashcardProvider>
+                </FlashcardCollectionProvider>
+            </Route>
+
+            <Route path="/Delete/:FlashcardCollectionId(\d+)" >
+                <FlashcardCollectionProvider>
+                    <FlashcardProvider>
+                        <LanguageProvider>
+                            {isLoggedIn ? <FlashcardCollectionDeletionConfirmation /> : <Redirect to="/login" />}
                         </LanguageProvider>
                     </FlashcardProvider>
                 </FlashcardCollectionProvider>

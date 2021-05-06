@@ -1,11 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FlashcardContext } from "../../providers/FlashcardProvider.js";
 import { Button, Card, CardBody, CardFooter, Col, Container, Row } from 'reactstrap';
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 
 
 const FlashcardList = () => {
+    const history = useHistory();
     const { flashcards, getFlashcardsByCollectionId } = useContext(FlashcardContext);
     const [studyItFlashcards, setStudyItFlashcards] = useState([]);
     const [knowItFlashcards, setKnowItFlashcards] = useState([]);
@@ -74,7 +75,9 @@ const FlashcardList = () => {
             </Row>
             <Row>
                 <div>✏</div>
-                <div>🗑</div>
+                <div onClick={() => {
+                    history.push(`/Delete/${FlashcardCollectionId}`)
+                }}>🗑</div>
             </Row>
 
         </Container >

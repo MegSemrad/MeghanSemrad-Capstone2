@@ -51,9 +51,26 @@ export const FlashcardCollectionProvider = (props) => {
 
 
 
+    const deleteFlashcardCollection = (flashcardCollectionId) => {
+        return getToken().then((token) =>
+            fetch(`${apiUrl}/Delete/${flashcardCollectionId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(flashcardCollectionId),
+            })
+        )
+    }
+
+
+
+
+
     return (
         <FlashcardCollectionContext.Provider value={{
-            flashcardCollections, flashcardCollection, GetUserFlashcardCollections, addFlashcardCollection
+            flashcardCollections, flashcardCollection, GetUserFlashcardCollections, addFlashcardCollection, deleteFlashcardCollection
         }}>
             {props.children}
         </FlashcardCollectionContext.Provider>

@@ -74,10 +74,10 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpDelete("Delete/{id}")]
-        public IActionResult Delete(int id)
+        [HttpDelete("Delete/{FlashcardCollectionId}")]
+        public IActionResult Delete(int FlashcardCollectionId)
         {
-            _flashcardCollectionRepository.DeleteEntireCollection(id);
+            _flashcardCollectionRepository.DeleteEntireCollection(FlashcardCollectionId);
             return NoContent();
         }
 
