@@ -6,8 +6,7 @@ import { useParams } from "react-router-dom";
 
 
 const FlashcardList = () => {
-    const { getFlashcardsByCollectionId } = useContext(FlashcardContext);
-    const [flashcards, setFlashcards] = useState([]);
+    const { flashcards, getFlashcardsByCollectionId } = useContext(FlashcardContext);
     const [studyItFlashcards, setStudyItFlashcards] = useState([]);
     const [knowItFlashcards, setKnowItFlashcards] = useState([]);
     const { FlashcardCollectionId } = useParams();
@@ -16,7 +15,6 @@ const FlashcardList = () => {
 
     useEffect(() => {
         getFlashcardsByCollectionId(FlashcardCollectionId)
-            .then(resp => setFlashcards(resp))
     }, []);
 
 
