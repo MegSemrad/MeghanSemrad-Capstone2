@@ -7,7 +7,7 @@ import Flashcard from "./Flashcard.js"
 
 const FlashcardList = () => {
     const history = useHistory();
-    const { flashcards, getFlashcardsByCollectionId } = useContext(FlashcardContext);
+    const { flashcards, getFlashcardsByCollectionId, editFlashcard } = useContext(FlashcardContext);
     const [studyItFlashcards, setStudyItFlashcards] = useState([]);
     const [knowItFlashcards, setKnowItFlashcards] = useState([]);
     const { FlashcardCollectionId } = useParams();
@@ -17,27 +17,32 @@ const FlashcardList = () => {
         getFlashcardsByCollectionId(FlashcardCollectionId)
     }, []);
 
+
     useEffect(() => {
 
         const flashcardsToStudy = flashcards.filter(flashcard => flashcard.isStudying === true)
         setStudyItFlashcards(flashcardsToStudy)
-
     }, [flashcards]);
+
 
     useEffect(() => {
         const flashcardsToKnow = flashcards.filter(flashcard => flashcard.isStudying === false)
         setKnowItFlashcards(flashcardsToKnow)
     }, [flashcards]);
 
-    // const handleSwitchToKnowIt = (studyItFlashcard) => {
-    //     editFlashcard(studyItFlashcard)
-    //     getFlashcardsByCollectionId(FlashcardCollectionId)
-    // };
 
-    // const handleSwitchToStudyIt = (knowItFlashcard) => {
-    //     editFlashcard(knowItFlashcard)
-    //     getFlashcardsByCollectionId(FlashcardCollectionId)
-    // };
+    const handleSwitchToKnowIt = (flashcard) => {
+        flashcard.isStudying = false
+        editFlashcard(flashcard)
+        getFlashcardsByCollectionId(FlashcardCollectionId)
+    };
+
+
+    const handleSwitchToStudyIt = (flashcard) => {
+        flashcard.isStudying = true
+        editFlashcard(flashcard)
+        getFlashcardsByCollectionId(FlashcardCollectionId)
+    };
 
 
 
@@ -52,6 +57,7 @@ const FlashcardList = () => {
                             studyItFlashcards.map(studyItFlashcard => {
                                 return <Flashcard key={studyItFlashcard.id}
                                     flashcard={studyItFlashcard}
+                                    handleSwitchToKnowIt={handleSwitchToKnowIt}
                                 />
                             })
                         }
@@ -65,6 +71,7 @@ const FlashcardList = () => {
                             knowItFlashcards.map(knowItFlashcard => {
                                 return <Flashcard key={knowItFlashcard.id}
                                     flashcard={knowItFlashcard}
+                                    handleSwitchToStudyIt={handleSwitchToStudyIt}
                                 />
                             })
                         }
@@ -74,7 +81,9 @@ const FlashcardList = () => {
             </Row>
 
             <Row>
-                <div>✏</div>
+                <div onClick={() => {
+                    history.push(`/Edit/${FlashcardCollectionId}`)
+                }}>✏</div>
                 <div onClick={() => {
                     history.push(`/Delete/${FlashcardCollectionId}`)
                 }}>🗑</div>

@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Card, CardBody, CardFooter, Row } from 'reactstrap';
+import { Button, Card, CardBody, CardFooter, Row } from 'reactstrap';
 
 
-const Flashcard = ({ flashcard }) => {
+const Flashcard = ({ flashcard, handleSwitchToKnowIt, handleSwitchToStudyIt }) => {
     const [flipped, setFlipped] = useState(true);
 
     return (
@@ -16,9 +16,9 @@ const Flashcard = ({ flashcard }) => {
                 </CardBody>
                 <CardFooter>
                     <Row>
-                        <div>◀</div>
-                        <div onClick={() => setFlipped(!flipped)}>🔁</div>
-                        <div>▶</div>
+                        <Button onClick={() => handleSwitchToStudyIt(flashcard)}>◀</Button>
+                        <Button onClick={() => setFlipped(!flipped)}>🔁</Button>
+                        <Button onClick={() => handleSwitchToKnowIt(flashcard)}>▶</Button>
                     </Row>
                 </CardFooter>
             </Card>
