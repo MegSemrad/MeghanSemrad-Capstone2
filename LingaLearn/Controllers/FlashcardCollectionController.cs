@@ -42,6 +42,17 @@ namespace LingaLearn.Controllers
 
 
 
+        [HttpGet("GetFlashcardCollectionById/{FlashcardCollectionId}")]
+        public IActionResult Get(int FlashcardCollectionId)
+        {
+            return Ok(_flashcardCollectionRepository.GetFlashcardCollectionById(FlashcardCollectionId));
+        }
+
+
+
+
+
+
         [HttpPost("Create")]
         public IActionResult FlashcardCollection(FlashcardCollection flashcardCollection)
         {

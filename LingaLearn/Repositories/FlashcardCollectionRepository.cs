@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using LingaLearn.Models;
 using LingaLearn.Utils.cs;
+using Microsoft.Data.SqlClient;
 
 namespace LingaLearn.Repositories
 {
@@ -57,6 +58,57 @@ namespace LingaLearn.Repositories
                 }
             }
         }
+
+        
+
+        public FlashcardCollection GetFlashcardCollectionById(int FlashcardCollectionId)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT  fc.Id, 
+                                fc.UserId, 
+                                fc.LanguageId, 
+                                fc.Date, 
+                                fc.Topic
+                        FROM FlashcardCollection fc
+                        WHERE fc.Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", FlashcardCollectionId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        FlashcardCollection flashcardCollection = new FlashcardCollection
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
+                            LanguageId = reader.GetInt32(reader.GetOrdinal("LanguageId")),
+                            Date = reader.GetDateTime(reader.GetOrdinal("Date")).ToString("MM/dd/yyyy"),
+                            Topic = reader.GetString(reader.GetOrdinal("Topic"))
+                        };
+
+                        reader.Close();
+                        return flashcardCollection;
+                    }
+                    else
+                    {
+                        reader.Close();
+                        return null;
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
 
 
 

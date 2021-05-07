@@ -22,6 +22,8 @@ namespace LingaLearn.Controllers
 
 
 
+
+
         [HttpGet("GetFlashcardsByCollection/{FlashcardCollectionId}")]
         public IActionResult Get(int FlashcardCollectionId)
         {
@@ -29,11 +31,16 @@ namespace LingaLearn.Controllers
         }
 
 
+
+
+
         [HttpGet("GetFlashcardByFlashcardId/{id}")]
         public IActionResult GetFlashcard(int id)
         {
             return Ok(_flashcardRepository.GetFlashcardByFlashcardId(id));
         }
+
+
 
 
 
@@ -58,8 +65,6 @@ namespace LingaLearn.Controllers
             _flashcardRepository.Update(flashcard);
             return NoContent();
         }
-
-
 
 
 

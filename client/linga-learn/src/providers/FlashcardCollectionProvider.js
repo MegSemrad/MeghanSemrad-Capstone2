@@ -70,7 +70,8 @@ export const FlashcardCollectionProvider = (props) => {
 
     return (
         <FlashcardCollectionContext.Provider value={{
-            flashcardCollections, flashcardCollection, GetUserFlashcardCollections, addFlashcardCollection, deleteFlashcardCollection
+            flashcardCollections, flashcardCollection, GetUserFlashcardCollections,
+            addFlashcardCollection, deleteFlashcardCollection
         }}>
             {props.children}
         </FlashcardCollectionContext.Provider>
