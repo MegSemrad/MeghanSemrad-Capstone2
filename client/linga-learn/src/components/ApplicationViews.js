@@ -68,7 +68,7 @@ export default function ApplicationViews() {
                 </FlashcardCollectionProvider>
             </Route>
 
-            <Route path="/GetFlashcardsByCollection/:FlashcardCollectionId(\d+)">
+            <Route path="/Manage/:FlashcardId(\d+)">
                 <FlashcardCollectionProvider>
                     <FlashcardProvider>
                         <LanguageProvider>

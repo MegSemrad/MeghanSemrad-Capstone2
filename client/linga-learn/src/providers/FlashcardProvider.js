@@ -68,18 +68,18 @@ export const FlashcardProvider = (props) => {
 
 
 
-    // const editFlashcard = (flashcard) => {
-    //     return getToken().then((token) =>
-    //         fetch(`${apiUrl}/Edit/${flashcard.id}`, {
-    //             method: "PUT",
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(flashcard),
-    //         })
-    //     )
-    // };
+    const editFlashcard = (flashcard) => {
+        return getToken().then((token) =>
+            fetch(`${apiUrl}/Edit/${flashcard.id}`, {
+                method: "PUT",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(flashcard),
+            })
+        )
+    };
 
 
     // const editFlashcardCollectionAndFlashcards = (flashcardCollection) => {
@@ -116,7 +116,7 @@ export const FlashcardProvider = (props) => {
     return (
         <FlashcardContext.Provider value={{
             flashcard, flashcards, getFlashcardsByCollectionId, getFlashcardById,
-            addFlashcard, deleteSingleFlashcard
+            addFlashcard, editFlashcard, deleteSingleFlashcard
         }}>
             {props.children}
         </FlashcardContext.Provider>

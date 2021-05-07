@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import { Button, Card, CardBody, CardFooter, Row } from 'reactstrap';
+import { useHistory } from "react-router-dom";
+import { Button, Card, CardBody, CardFooter, CardHeader, Row } from 'reactstrap';
 
 
 const Flashcard = ({ flashcard, handleSwitchToKnowIt, handleSwitchToStudyIt }) => {
+    const history = useHistory();
     const [flipped, setFlipped] = useState(true);
+
+
 
     return (
         <>
             <Card key={flashcard.id}>
+                <CardHeader>
+                    <div onClick={() => {
+                        history.push(`/Manage/${flashcard.id}`)
+                    }}>✏</div>
+                </CardHeader>
                 <CardBody>
                     {flipped ?
                         flashcard.word

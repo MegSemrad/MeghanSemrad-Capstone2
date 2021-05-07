@@ -4,41 +4,41 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Button, Card, Col, Input, Label } from 'reactstrap';
 
 
-const CommentEditForm = () => {
-    const { FlashcardCollectionId } = useParams();
+const FlashcardEdit = () => {
+    const { FlashcardId } = useParams();
     const history = useHistory();
-    const { flashcards, getFlashcardsByCollectionId } = useContext(FlashcardContext);
+    const { flashcard, getFlashcardById, editFlashcard } = useContext(FlashcardContext);
+
+
+    const [localFlashcard, setLocalFlashcard] = useState({
+        word: "",
+        translatedWord: "",
+    })
+
+
 
     useEffect(() => {
-        getFlashcardsByCollectionId(FlashcardCollectionId)
-            .then(() => {
-
-            })
+        getFlashcardById(FlashcardId)
+            .then(setLocalFlashcard(flashcard))
     }, []);
 
 
-    const
-
-    const [flashcard, setFlashcard] = useState({
-        id: flashcard.id,
-        word: flashcard.word,
-        translatedWord: flashcard.translatedWord,
-    })
     const handleControlledInputChange = (event) => {
-        const newFlashcard = { ...flashcard }
+        const newFlashcard = { ...localFlashcard }
         newFlashcard[event.target.id] = event.target.value
-        setFlashcard(newFlashcard)
+        setLocalFlashcard(newFlashcard)
+
     };
 
-    // const handleClickSaveFlashcards = () => {
-    //     editComment({
-    //         id: commentId,
-    //         postId: comment.postId,
-    //         subject: comment.subject,
-    //         content: comment.content
-    //     })
-    //         .then(() => history.push(`/FlashcardList/${FlashcardCollectionId}`))
-    // };
+
+    const handleClickSaveFlashcard = () => {
+        editFlashcard({
+            id: localFlashcard.id,
+            word: localFlashcard.word,
+            translatedword: localFlashcard.translatedWord
+        })
+            .then(() => history.push(`/FlashcardList/${localFlashcard.flashcardCollectionId}`))
+    };
 
 
 
@@ -48,46 +48,39 @@ const CommentEditForm = () => {
         <div className="CommentForm">
             <h2 className="CommentForm__title">Edit Flashcards</h2>
             <Col xs="4">
-                {
-                    flashcards.map((flashcard) => {
-                        return <>
-                            <Card>
-                                <fieldset>
-                                    <div className="form-group">
-                                        <Button>✖</Button>
-                                        <Label htmlFor="word">Word:</Label>
-                                        <Input type="text" id="word" onChange={handleControlledInputChange}
-                                            required autoFocus
-                                            className="form-control"
-                                            placeholder="Word"
-                                            value={flashcard.word} />
-                                    </div>
-                                </fieldset>
+                return <>
+                    <Card key={localFlashcard.id}>
+                        <fieldset>
+                            <div className="form-group">
+                                <Button>✖</Button>
+                                <Label htmlFor="word">Word:</Label>
+                                <Input type="text" id="word" onChange={handleControlledInputChange}
+                                    required autoFocus
+                                    className="form-control"
+                                    placeholder="Word"
+                                    defaultValue={localFlashcard.word} />
+                            </div>
+                        </fieldset>
 
-                                <fieldset>
-                                    <div className="form-group">
-                                        <Label htmlFor="translatedWord">Translation:</Label>
-                                        <Input type="text" id="translatedWord" onChange={handleControlledInputChange}
-                                            required autoFocus
-                                            className="form-control"
-                                            placeholder="Translation"
-                                            value={flashcard.translatedWord} />
-                                    </div>
-                                </fieldset>
-                            </Card>
-                        </>
-                    })
-                }
+                        <fieldset>
+                            <div className="form-group">
+                                <Label htmlFor="translatedWord">Translation:</Label>
+                                <Input type="text" id="translatedWord" onChange={handleControlledInputChange}
+                                    required autoFocus
+                                    className="form-control"
+                                    placeholder="Translation"
+                                    defaultValue={localFlashcard.translatedWord} />
+                            </div>
+                        </fieldset>
+                    </Card>
+                </>
 
-
-
-
-                {/* <button className="btn btn-primary"
-                    onClick={handleClickSaveFlashcards}>
-                    Save</button> */}
+                <button className="btn btn-primary"
+                    onClick={handleClickSaveFlashcard}>
+                    Save</button>
             </Col>
         </div>
     )
 }
 
-export default CommentEditForm;
+export default FlashcardEdit;

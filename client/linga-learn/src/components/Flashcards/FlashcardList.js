@@ -81,9 +81,6 @@ const FlashcardList = () => {
 
             <Row>
                 <div onClick={() => {
-                    history.push(`/GetFlashcardsByCollection/${FlashcardCollectionId}`)
-                }}>✏</div>
-                <div onClick={() => {
                     history.push(`/Delete/${FlashcardCollectionId}`)
                 }}>🗑</div>
             </Row>
