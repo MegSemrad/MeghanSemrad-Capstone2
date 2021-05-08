@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { LanguageContext } from "../../providers/LanguageProvider.js";
 import {
-    Container, Row, Col, Card, CardTitle, CardText, CardBody,
+    Container, Row, Col, Card, CardBody,
     Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Label, Button
 } from 'reactstrap';
 
@@ -13,7 +13,7 @@ import {
 
 const LanguageList = (props) => {
     const history = useHistory();
-    const { GetUserLanguages } = useContext(LanguageContext);
+    const { GetUserLanguages, DeleteLanguage } = useContext(LanguageContext);
     const [languages, setLanguages] = useState([]);
     const [knownLanguages, setKnownLanguages] = useState([]);
     const [learningLanguages, setLearningLanguages] = useState([]);
@@ -56,6 +56,12 @@ const LanguageList = (props) => {
             item.style.visibility = "visible";
         }
     }
+
+    // const handleDeleteLanguage = (languageId) => {
+    //     DeleteLanguage(languageId)
+    //     //warning message about deleting all materials connected with selected language 
+    //     //and delete flashcard collections, flashcards, and eventually resources --> this is done serverside in the language repository
+    // }
 
 
 
