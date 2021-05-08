@@ -1,9 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
 import { LanguageContext } from "../../providers/LanguageProvider.js";
+import Language from "./Language.js";
 import {
-    Container, Row, Col, Card, CardBody,
-    Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Label, Button
+    Container, Row, Col, Card,
+    Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Label
 } from 'reactstrap';
 
 
@@ -20,8 +21,6 @@ const LanguageList = (props) => {
     const [futureLanguages, setFutureLanguages] = useState([]);
 
 
-
-    //---------------------------FOR LIST----------------------------------------------------
 
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen(prevState => !prevState);
@@ -69,51 +68,45 @@ const LanguageList = (props) => {
         <>
             <Container className="languageContainer">
                 <Row xs="3">
-                    <Container>
+                    <Col>
                         <Label tag="h5">Know</Label>
                         {
                             knownLanguages.map(knownLanguage => {
-                                return <Card key={knownLanguage.id}>
-                                    <CardBody>{knownLanguage.languageName}</CardBody>
-                                    <Button className="showEditandDeleteButton">✏</Button>
-                                    <Button className="showEditandDeleteButton">✖</Button>
-                                </Card>
+                                return <Language key={knownLanguage.id}
+                                    language={knownLanguage}
+                                    handleManageClick={handleManageClick}
+                                />
                             })
                         }
-                    </Container>
+                    </Col>
 
-                    <Container>
+                    <Col>
                         <Label tag="h5">Learning</Label>
                         {
                             learningLanguages.map(learningLanguage => {
-                                return <Card key={learningLanguage.id}>
-                                    <CardBody>{learningLanguage.languageName}</CardBody>
-                                    <Button className="showEditandDeleteButton">✏</Button>
-                                    <Button className="showEditandDeleteButton">✖</Button>
-                                </Card>
+                                return <Language key={learningLanguage.id}
+                                    language={learningLanguage}
+                                    handleManageClick={handleManageClick}
+                                />
                             })
                         }
-                    </Container>
+                    </Col>
 
-                    <Container>
+                    <Col>
                         <Label tag="h5">Future</Label>
                         {
                             futureLanguages.map(futureLanguage => {
-                                return <Card key={futureLanguage.id}>
-                                    <CardBody>{futureLanguage.languageName}</CardBody>
-                                    <Button className="showEditandDeleteButton">✏</Button>
-                                    <Button className="showEditandDeleteButton">✖</Button>
-                                </Card>
+                                return <Language key={futureLanguage.id}
+                                    language={futureLanguage}
+                                    handleManageClick={handleManageClick}
+                                />
                             })
                         }
-                    </Container>
-
+                    </Col>
                 </Row>
 
 
-
                 <Row>
-
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                         <DropdownToggle>
                             <Col sm={{ size: 'auto', offset: 1 }}>...</Col>
@@ -128,14 +121,11 @@ const LanguageList = (props) => {
                         </DropdownMenu>
                     </Dropdown>
                 </Row>
-
-
             </Container>
 
         </>
     );
 };
-
 
 
 export default LanguageList;
