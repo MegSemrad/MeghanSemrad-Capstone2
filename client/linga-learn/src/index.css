@@ -28,3 +28,24 @@ code {
 #hideFlashcardCollectionButtonVisibility {
   visibility: visible;
 }
+
+#EditKnownLanguagesButton  {
+  visibility: hidden;
+}
+#DeleteKnownLanguagesButton {
+  visibility: hidden;
+}
+
+#EditLearningLanguagesButton  {
+  visibility: hidden;
+}
+#DeleteLearningLanguagesButton {
+  visibility: hidden;
+}
+
+#EditFutureLanguagesButton  {
+  visibility: hidden;
+}
+#DeleteFutureLanguagesButton {
+  visibility: hidden;
+}

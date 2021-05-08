@@ -10,10 +10,11 @@ import { FlashcardProvider } from "../providers/FlashcardProvider.js";
 
 import LanguageList from "./Languages/LanguageList.js";
 import LanguageAdd from "./Languages/LanguageAdd.js";
+import LanguageManage from "./Languages/LanguageManage.js";
 import FlashcardCollectionList from "./FlashcardCollections/FlashcardCollectionList";
-import FlashcardList from "./Flashcards/FlashcardList.js";
 import FlashcardCollectionAndFlashcardAdd from "./FlashcardCollections/FlashcardCollectionAndFlashcardAdd.js";
 import FlashcardCollectionDeletionConfirmation from "./FlashcardCollections/FlashcardDeletionConfirmation.js";
+import FlashcardList from "./Flashcards/FlashcardList.js";
 import FlashcardEdit from "./Flashcards/FlashcardEdit.js";
 
 
@@ -38,6 +39,15 @@ export default function ApplicationViews() {
                 <LanguageProvider>
                     <LanguageProficiencyProvider>
                         {isLoggedIn ? <LanguageAdd /> : <Redirect to="/login" />}
+                    </LanguageProficiencyProvider>
+                </LanguageProvider>
+            </Route>
+
+
+            <Route path="/Manage" exact>
+                <LanguageProvider>
+                    <LanguageProficiencyProvider>
+                        {isLoggedIn ? <LanguageManage /> : <Redirect to="/login" />}
                     </LanguageProficiencyProvider>
                 </LanguageProvider>
             </Route>
