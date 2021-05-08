@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using LingaLearn.Models;
 using LingaLearn.Utils.cs;
+using Microsoft.Data.SqlClient;
 
 namespace LingaLearn.Repositories
 {
@@ -58,6 +59,55 @@ namespace LingaLearn.Repositories
                 }
             }
         }
+
+
+
+
+
+
+        
+public Language GetLanguageByLanguageId(int LanguageId)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT  l.Id, 
+                                l.UserId, 
+                                l.LanguageName, 
+                                l.LanguageProficiencyId
+                        FROM Language l
+                        WHERE l.Id = @id
+                    ";
+
+                    cmd.Parameters.AddWithValue("@id", LanguageId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        Language language = new Language
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
+                            UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
+                            LanguageName = reader.GetString(reader.GetOrdinal("LanguageName")),
+                            LanguageProficiencyId = reader.GetInt32(reader.GetOrdinal("LanguageProficiencyId"))
+                        };
+
+                        reader.Close();
+                        return language;
+                    }
+                    else
+                    {
+                        reader.Close();
+                        return null;
+                    }
+                }
+            }
+        }
+
 
 
 

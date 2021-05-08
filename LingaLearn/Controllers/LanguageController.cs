@@ -42,6 +42,16 @@ namespace LingaLearn.Controllers
 
 
 
+        [HttpGet("GetLanguageByLanguageId/{LanguageId}")]
+        public IActionResult Get(int LanguageId)
+        {
+            return Ok(_languageRepository.GetLanguageByLanguageId(LanguageId));
+        }
+
+
+
+
+
         [HttpPost("Create")]
         public IActionResult Language(Language language)
         {

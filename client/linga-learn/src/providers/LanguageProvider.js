@@ -26,6 +26,19 @@ export const LanguageProvider = (props) => {
     };
 
 
+    const getLanguageById = (languageId) => {
+        return getToken().then((token) =>
+            fetch(`${apiUrl}/GetLanguageByLanguageId/${languageId}`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then((res) => res.json())
+        )
+    }
+
+
 
 
 
@@ -47,9 +60,9 @@ export const LanguageProvider = (props) => {
 
 
 
-    const EditLanguage = (language) => {
+    const editLanguage = (language) => {
         return getToken().then((token) =>
-            fetch(`${apiUrl}/Edit/${language.Id}`, {
+            fetch(`${apiUrl}/Edit/${language.id}`, {
                 method: "PUT",
                 headers: {
                     Authorization: `Bearer ${token}`,
@@ -80,8 +93,8 @@ export const LanguageProvider = (props) => {
 
     return (
         <LanguageContext.Provider value={{
-            languages, GetUserLanguages, AddLanguage,
-            EditLanguage, DeleteLanguage
+            languages, GetUserLanguages, getLanguageById, AddLanguage,
+            editLanguage, DeleteLanguage
         }}>
             {props.children}
         </LanguageContext.Provider>

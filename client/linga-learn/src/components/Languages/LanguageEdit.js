@@ -1,53 +1,61 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
-import { LanguageContext } from "../../providers/LanguageProvider";
+import React, { useContext, useEffect, useState } from "react";
+import { LanguageContext } from "../../providers/LanguageProvider.js";
 import { LanguageProficiencyContext } from "../../providers/LanguageProficiencyProvider";
+import { useHistory, useParams } from 'react-router-dom';
 import { Button, Card, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap';
 
 
 
-const LanguageAdd = (props) => {
-
+const LanguageEdit = () => {
+    const { languageId } = useParams();
     const history = useHistory();
-    const { AddLanguage } = useContext(LanguageContext)
+    const { getLanguageById, editLanguage } = useContext(LanguageContext);
     const { GetLanguageProficiencies } = useContext(LanguageProficiencyContext)
 
 
+
+
+    const [language, setLanguage] = useState({});
     const [languageProficiencies, setLanguageProficiencies] = useState([]);
 
 
+
     useEffect(() => {
-        GetLanguageProficiencies()
-            .then(resp => setLanguageProficiencies(resp))
+        getLanguageById(languageId)
+            .then((languageObject) => {
+                setLanguage(languageObject)
+            })
+            .then(() => {
+                GetLanguageProficiencies()
+                    .then(resp => setLanguageProficiencies(resp))
+            })
     }, []);
 
 
-
-    const [language, setLanguage] = useState({
-        languageName: "",
-        languageProficiencyId: 0,
-    });
 
 
     const handleControlledInputChange = (event) => {
         const newLanguage = { ...language }
         newLanguage[event.target.id] = event.target.value
         setLanguage(newLanguage)
-    }
+    };
 
-
-
-    const handleClickAddLanguage = () => {
-        AddLanguage({
+    const handleClickSaveLanguage = () => {
+        editLanguage({
+            id: languageId,
             languageName: language.languageName,
             languageProficiencyId: language.languageProficiencyId
         })
             .then(() => history.push("/"))
     };
 
-
-
-
+    //      <input type="text" 
+    //      id="subject" 
+    //      onChange={handleControlledInputChange}
+    //      required autoFocus
+    //      className="form-control"
+    //      placeholder="Subject"
+    //      value={comment.subject} />
 
     return (
         <Container>
@@ -56,12 +64,19 @@ const LanguageAdd = (props) => {
                     <Form>
                         <FormGroup>
                             <Label for="examplePassword">Language</Label>
-                            <Input type="text" id="languageName" value={language.languageName} onChange={handleControlledInputChange} requiredAutoClassName="form-control" placeholder="language" />
+                            <Input type="text"
+                                id="languageName"
+                                value={language.languageName}
+                                onChange={handleControlledInputChange}
+                                requiredAutoClassName="form-control"
+                                placeholder="language" />
                         </FormGroup>
 
                         <FormGroup>
                             <Label for="exampleSelect">Proficiency</Label>
-                            <Input type="select" id="languageProficiencyId" onChange={handleControlledInputChange}>
+                            <Input type="select"
+                                id="languageProficiencyId"
+                                onChange={handleControlledInputChange}>
                                 <option value="0"></option>
                                 {
                                     languageProficiencies.map(languageProficiency => {
@@ -79,16 +94,13 @@ const LanguageAdd = (props) => {
 
                         <Button onClick={event => {
                             event.preventDefault()
-                            handleClickAddLanguage()
-                        }}>Add</Button>
+                            handleClickSaveLanguage()
+                        }}>Save</Button>
                     </Form>
                 </Card>
             </Row>
-
-
-
         </Container>
-    );
+    )
 };
 
-export default LanguageAdd;
+export default LanguageEdit;

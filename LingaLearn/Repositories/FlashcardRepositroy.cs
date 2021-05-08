@@ -61,7 +61,7 @@ namespace LingaLearn.Repositories
      
 
 
-             public Flashcard GetFlashcardByFlashcardId(int id)
+        public Flashcard GetFlashcardByFlashcardId(int id)
         {
             using (SqlConnection conn = Connection)
             {

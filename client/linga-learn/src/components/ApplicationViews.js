@@ -10,7 +10,7 @@ import { FlashcardProvider } from "../providers/FlashcardProvider.js";
 
 import LanguageList from "./Languages/LanguageList.js";
 import LanguageAdd from "./Languages/LanguageAdd.js";
-import LanguageManage from "./Languages/LanguageManage.js";
+import LanguageEdit from "./Languages/LanguageEdit.js";
 import FlashcardCollectionList from "./FlashcardCollections/FlashcardCollectionList";
 import FlashcardCollectionAndFlashcardAdd from "./FlashcardCollections/FlashcardCollectionAndFlashcardAdd.js";
 import FlashcardCollectionDeletionConfirmation from "./FlashcardCollections/FlashcardDeletionConfirmation.js";
@@ -44,13 +44,15 @@ export default function ApplicationViews() {
             </Route>
 
 
-            <Route path="/Manage" exact>
+
+            <Route path="/EditLanguage/:languageId(\d+)" exact>
                 <LanguageProvider>
                     <LanguageProficiencyProvider>
-                        {isLoggedIn ? <LanguageManage /> : <Redirect to="/login" />}
+                        {isLoggedIn ? <LanguageEdit /> : <Redirect to="/login" />}
                     </LanguageProficiencyProvider>
                 </LanguageProvider>
             </Route>
+
 
 
             <Route path="/FlashcardCollectionList" >
@@ -68,6 +70,7 @@ export default function ApplicationViews() {
                 </FlashcardProvider>
             </Route>
 
+
             <Route path="/AddFlashcardCollectionAndFlashcards" >
                 <FlashcardCollectionProvider>
                     <FlashcardProvider>
@@ -77,6 +80,7 @@ export default function ApplicationViews() {
                     </FlashcardProvider>
                 </FlashcardCollectionProvider>
             </Route>
+
 
             <Route path="/Delete/:FlashcardCollectionId(\d+)" >
                 <FlashcardCollectionProvider>
@@ -88,6 +92,7 @@ export default function ApplicationViews() {
                 </FlashcardCollectionProvider>
             </Route>
 
+
             <Route path="/Manage/:FlashcardId(\d+)">
                 <FlashcardCollectionProvider>
                     <FlashcardProvider>
@@ -97,8 +102,6 @@ export default function ApplicationViews() {
                     </FlashcardProvider>
                 </FlashcardCollectionProvider>
             </Route>
-
-
 
 
         </main>

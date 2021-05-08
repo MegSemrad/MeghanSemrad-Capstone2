@@ -3,18 +3,16 @@ import { useHistory } from 'react-router-dom';
 import { LanguageContext } from "../../providers/LanguageProvider.js";
 import Language from "./Language.js";
 import {
-    Container, Row, Col, Card,
-    Dropdown, DropdownToggle, DropdownMenu, DropdownItem, Label
+    Col, Container, Dropdown, DropdownItem, DropdownMenu, DropdownToggle,
+    Label, Row
 } from 'reactstrap';
-
-
 
 
 
 
 const LanguageList = (props) => {
     const history = useHistory();
-    const { GetUserLanguages, DeleteLanguage } = useContext(LanguageContext);
+    const { GetUserLanguages } = useContext(LanguageContext);
     const [languages, setLanguages] = useState([]);
     const [knownLanguages, setKnownLanguages] = useState([]);
     const [learningLanguages, setLearningLanguages] = useState([]);
@@ -32,6 +30,7 @@ const LanguageList = (props) => {
             .then(resp => setLanguages(resp))
     }, []);
 
+
     useEffect(() => {
         const knownLanguages = languages.filter(language => language.languageProficiencyId === 1)
         setKnownLanguages(knownLanguages)
@@ -47,20 +46,14 @@ const LanguageList = (props) => {
         setFutureLanguages(futureLanguages)
     }, [languages]);
 
+
     const handleManageClick = () => {
         const showEditandDeleteButton = document.getElementsByClassName("showEditandDeleteButton");
-
         for (let i = 0; i < showEditandDeleteButton.length; i++) {
             let item = showEditandDeleteButton[i];
             item.style.visibility = "visible";
         }
     }
-
-    // const handleDeleteLanguage = (languageId) => {
-    //     DeleteLanguage(languageId)
-    //     //warning message about deleting all materials connected with selected language 
-    //     //and delete flashcard collections, flashcards, and eventually resources --> this is done serverside in the language repository
-    // }
 
 
 
@@ -74,7 +67,6 @@ const LanguageList = (props) => {
                             knownLanguages.map(knownLanguage => {
                                 return <Language key={knownLanguage.id}
                                     language={knownLanguage}
-                                    handleManageClick={handleManageClick}
                                 />
                             })
                         }
@@ -86,7 +78,6 @@ const LanguageList = (props) => {
                             learningLanguages.map(learningLanguage => {
                                 return <Language key={learningLanguage.id}
                                     language={learningLanguage}
-                                    handleManageClick={handleManageClick}
                                 />
                             })
                         }
@@ -98,7 +89,6 @@ const LanguageList = (props) => {
                             futureLanguages.map(futureLanguage => {
                                 return <Language key={futureLanguage.id}
                                     language={futureLanguage}
-                                    handleManageClick={handleManageClick}
                                 />
                             })
                         }

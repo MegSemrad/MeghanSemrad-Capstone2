@@ -1,20 +1,20 @@
 
 import React, { useContext, useEffect, useState } from "react";
 import { useHistory } from 'react-router-dom';
-import { Row, Card, CardBody, Button } from 'reactstrap';
+import { Card, CardBody, Button } from 'reactstrap';
 
 
 
-
-
-
-const Language = ({ language, handleManageClick }) => {
+const Language = ({ language }) => {
+    const history = useHistory();
 
     return (
         <Card key={language.id}>
             <Card key={language.id}>
                 <CardBody>{language.languageName}</CardBody>
-                <Button className="showEditandDeleteButton">✏</Button>
+                <Button className="showEditandDeleteButton" onClick={() => {
+                    history.push(`/EditLanguage/${language.id}`)
+                }}>✏</Button>
                 <Button className="showEditandDeleteButton">✖</Button>
             </Card>
         </Card>
