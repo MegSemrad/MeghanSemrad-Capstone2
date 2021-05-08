@@ -19,15 +19,21 @@ const FlashcardEdit = () => {
 
     useEffect(() => {
         getFlashcardById(FlashcardId)
-            .then(setLocalFlashcard(flashcard))
+            .then(() => setLocalFlashcard(flashcard))
     }, []);
+
+
+    useEffect(() => {
+        setLocalFlashcard(flashcard)
+        console.log("local?", localFlashcard)
+    }, [localFlashcard]);
 
 
     const handleControlledInputChange = (event) => {
         const newFlashcard = { ...localFlashcard }
         newFlashcard[event.target.id] = event.target.value
         setLocalFlashcard(newFlashcard)
-
+        console.log("new?", newFlashcard)
     };
 
 
@@ -35,9 +41,9 @@ const FlashcardEdit = () => {
         editFlashcard({
             id: localFlashcard.id,
             word: localFlashcard.word,
-            translatedword: localFlashcard.translatedWord
+            translatedWord: localFlashcard.translatedWord
         })
-            .then(() => history.push(`/FlashcardList/${localFlashcard.flashcardCollectionId}`))
+            .then(() => history.push(`/FlashcardList/${flashcard.flashcardCollectionId}`))
     };
 
 
@@ -49,7 +55,7 @@ const FlashcardEdit = () => {
             <h2 className="CommentForm__title">Edit Flashcards</h2>
             <Col xs="4">
                 return <>
-                    <Card key={localFlashcard.id}>
+                    <Card key={flashcard.id}>
                         <fieldset>
                             <div className="form-group">
                                 <Button>✖</Button>
@@ -58,7 +64,7 @@ const FlashcardEdit = () => {
                                     required autoFocus
                                     className="form-control"
                                     placeholder="Word"
-                                    defaultValue={localFlashcard.word} />
+                                    defaultValue={flashcard.word} />
                             </div>
                         </fieldset>
 
@@ -69,7 +75,7 @@ const FlashcardEdit = () => {
                                     required autoFocus
                                     className="form-control"
                                     placeholder="Translation"
-                                    defaultValue={localFlashcard.translatedWord} />
+                                    defaultValue={flashcard.translatedWord} />
                             </div>
                         </fieldset>
                     </Card>
