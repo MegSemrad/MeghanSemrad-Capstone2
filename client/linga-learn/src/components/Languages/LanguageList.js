@@ -49,23 +49,12 @@ const LanguageList = (props) => {
     }, [languages]);
 
     const handleManageClick = () => {
-        const showEditKnownLanguagesButton = document.getElementById("EditKnownLanguagesButton");
-        showEditKnownLanguagesButton.style.visibility = "visible";
+        const showEditandDeleteButton = document.getElementsByClassName("showEditandDeleteButton");
 
-        const showDeleteKnownLanguagesButton = document.getElementById("DeleteKnownLanguagesButton");
-        showDeleteKnownLanguagesButton.style.visibility = "visible";
-
-        const showEditLearningLanguagesButton = document.getElementById("EditLearningLanguagesButton");
-        showEditLearningLanguagesButton.style.visibility = "visible";
-
-        const showDeleteLearningLanguagesButton = document.getElementById("DeleteLearningLanguagesButton");
-        showDeleteLearningLanguagesButton.style.visibility = "visible";
-
-        const showEditFutureLanguagesButton = document.getElementById("EditFutureLanguagesButton");
-        showEditFutureLanguagesButton.style.visibility = "visible";
-
-        const showDeleteFutureLanguagesButton = document.getElementById("DeleteFutureLanguagesButton");
-        showDeleteFutureLanguagesButton.style.visibility = "visible";
+        for (let i = 0; i < showEditandDeleteButton.length; i++) {
+            let item = showEditandDeleteButton[i];
+            item.style.visibility = "visible";
+        }
     }
 
 
@@ -80,8 +69,8 @@ const LanguageList = (props) => {
                             knownLanguages.map(knownLanguage => {
                                 return <Card key={knownLanguage.id}>
                                     <CardBody>{knownLanguage.languageName}</CardBody>
-                                    <Button id="EditKnownLanguagesButton">✏</Button>
-                                    <Button id="DeleteKnownLanguagesButton">✖</Button>
+                                    <Button className="showEditandDeleteButton">✏</Button>
+                                    <Button className="showEditandDeleteButton">✖</Button>
                                 </Card>
                             })
                         }
@@ -93,8 +82,8 @@ const LanguageList = (props) => {
                             learningLanguages.map(learningLanguage => {
                                 return <Card key={learningLanguage.id}>
                                     <CardBody>{learningLanguage.languageName}</CardBody>
-                                    <Button id="EditLearningLanguagesButton">✏</Button>
-                                    <Button id="DeleteLearningLanguagesButton">✖</Button>
+                                    <Button className="showEditandDeleteButton">✏</Button>
+                                    <Button className="showEditandDeleteButton">✖</Button>
                                 </Card>
                             })
                         }
@@ -106,8 +95,8 @@ const LanguageList = (props) => {
                             futureLanguages.map(futureLanguage => {
                                 return <Card key={futureLanguage.id}>
                                     <CardBody>{futureLanguage.languageName}</CardBody>
-                                    <Button id="EditFutureLanguagesButton">✏</Button>
-                                    <Button id="DeleteFutureLanguagesButton">✖</Button>
+                                    <Button className="showEditandDeleteButton">✏</Button>
+                                    <Button className="showEditandDeleteButton">✖</Button>
                                 </Card>
                             })
                         }
