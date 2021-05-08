@@ -1,23 +1,23 @@
 ﻿USE[LingaLearn];
 GO
-SET IDENTITY_INSERT [Users] ON
-INSERT INTO [Users]
+SET IDENTITY_INSERT [User] ON
+INSERT INTO [User]
   ([Id], [UserName], [Email], [FirebaseUserId])
 VALUES 
   (1, 'Adam', 'a@a.com', '5EBZ5E2DlBVVGihkO8fbtW1gsJM2'), 
   (2, 'Beth', 'b@b.com', 'sk7sWYLiRYhYbtHqDJrzywrD8TB2'),
   (3, 'Catherine', 'c@c.com', 'wHQm2juu3NT1jekAyCZIJW1Gwzh2');
-SET IDENTITY_INSERT [Users] OFF
-SET IDENTITY_INSERT [LanguageProficiencies] ON
-INSERT INTO [LanguageProficiencies]
+SET IDENTITY_INSERT [User] OFF
+SET IDENTITY_INSERT [LanguageProficiency] ON
+INSERT INTO [LanguageProficiency]
   ([Id], [Proficiency])
 VALUES 
   (1, 'Know'), 
   (2, 'Learning'),
   (3, 'Future');
-SET IDENTITY_INSERT [LanguageProficiencies] OFF
+SET IDENTITY_INSERT [LanguageProficiency] OFF
 SET IDENTITY_INSERT [Languages] ON
-INSERT INTO [Languages]
+INSERT INTO [Language]
   ([Id], [UserId], [LanguageName], [LanguageProficiencyId])
 VALUES 
   (1, 2, 'Welsh', 2), 
@@ -29,17 +29,17 @@ VALUES
   (7, 2, 'Spanish', 1),
   (8, 1, 'Swedish', 3),
   (9, 2, 'French', 2);
-SET IDENTITY_INSERT [Languages] OFF
-SET IDENTITY_INSERT [FlashcardCollections] ON
-INSERT INTO [FlashcardCollections]
+SET IDENTITY_INSERT [Language] OFF
+SET IDENTITY_INSERT [FlashcardCollection] ON
+INSERT INTO [FlashcardCollection]
   ([Id], [UserId], [LanguageId], [Date], [Topic])
 VALUES 
   (1, 1, 2, '2020-04-09 17:35:00', 'colors'), 
   (2, 2, 1, '2020-11-01 13:10:00', 'house'),
   (3, 2, 9, '2020-07-22 12:23:00', 'foods');
-SET IDENTITY_INSERT [FlashcardCollections] OFF
-SET IDENTITY_INSERT [Flashcards] ON
-INSERT INTO [Flashcards]
+SET IDENTITY_INSERT [FlashcardCollection] OFF
+SET IDENTITY_INSERT [Flashcard] ON
+INSERT INTO [Flashcard]
   ([Id], [FlashcardCollectionId], [Word], [TranslatedWord], [IsStudying])
 VALUES 
    (1, 2, 'house', 'tŷ, tai (m)', 0), 
@@ -66,18 +66,18 @@ VALUES
    (22, 3, 'potato', 'la pomme de terre', 1),
    (23, 3, 'butter', 'le beurre', 0),
    (24, 3, 'steak', 'le bifteck', 1);
-SET IDENTITY_INSERT [Flashcards] OFF
-SET IDENTITY_INSERT [JournalEntries] ON
-INSERT INTO [JournalEntries]
+SET IDENTITY_INSERT [Flashcard] OFF
+SET IDENTITY_INSERT [JournalEntry] ON
+INSERT INTO [JournalEntry]
   ([Id], [UserId], [LanguageId], [Date], [Entry])
 VALUES 
   (1, 2, 9, '2020-12-10 17:35:00', 'Bonjour! Je m''appelle Beth. J''ai 26ans. Je viens de Londres. Je suis professeur d''histoire.'),  
   (2, 1, 2, '2020-07-17 11:24:00', 'My naam is Adam. Ek is in Londen gebore. Ek het 6 maande terug Afrikaans begin leer. Ek ken net ''n paar woorde Afrikaans'),
   (3, 2, 1, '2020-04-09 17:44:00', 'Beth dw i! Dw i''n dda heddiw. Nawr, dw i''n dysgu Cymraeg!'),
   (4, 2, 1, '2020-04-10 12:10:00', 'Bwytais i dost a ffrwyth y bore ''ma. Heddiw, dw i''n mynd i''r siopa. '); 
-SET IDENTITY_INSERT [JournalEntries] OFF
-SET IDENTITY_INSERT [ResourceTypes] ON
-INSERT INTO [ResourceTypes]
+SET IDENTITY_INSERT [JournalEntry] OFF
+SET IDENTITY_INSERT [ResourceType] ON
+INSERT INTO [ResourceType]
   ([Id], [Type])
 VALUES 
   (1, 'Online'), 
@@ -86,9 +86,9 @@ VALUES
   (4, 'Books'),
   (5, 'Textbooks'),
   (6, 'Other');
-SET IDENTITY_INSERT [ResourceTypes] OFF
-SET IDENTITY_INSERT [Resources] ON
-INSERT INTO [Resources]
+SET IDENTITY_INSERT [ResourceType] OFF
+SET IDENTITY_INSERT [Resource] ON
+INSERT INTO [Resource]
   ([Id], [UserId], [LanguageId], [ResourceTypeId], [Source])
 VALUES 
   (1, 2, 1, 6, 'https://www.gweiadur.com/en/Pawb'), 
@@ -104,4 +104,4 @@ VALUES
   (11, 2, 1, 3, 'https://www.bbc.co.uk/sounds/play/live:bbc_radio_cymru'),
   (12, 2, 1, 4, 'Un Nos Olad Leuad by Caradog Prichard'),
   (13, 2, 1, 5, 'Complete Welsh by Christine Jones and Julie Brake');
-SET IDENTITY_INSERT [Resources] OFF
+SET IDENTITY_INSERT [Resource] OFF
