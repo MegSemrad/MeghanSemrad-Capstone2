@@ -10,7 +10,7 @@
 
         public int ResourceTypeId { get; set; }
 
-        public ResourceType ResourceType { get; set }
+        public ResourceType ResourceType { get; set; }
 
         public string Source { get; set; }
     }

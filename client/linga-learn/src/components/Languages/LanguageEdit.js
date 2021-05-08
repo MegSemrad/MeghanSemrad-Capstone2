@@ -49,13 +49,6 @@ const LanguageEdit = () => {
             .then(() => history.push("/"))
     };
 
-    //      <input type="text" 
-    //      id="subject" 
-    //      onChange={handleControlledInputChange}
-    //      required autoFocus
-    //      className="form-control"
-    //      placeholder="Subject"
-    //      value={comment.subject} />
 
     return (
         <Container>
