@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace LingaLearn.Models
+﻿namespace LingaLearn.Models
 {
     public class Resource
     {
@@ -14,6 +9,8 @@ namespace LingaLearn.Models
         public int LanguageId { get; set; }
 
         public int ResourceTypeId { get; set; }
+
+        public ResourceType ResourceType { get; set }
 
         public string Source { get; set; }
     }
