@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useHistory } from 'react-router-dom';
 import { LanguageContext } from "../../providers/LanguageProvider.js";
 import { ResourceContext } from "../../providers/ResourceProvider.js";
 import Resource from "./Resource.js";
@@ -7,9 +6,8 @@ import { Button, Container, Table } from 'reactstrap';
 
 
 const ResourcesList = (props) => {
-    const history = useHistory();
     const { GetUserLanguages } = useContext(LanguageContext);
-    const { getResourcesByLanguageId } = useContext(ResourceContext)
+    const { getResourcesByLanguageId, deleteResource } = useContext(ResourceContext)
 
     const [languages, setLanguages] = useState([]);
     const [resources, setResources] = useState([]);
@@ -55,7 +53,16 @@ const ResourcesList = (props) => {
 
 
     // const handleEditResource
-    // const handleDeleteResource
+
+
+    const handleDeleteResource = (resource) => {
+        const resourceLanguageId = resource.languageId
+        deleteResource(resource.id)
+            .then(() => {
+                getResourcesByLanguageId(resourceLanguageId)
+                    .then(returnedResources => setResources(returnedResources))
+            })
+    }
 
 
     return (
@@ -83,6 +90,7 @@ const ResourcesList = (props) => {
                     onlineResources.map(onlineResource => {
                         return <Resource key={onlineResource.id}
                             resource={onlineResource}
+                            handleDeleteResource={handleDeleteResource}
                         />
                     })
                 }
@@ -97,6 +105,7 @@ const ResourcesList = (props) => {
                     videoResources.map(videoResource => {
                         return <Resource key={videoResource.id}
                             resource={videoResource}
+                            handleDeleteResource={handleDeleteResource}
                         />
                     })
                 }
@@ -111,6 +120,7 @@ const ResourcesList = (props) => {
                     radioResources.map(radioResource => {
                         return <Resource key={radioResource.id}
                             resource={radioResource}
+                            handleDeleteResource={handleDeleteResource}
                         />
                     })
                 }
@@ -125,6 +135,7 @@ const ResourcesList = (props) => {
                     bookResources.map(bookResource => {
                         return <Resource key={bookResource.id}
                             resource={bookResource}
+                            handleDeleteResource={handleDeleteResource}
                         />
                     })
                 }
@@ -139,6 +150,7 @@ const ResourcesList = (props) => {
                     textbookResources.map(textbookResource => {
                         return <Resource key={textbookResource.id}
                             resource={textbookResource}
+                            handleDeleteResource={handleDeleteResource}
                         />
                     })
                 }
@@ -153,6 +165,7 @@ const ResourcesList = (props) => {
                     otherResources.map(otherResource => {
                         return <Resource key={otherResource.id}
                             resource={otherResource}
+                            handleDeleteResource={handleDeleteResource}
                         />
                     })
                 }

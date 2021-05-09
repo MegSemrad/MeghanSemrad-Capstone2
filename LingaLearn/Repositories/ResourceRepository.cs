@@ -55,5 +55,23 @@ namespace LingaLearn.Repositories
                 }
             }
         }
+
+
+
+
+
+        public void Delete(int resourceId)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"DELETE FROM Resource WHERE Id = @Id";
+                    DbUtils.AddParameter(cmd, "@Id", resourceId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
     }
 }

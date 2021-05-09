@@ -31,9 +31,23 @@ export const ResourceProvider = (props) => {
 
 
 
+    const deleteResource = (resourceId) => {
+        return getToken().then((token) =>
+            fetch(`${apiUrl}/Delete/${resourceId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            }))
+    };
+
+
+
+
+
     return (
         <ResourceContext.Provider value={{
-            resources, getResourcesByLanguageId
+            resources, getResourcesByLanguageId, deleteResource
         }}>
             {props.children}
         </ResourceContext.Provider>

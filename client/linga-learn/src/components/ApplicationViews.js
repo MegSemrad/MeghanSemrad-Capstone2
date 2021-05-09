@@ -66,11 +66,13 @@ export default function ApplicationViews() {
             </Route>
 
 
+
             <Route path="/FlashcardList/:FlashcardCollectionId(\d+)" >
                 <FlashcardProvider>
                     {isLoggedIn ? <FlashcardList /> : <Redirect to="/login" />}
                 </FlashcardProvider>
             </Route>
+
 
 
             <Route path="/AddFlashcardCollectionAndFlashcards" >
@@ -84,6 +86,7 @@ export default function ApplicationViews() {
             </Route>
 
 
+
             <Route path="/Delete/:FlashcardCollectionId(\d+)" >
                 <FlashcardCollectionProvider>
                     <FlashcardProvider>
@@ -95,6 +98,7 @@ export default function ApplicationViews() {
             </Route>
 
 
+
             <Route path="/Manage/:FlashcardId(\d+)">
                 <FlashcardCollectionProvider>
                     <FlashcardProvider>
@@ -104,7 +108,6 @@ export default function ApplicationViews() {
                     </FlashcardProvider>
                 </FlashcardCollectionProvider>
             </Route>
-
 
 
 
