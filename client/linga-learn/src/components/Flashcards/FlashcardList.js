@@ -19,7 +19,6 @@ const FlashcardList = () => {
 
 
     useEffect(() => {
-
         const flashcardsToStudy = flashcards.filter(flashcard => flashcard.isStudying === true)
         setStudyItFlashcards(flashcardsToStudy)
     }, [flashcards]);
