@@ -71,6 +71,7 @@ const ResourcesList = (props) => {
 
 
 
+
     return (
         <>
             <Container>
@@ -91,7 +92,10 @@ const ResourcesList = (props) => {
                         <Label>Welcome to the resources page!</Label>
                         :
                         <>
-                            <Button outline>+</Button>
+                            <Button outline onClick={event => {
+                                event.preventDefault()
+                                history.push("/AddAdditionalResources")
+                            }}>+</Button>
                             <Table borderless>
                                 <thead>
                                     <tr>

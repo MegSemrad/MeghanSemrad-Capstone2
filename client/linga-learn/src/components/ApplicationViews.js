@@ -20,6 +20,7 @@ import FlashcardList from "./Flashcards/FlashcardList.js";
 import FlashcardEdit from "./Flashcards/FlashcardEdit.js";
 import ResourceList from "./Resources/ResourceList.js";
 import ResourceAdd from "./Resources/ResourceAdd.js";
+import ResourceAddMore from "./Resources/ResourceAddMore.js";
 
 
 
@@ -128,6 +129,16 @@ export default function ApplicationViews() {
                     <LanguageProvider>
                         <ResourceProvider>
                             {isLoggedIn ? <ResourceAdd /> : <Redirect to="/login" />}
+                        </ResourceProvider>
+                    </LanguageProvider>
+                </ResourceTypeProvider>
+            </Route>
+
+            <Route path="/AddAdditionalResources">
+                <ResourceTypeProvider>
+                    <LanguageProvider>
+                        <ResourceProvider>
+                            {isLoggedIn ? <ResourceAddMore /> : <Redirect to="/login" />}
                         </ResourceProvider>
                     </LanguageProvider>
                 </ResourceTypeProvider>
