@@ -85,97 +85,107 @@ const ResourcesList = (props) => {
                 }
             </Container>
 
-            <Table borderless>
-                <thead>
-                    <tr>
-                        <th>Online</th>
-                        <th></th>
-                    </tr>
-                </thead>
+            <Container>
                 {
-                    onlineResources.map(onlineResource => {
-                        return <Resource key={onlineResource.id}
-                            resource={onlineResource}
-                            handleDeleteResource={handleDeleteResource}
-                        />
-                    })
-                }
+                    resources.length === 0 ?
+                        <Label>Welcome to the resources page!</Label>
+                        :
+                        <>
+                            <Button outline>+</Button>
+                            <Table borderless>
+                                <thead>
+                                    <tr>
+                                        <th>Online</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                {
+                                    onlineResources.map(onlineResource => {
+                                        return <Resource key={onlineResource.id}
+                                            resource={onlineResource}
+                                            handleDeleteResource={handleDeleteResource}
+                                        />
+                                    })
+                                }
 
-                <thead>
-                    <tr>
-                        <th>Videos</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                {
-                    videoResources.map(videoResource => {
-                        return <Resource key={videoResource.id}
-                            resource={videoResource}
-                            handleDeleteResource={handleDeleteResource}
-                        />
-                    })
-                }
+                                <thead>
+                                    <tr>
+                                        <th>Videos</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                {
+                                    videoResources.map(videoResource => {
+                                        return <Resource key={videoResource.id}
+                                            resource={videoResource}
+                                            handleDeleteResource={handleDeleteResource}
+                                        />
+                                    })
+                                }
 
-                <thead>
-                    <tr>
-                        <th>Radio</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                {
-                    radioResources.map(radioResource => {
-                        return <Resource key={radioResource.id}
-                            resource={radioResource}
-                            handleDeleteResource={handleDeleteResource}
-                        />
-                    })
-                }
+                                <thead>
+                                    <tr>
+                                        <th>Radio</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                {
+                                    radioResources.map(radioResource => {
+                                        return <Resource key={radioResource.id}
+                                            resource={radioResource}
+                                            handleDeleteResource={handleDeleteResource}
+                                        />
+                                    })
+                                }
 
-                <thead>
-                    <tr>
-                        <th>Books</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                {
-                    bookResources.map(bookResource => {
-                        return <Resource key={bookResource.id}
-                            resource={bookResource}
-                            handleDeleteResource={handleDeleteResource}
-                        />
-                    })
-                }
+                                <thead>
+                                    <tr>
+                                        <th>Books</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                {
+                                    bookResources.map(bookResource => {
+                                        return <Resource key={bookResource.id}
+                                            resource={bookResource}
+                                            handleDeleteResource={handleDeleteResource}
+                                        />
+                                    })
+                                }
 
-                <thead>
-                    <tr>
-                        <th>Textbooks</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                {
-                    textbookResources.map(textbookResource => {
-                        return <Resource key={textbookResource.id}
-                            resource={textbookResource}
-                            handleDeleteResource={handleDeleteResource}
-                        />
-                    })
-                }
+                                <thead>
+                                    <tr>
+                                        <th>Textbooks</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                {
+                                    textbookResources.map(textbookResource => {
+                                        return <Resource key={textbookResource.id}
+                                            resource={textbookResource}
+                                            handleDeleteResource={handleDeleteResource}
+                                        />
+                                    })
+                                }
 
-                <thead>
-                    <tr>
-                        <th>Other</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                {
-                    otherResources.map(otherResource => {
-                        return <Resource key={otherResource.id}
-                            resource={otherResource}
-                            handleDeleteResource={handleDeleteResource}
-                        />
-                    })
+                                <thead>
+                                    <tr>
+                                        <th>Other</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                {
+                                    otherResources.map(otherResource => {
+                                        return <Resource key={otherResource.id}
+                                            resource={otherResource}
+                                            handleDeleteResource={handleDeleteResource}
+                                        />
+                                    })
+                                }
+                            </Table>
+                        </>
                 }
-            </Table>
+            </Container>
         </>
     );
 };

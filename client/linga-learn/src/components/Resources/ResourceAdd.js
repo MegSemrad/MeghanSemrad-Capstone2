@@ -9,18 +9,24 @@ const ResourceAdd = (props) => {
     const history = useHistory();
     const { getLanguageById } = useContext(LanguageContext);
     const { getResourceTypes } = useContext(ResourceTypeContext);
-    const { addResource } = useContext(ResourceContext);
+    const { getResourcesByLanguageId, addResource } = useContext(ResourceContext);
     const { LanguageId } = useParams();
 
 
     const [language, setLanguage] = useState({});
     const [resourceTypes, setResourceTypes] = useState([]);
+    const [resourcesArray, setResourcesArray] = useState([]);
     const [resource, setResource] = useState({
         resourceTypeId: 0,
         languageId: LanguageId,
         source: "",
     });
 
+
+    useEffect(() => {
+        getResourcesByLanguageId(LanguageId)
+            .then(resourcesArray => setResourcesArray(resourcesArray))
+    }, []);
 
 
     useEffect(() => {
@@ -55,7 +61,13 @@ const ResourceAdd = (props) => {
 
     return (
         <>
-            <Label>Looks like you have no resources for {language.languageName}. Add some now!</Label>
+            {
+                resourcesArray.length === 0 ?
+                    <Label>Looks like you have no resources for {language.languageName}. Add some now!</Label>
+                    :
+                    <Label>Add more resources for {language.languageName}</Label>
+            }
+
 
             <Form>
 
