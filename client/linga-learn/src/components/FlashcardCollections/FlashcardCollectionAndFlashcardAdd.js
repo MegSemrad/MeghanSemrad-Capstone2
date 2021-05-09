@@ -76,6 +76,14 @@ const FlashcardCollectionAndFlashcardAdd = () => {
             translatedWord: flashcard.translatedWord,
             isStudying: true,
         })
+            .then(() => {
+                setFlashcard({
+                    flashcardCollectionId: 0,
+                    word: "",
+                    translatedWord: "",
+                    isStudying: true,
+                })
+            })
     };
 
 
