@@ -39,10 +39,6 @@ export const FlashcardProvider = (props) => {
                 }
             })
                 .then((res) => res.json())
-                .then((res) => {
-                    setFlashcard(res)
-                    getFlashcardsByCollectionId(res.flashcardCollectionId)
-                })
         )
     };
 

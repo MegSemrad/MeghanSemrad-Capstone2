@@ -7,41 +7,36 @@ import { Button, Card, Col, Input, Label } from 'reactstrap';
 const FlashcardEdit = () => {
     const { FlashcardId } = useParams();
     const history = useHistory();
-    const { flashcard, getFlashcardById, editFlashcard } = useContext(FlashcardContext);
+    const { getFlashcardById, editFlashcard } = useContext(FlashcardContext);
 
 
-    const [localFlashcard, setLocalFlashcard] = useState({
+    const [flashcard, setFlashcard] = useState({
         word: "",
         translatedWord: "",
     })
 
 
-
     useEffect(() => {
         getFlashcardById(FlashcardId)
-            .then(() => setLocalFlashcard(flashcard))
+            .then(returnedFlashcard => setFlashcard(returnedFlashcard))
     }, []);
 
 
-    useEffect(() => {
-        setLocalFlashcard(flashcard)
-        console.log("local?", localFlashcard)
-    }, [localFlashcard]);
 
 
     const handleControlledInputChange = (event) => {
-        const newFlashcard = { ...localFlashcard }
+        const newFlashcard = { ...flashcard }
         newFlashcard[event.target.id] = event.target.value
-        setLocalFlashcard(newFlashcard)
-        console.log("new?", newFlashcard)
+        setFlashcard(newFlashcard)
     };
 
 
     const handleClickSaveFlashcard = () => {
         editFlashcard({
-            id: localFlashcard.id,
-            word: localFlashcard.word,
-            translatedWord: localFlashcard.translatedWord
+            id: FlashcardId,
+            word: flashcard.word,
+            translatedWord: flashcard.translatedWord,
+            flashcardCollectionId: flashcard.flashcardCollectionId
         })
             .then(() => history.push(`/FlashcardList/${flashcard.flashcardCollectionId}`))
     };
