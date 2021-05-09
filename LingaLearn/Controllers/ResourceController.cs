@@ -35,6 +35,19 @@ namespace LingaLearn.Controllers
 
 
 
+        [HttpPost("CreateResource")]
+        public IActionResult Resource(Resource resource)
+        {
+            var currentUser = GetCurrentUser();
+            resource.UserId = currentUser.Id;
+            _resourceRepository.AddResource(resource);
+            return CreatedAtAction("Get", new { LanguageId = resource.LanguageId }, resource);
+        }
+
+
+
+
+
         [HttpDelete("Delete/{resourceId}")]
         public IActionResult Delete(int resourceId)
         {

@@ -60,6 +60,33 @@ namespace LingaLearn.Repositories
 
 
 
+             public void AddResource(Resource resource)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        INSERT INTO Resource (UserId, LanguageId, ResourceTypeId, Source)
+                        OUTPUT INSERTED.ID
+                        VALUES (@UserId, @LanguageId, @ResourceTypeId, @Source)";
+
+                    DbUtils.AddParameter(cmd, "@UserId", resource.UserId);
+                    DbUtils.AddParameter(cmd, "@LanguageId", resource.LanguageId);
+                    DbUtils.AddParameter(cmd, "@ResourceTypeId", resource.ResourceTypeId);
+                    DbUtils.AddParameter(cmd, "@Source", resource.Source);
+
+
+                    resource.Id = (int)cmd.ExecuteScalar();
+                }
+            }
+        }
+
+
+
+
+
         public void Delete(int resourceId)
         {
             using (var conn = Connection)

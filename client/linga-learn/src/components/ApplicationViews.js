@@ -113,7 +113,7 @@ export default function ApplicationViews() {
 
 
 
-            <Route path="/resources/">
+            <Route path="/resources">
                 <LanguageProvider>
                     <ResourceProvider>
                         {isLoggedIn ? <ResourceList /> : <Redirect to="/login" />}

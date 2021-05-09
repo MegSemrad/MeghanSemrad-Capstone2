@@ -5,6 +5,7 @@ namespace LingaLearn.Repositories
 {
     public interface IResourceRepository
     {
+        void AddResource(Resource resource);
         void Delete(int resourceId);
         List<Resource> GetResourcesByLanguageId(int LanguageId);
     }

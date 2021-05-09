@@ -55,7 +55,7 @@ export default function NavBar() {
                         </UncontrolledDropdown>
 
                         <NavItem>
-                            <NavLink href="/resources/">Resources</NavLink>
+                            <NavLink href="/resources">Resources</NavLink>
                         </NavItem>
 
                     </Nav>

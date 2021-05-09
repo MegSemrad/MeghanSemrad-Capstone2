@@ -55,12 +55,12 @@ const LanguageAdd = (props) => {
                 <Card>
                     <Form>
                         <FormGroup>
-                            <Label for="examplePassword">Language</Label>
+                            <Label for="languageName">Language</Label>
                             <Input type="text" id="languageName" value={language.languageName} onChange={handleControlledInputChange} requiredAutoClassName="form-control" placeholder="language" />
                         </FormGroup>
 
                         <FormGroup>
-                            <Label for="exampleSelect">Proficiency</Label>
+                            <Label for="languageProficiencyId">Proficiency</Label>
                             <Input type="select" id="languageProficiencyId" onChange={handleControlledInputChange}>
                                 <option value="0"></option>
                                 {

@@ -31,6 +31,23 @@ export const ResourceProvider = (props) => {
 
 
 
+    const addResource = (resource) => {
+        return getToken().then((token) =>
+            fetch(`${apiUrl}/CreateResource`, {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(resource),
+            })
+        )
+    };
+
+
+
+
+
     const deleteResource = (resourceId) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/Delete/${resourceId}`, {
@@ -47,7 +64,7 @@ export const ResourceProvider = (props) => {
 
     return (
         <ResourceContext.Provider value={{
-            resources, getResourcesByLanguageId, deleteResource
+            resources, getResourcesByLanguageId, addResource, deleteResource
         }}>
             {props.children}
         </ResourceContext.Provider>
