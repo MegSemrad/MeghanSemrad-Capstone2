@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useHistory } from 'react-router-dom';
 import { LanguageContext } from "../../providers/LanguageProvider.js";
 import { ResourceContext } from "../../providers/ResourceProvider.js";
 import Resource from "./Resource.js";
-import { Button, Container, Table } from 'reactstrap';
+import { Button, Container, Label, Table } from 'reactstrap';
 
 
 const ResourcesList = (props) => {
+    const history = useHistory();
     const { GetUserLanguages } = useContext(LanguageContext);
     const { getResourcesByLanguageId, deleteResource } = useContext(ResourceContext)
 
@@ -26,7 +28,10 @@ const ResourcesList = (props) => {
 
     const handleSaveSelectedLanguage = (language) => {
         getResourcesByLanguageId(language.id)
-            .then(returnedResources => setResources(returnedResources))
+            .then((returnedResources) => {
+                returnedResources.length === 0 ? history.push(`/AddResources/${language.id}`)
+                    : setResources(returnedResources)
+            })
     };
 
 
@@ -63,6 +68,7 @@ const ResourcesList = (props) => {
                     .then(returnedResources => setResources(returnedResources))
             })
     }
+
 
 
     return (

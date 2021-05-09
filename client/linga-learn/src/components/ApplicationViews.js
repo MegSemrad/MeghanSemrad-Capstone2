@@ -8,6 +8,7 @@ import { LanguageProficiencyProvider } from "../providers/LanguageProficiencyPro
 import { FlashcardCollectionProvider } from "../providers/FlashcardCollectionProvider.js";
 import { FlashcardProvider } from "../providers/FlashcardProvider.js";
 import { ResourceProvider } from "../providers/ResourceProvider.js";
+import { ResourceTypeProvider } from "../providers/ResourceTypeProvider.js";
 
 import LanguageList from "./Languages/LanguageList.js";
 import LanguageAdd from "./Languages/LanguageAdd.js";
@@ -17,7 +18,8 @@ import FlashcardCollectionAndFlashcardAdd from "./FlashcardCollections/Flashcard
 import FlashcardCollectionDeletionConfirmation from "./FlashcardCollections/FlashcardDeletionConfirmation.js";
 import FlashcardList from "./Flashcards/FlashcardList.js";
 import FlashcardEdit from "./Flashcards/FlashcardEdit.js";
-import ResourceList from "./Resources/ResourceList.js"
+import ResourceList from "./Resources/ResourceList.js";
+import ResourceAdd from "./Resources/ResourceAdd.js";
 
 
 
@@ -117,6 +119,18 @@ export default function ApplicationViews() {
                         {isLoggedIn ? <ResourceList /> : <Redirect to="/login" />}
                     </ResourceProvider>
                 </LanguageProvider>
+            </Route>
+
+
+
+            <Route path="/AddResources/:LanguageId(\d+)">
+                <ResourceTypeProvider>
+                    <LanguageProvider>
+                        <ResourceProvider>
+                            {isLoggedIn ? <ResourceAdd /> : <Redirect to="/login" />}
+                        </ResourceProvider>
+                    </LanguageProvider>
+                </ResourceTypeProvider>
             </Route>
 
         </main>
