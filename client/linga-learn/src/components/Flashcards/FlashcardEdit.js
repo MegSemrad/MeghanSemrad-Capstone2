@@ -58,7 +58,7 @@ const FlashcardEdit = () => {
                     <Card key={flashcard.id}>
                         <fieldset>
                             <div className="form-group">
-                                <Button>✖</Button>
+                                <Button outline>✖</Button>
                                 <Label htmlFor="word">Word:</Label>
                                 <Input type="text" id="word" onChange={handleControlledInputChange}
                                     required autoFocus

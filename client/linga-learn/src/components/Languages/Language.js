@@ -12,10 +12,10 @@ const Language = ({ language }) => {
         <Card key={language.id}>
             <Card key={language.id}>
                 <CardBody>{language.languageName}</CardBody>
-                <Button className="showEditandDeleteButton" onClick={() => {
+                <Button outline className="showEditandDeleteButton" onClick={() => {
                     history.push(`/EditLanguage/${language.id}`)
                 }}>✏</Button>
-                <Button className="showEditandDeleteButton">✖</Button>
+                <Button outline className="showEditandDeleteButton">✖</Button>
             </Card>
         </Card>
     );

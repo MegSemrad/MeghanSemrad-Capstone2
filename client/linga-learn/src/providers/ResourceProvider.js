@@ -5,11 +5,11 @@ import { UserContext } from "./UserProvider.js";
 
 export const ResourceContext = React.createContext();
 
-export const LanguageProvider = (props) => {
+export const ResourceProvider = (props) => {
     const [resources, setResources] = useState([]);
     const { getToken } = useContext(UserContext);
     const user = JSON.parse(sessionStorage.getItem("user"));
-    const apiUrl = "/api/Resources";
+    const apiUrl = "/api/Resource";
 
 
 

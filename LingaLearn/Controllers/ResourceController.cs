@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace LingaLearn.Controllers
 {
-    //[Authorize]
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class ResourceController : ControllerBase

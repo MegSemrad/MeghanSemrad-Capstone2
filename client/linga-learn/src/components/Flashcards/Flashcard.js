@@ -25,9 +25,9 @@ const Flashcard = ({ flashcard, handleSwitchToKnowIt, handleSwitchToStudyIt }) =
                 </CardBody>
                 <CardFooter>
                     <Row>
-                        <Button onClick={() => handleSwitchToStudyIt(flashcard)}>◀</Button>
-                        <Button onClick={() => setFlipped(!flipped)}>🔁</Button>
-                        <Button onClick={() => handleSwitchToKnowIt(flashcard)}>▶</Button>
+                        <Button outline onClick={() => handleSwitchToStudyIt(flashcard)}>◀</Button>
+                        <Button outline onClick={() => setFlipped(!flipped)}>🔁</Button>
+                        <Button outline onClick={() => handleSwitchToKnowIt(flashcard)}>▶</Button>
                     </Row>
                 </CardFooter>
             </Card>
