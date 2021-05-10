@@ -5,6 +5,8 @@ import { Button } from 'reactstrap';
 
 const Resource = ({ resource, handleDeleteResource }) => {
 
+    const history = useHistory();
+
     return (
         <>
             <tbody>
