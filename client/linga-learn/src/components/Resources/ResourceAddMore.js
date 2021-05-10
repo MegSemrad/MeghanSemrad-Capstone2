@@ -7,7 +7,7 @@ import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
 const ResourceAddMore = (props) => {
     const history = useHistory();
-    const { GetUserLanguages } = useContext(LanguageContext);
+    const { getUserLanguages } = useContext(LanguageContext);
     const { getResourceTypes } = useContext(ResourceTypeContext);
     const { addResource } = useContext(ResourceContext);
 
@@ -23,7 +23,7 @@ const ResourceAddMore = (props) => {
 
 
     useEffect(() => {
-        GetUserLanguages()
+        getUserLanguages()
             .then(languagesArray => setLanguages(languagesArray))
         getResourceTypes()
             .then(resourceTypeArray => setResourceTypes(resourceTypeArray))

@@ -33,161 +33,87 @@ export default function ApplicationViews() {
     return (
         <main>
 
-            <Route path="/" exact>
-                <LanguageProvider>
-                    <LanguageProficiencyProvider>
+            <LanguageProvider>
+                <LanguageProficiencyProvider>
+
+                    <Route path="/" exact>
                         {isLoggedIn ? <LanguageList /> : <Redirect to="/login" />}
-                    </LanguageProficiencyProvider>
-                </LanguageProvider>
-            </Route>
+                    </Route>
 
-
-            <Route path="/AddLanguage" exact>
-                <LanguageProvider>
-                    <LanguageProficiencyProvider>
+                    <Route path="/AddLanguage" exact>
                         {isLoggedIn ? <LanguageAdd /> : <Redirect to="/login" />}
-                    </LanguageProficiencyProvider>
-                </LanguageProvider>
-            </Route>
+                    </Route>
 
-
-
-            <Route path="/EditLanguage/:languageId(\d+)" exact>
-                <LanguageProvider>
-                    <LanguageProficiencyProvider>
+                    <Route path="/EditLanguage/:languageId(\d+)" exact>
                         {isLoggedIn ? <LanguageEdit /> : <Redirect to="/login" />}
-                    </LanguageProficiencyProvider>
-                </LanguageProvider>
-            </Route>
+                    </Route>
 
-
-
-            <Route path="/DeleteLanguage/:languageId(\d+)" exact>
-                <LanguageProvider>
-                    <LanguageProficiencyProvider>
+                    <Route path="/DeleteLanguage/:languageId(\d+)" exact>
                         {isLoggedIn ? <LanguageDeletionConfirmation /> : <Redirect to="/login" />}
-                    </LanguageProficiencyProvider>
-                </LanguageProvider>
-            </Route>
+                    </Route>
+
+                </LanguageProficiencyProvider>
+            </LanguageProvider>
 
 
 
 
 
-
-
-
-
-
-
-
-
-            <Route path="/FlashcardCollectionList" >
-                <FlashcardCollectionProvider>
-                    <LanguageProvider>
-                        {isLoggedIn ? <FlashcardCollectionList /> : <Redirect to="/login" />}
-                    </LanguageProvider>
-                </FlashcardCollectionProvider>
-            </Route>
-
-
-
-            <Route path="/FlashcardList/:FlashcardCollectionId(\d+)" >
+            <FlashcardCollectionProvider>
                 <FlashcardProvider>
-                    {isLoggedIn ? <FlashcardList /> : <Redirect to="/login" />}
-                </FlashcardProvider>
-            </Route>
+                    <LanguageProvider>
 
+                        <Route path="/FlashcardCollectionList" >
+                            {isLoggedIn ? <FlashcardCollectionList /> : <Redirect to="/login" />}
+                        </Route>
 
+                        <Route path="/FlashcardList/:FlashcardCollectionId(\d+)" >
+                            {isLoggedIn ? <FlashcardList /> : <Redirect to="/login" />}
+                        </Route>
 
-            <Route path="/AddFlashcardCollectionAndFlashcards" >
-                <FlashcardCollectionProvider>
-                    <FlashcardProvider>
-                        <LanguageProvider>
+                        <Route path="/AddFlashcardCollectionAndFlashcards" >
                             {isLoggedIn ? <FlashcardCollectionAndFlashcardAdd /> : <Redirect to="/login" />}
-                        </LanguageProvider>
-                    </FlashcardProvider>
-                </FlashcardCollectionProvider>
-            </Route>
+                        </Route>
 
-
-
-            <Route path="/Delete/:FlashcardCollectionId(\d+)" >
-                <FlashcardCollectionProvider>
-                    <FlashcardProvider>
-                        <LanguageProvider>
+                        <Route path="/Delete/:FlashcardCollectionId(\d+)" >
                             {isLoggedIn ? <FlashcardCollectionDeletionConfirmation /> : <Redirect to="/login" />}
-                        </LanguageProvider>
-                    </FlashcardProvider>
-                </FlashcardCollectionProvider>
-            </Route>
+                        </Route>
 
-
-
-            <Route path="/Manage/:FlashcardId(\d+)">
-                <FlashcardCollectionProvider>
-                    <FlashcardProvider>
-                        <LanguageProvider>
+                        <Route path="/Manage/:FlashcardId(\d+)">
                             {isLoggedIn ? <FlashcardEdit /> : <Redirect to="/login" />}
-                        </LanguageProvider>
-                    </FlashcardProvider>
-                </FlashcardCollectionProvider>
-            </Route>
+                        </Route>
+
+                    </LanguageProvider>
+                </FlashcardProvider>
+            </FlashcardCollectionProvider>
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-            <Route path="/resources">
+            <ResourceTypeProvider>
                 <LanguageProvider>
                     <ResourceProvider>
-                        {isLoggedIn ? <ResourceList /> : <Redirect to="/login" />}
+
+                        <Route path="/resources">
+                            {isLoggedIn ? <ResourceList /> : <Redirect to="/login" />}
+                        </Route>
+
+                        <Route path="/AddResources/:LanguageId(\d+)">
+                            {isLoggedIn ? <ResourceAdd /> : <Redirect to="/login" />}
+                        </Route>
+
+                        <Route path="/AddAdditionalResources">
+                            {isLoggedIn ? <ResourceAddMore /> : <Redirect to="/login" />}
+                        </Route>
+
+                        <Route path="/EditResource/:ResourceId(\d+)">
+                            {isLoggedIn ? <ResourceEdit /> : <Redirect to="/login" />}
+                        </Route>
+
                     </ResourceProvider>
                 </LanguageProvider>
-            </Route>
-
-
-
-            <Route path="/AddResources/:LanguageId(\d+)">
-                <ResourceTypeProvider>
-                    <LanguageProvider>
-                        <ResourceProvider>
-                            {isLoggedIn ? <ResourceAdd /> : <Redirect to="/login" />}
-                        </ResourceProvider>
-                    </LanguageProvider>
-                </ResourceTypeProvider>
-            </Route>
-
-            <Route path="/AddAdditionalResources">
-                <ResourceTypeProvider>
-                    <LanguageProvider>
-                        <ResourceProvider>
-                            {isLoggedIn ? <ResourceAddMore /> : <Redirect to="/login" />}
-                        </ResourceProvider>
-                    </LanguageProvider>
-                </ResourceTypeProvider>
-            </Route>
-
-
-
-            <Route path="/EditResource/:ResourceId(\d+)">
-                <ResourceTypeProvider>
-                    <LanguageProvider>
-                        <ResourceProvider>
-                            {isLoggedIn ? <ResourceEdit /> : <Redirect to="/login" />}
-                        </ResourceProvider>
-                    </LanguageProvider>
-                </ResourceTypeProvider>
-            </Route>
+            </ResourceTypeProvider>
 
         </main>
     );

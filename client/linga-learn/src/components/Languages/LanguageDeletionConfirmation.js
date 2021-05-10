@@ -6,11 +6,11 @@ import { useHistory, useParams } from 'react-router-dom';
 const LanguageDeletionConfirmation = () => {
     const history = useHistory();
     const { languageId } = useParams();
-    const { DeleteLanguage } = useContext(LanguageContext);
+    const { deleteLanguage } = useContext(LanguageContext);
 
 
     const handleRelease = () => {
-        DeleteLanguage(languageId)
+        deleteLanguage(languageId)
             .then(() => {
                 history.push("/")
             })

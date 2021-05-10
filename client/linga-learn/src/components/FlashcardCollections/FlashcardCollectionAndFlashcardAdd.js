@@ -10,7 +10,7 @@ import { Card, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstra
 const FlashcardCollectionAndFlashcardAdd = () => {
 
     const history = useHistory();
-    const { GetUserLanguages } = useContext(LanguageContext);
+    const { getUserLanguages } = useContext(LanguageContext);
     const { flashcardCollection, addFlashcardCollection } = useContext(FlashcardCollectionContext);
     const { flashcards, addFlashcard } = useContext(FlashcardContext);
 
@@ -30,7 +30,7 @@ const FlashcardCollectionAndFlashcardAdd = () => {
 
 
     useEffect(() => {
-        GetUserLanguages()
+        getUserLanguages()
             .then(resp => setLanguages(resp))
     }, []);
 

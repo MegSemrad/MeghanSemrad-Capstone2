@@ -10,7 +10,7 @@ const LanguageEdit = () => {
     const { languageId } = useParams();
     const history = useHistory();
     const { getLanguageById, editLanguage } = useContext(LanguageContext);
-    const { GetLanguageProficiencies } = useContext(LanguageProficiencyContext)
+    const { getLanguageProficiencies } = useContext(LanguageProficiencyContext)
 
 
 
@@ -26,7 +26,7 @@ const LanguageEdit = () => {
                 setLanguage(languageObject)
             })
             .then(() => {
-                GetLanguageProficiencies()
+                getLanguageProficiencies()
                     .then(resp => setLanguageProficiencies(resp))
             })
     }, []);

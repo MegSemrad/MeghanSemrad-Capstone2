@@ -9,15 +9,15 @@ import { Button, Card, Container, Form, FormGroup, Input, Label, Row } from 'rea
 const LanguageAdd = (props) => {
 
     const history = useHistory();
-    const { AddLanguage } = useContext(LanguageContext)
-    const { GetLanguageProficiencies } = useContext(LanguageProficiencyContext)
+    const { addLanguage } = useContext(LanguageContext)
+    const { getLanguageProficiencies } = useContext(LanguageProficiencyContext)
 
 
     const [languageProficiencies, setLanguageProficiencies] = useState([]);
 
 
     useEffect(() => {
-        GetLanguageProficiencies()
+        getLanguageProficiencies()
             .then(resp => setLanguageProficiencies(resp))
     }, []);
 
@@ -38,7 +38,7 @@ const LanguageAdd = (props) => {
 
 
     const handleClickAddLanguage = () => {
-        AddLanguage({
+        addLanguage({
             languageName: language.languageName,
             languageProficiencyId: language.languageProficiencyId
         })

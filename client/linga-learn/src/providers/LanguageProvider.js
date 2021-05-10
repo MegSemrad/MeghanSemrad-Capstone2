@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "./UserProvider.js";
 
 
@@ -6,14 +6,12 @@ import { UserContext } from "./UserProvider.js";
 export const LanguageContext = React.createContext();
 
 export const LanguageProvider = (props) => {
-    const [languages, setLanguages] = useState([]);
     const { getToken } = useContext(UserContext);
-    const user = JSON.parse(sessionStorage.getItem("user"));
     const apiUrl = "/api/Language";
 
 
 
-    const GetUserLanguages = () => {
+    const getUserLanguages = () => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/GetByUser`, {
                 method: "GET",
@@ -24,6 +22,7 @@ export const LanguageProvider = (props) => {
                 .then((res) => res.json())
         )
     };
+
 
 
     const getLanguageById = (languageId) => {
@@ -40,9 +39,7 @@ export const LanguageProvider = (props) => {
 
 
 
-
-
-    const AddLanguage = (language) => {
+    const addLanguage = (language) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/Create`, {
                 method: "POST",
@@ -54,9 +51,6 @@ export const LanguageProvider = (props) => {
             })
         )
     };
-
-
-
 
 
 
@@ -75,9 +69,7 @@ export const LanguageProvider = (props) => {
 
 
 
-
-
-    const DeleteLanguage = (languageId) => {
+    const deleteLanguage = (languageId) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/Delete/${languageId}`, {
                 method: "DELETE",
@@ -89,12 +81,10 @@ export const LanguageProvider = (props) => {
 
 
 
-
-
     return (
         <LanguageContext.Provider value={{
-            languages, GetUserLanguages, getLanguageById, AddLanguage,
-            editLanguage, DeleteLanguage
+            getUserLanguages, getLanguageById, addLanguage,
+            editLanguage, deleteLanguage
         }}>
             {props.children}
         </LanguageContext.Provider>

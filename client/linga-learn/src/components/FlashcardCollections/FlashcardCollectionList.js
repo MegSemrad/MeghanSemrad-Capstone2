@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 
 
 const FlashcardCollectionList = () => {
-    const { GetUserLanguages } = useContext(LanguageContext);
-    const { GetUserFlashcardCollections } = useContext(FlashcardCollectionContext);
+    const { getUserLanguages } = useContext(LanguageContext);
+    const { getUserFlashcardCollections } = useContext(FlashcardCollectionContext);
     const [languages, setLanguages] = useState([]);
     const [flashcardCollections, setFlashcardCollections] = useState([]);
     const [filteredFlashcardCollections, setfilteredFlashcardCollections] = useState([]);
@@ -17,7 +17,7 @@ const FlashcardCollectionList = () => {
 
 
     useEffect(() => {
-        GetUserLanguages()
+        getUserLanguages()
             .then(resp => setLanguages(resp))
     }, []);
 
@@ -32,7 +32,7 @@ const FlashcardCollectionList = () => {
 
 
     useEffect(() => {
-        GetUserFlashcardCollections()
+        getUserFlashcardCollections()
             .then(resp => setFlashcardCollections(resp))
             .then(() => {
                 const filteredCollections = flashcardCollections.filter((flashcardCollection) => {

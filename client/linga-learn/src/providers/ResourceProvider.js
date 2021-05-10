@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { UserContext } from "./UserProvider.js";
 
 
@@ -6,12 +6,8 @@ import { UserContext } from "./UserProvider.js";
 export const ResourceContext = React.createContext();
 
 export const ResourceProvider = (props) => {
-    const [resources, setResources] = useState([]);
     const { getToken } = useContext(UserContext);
-    const user = JSON.parse(sessionStorage.getItem("user"));
     const apiUrl = "/api/Resource";
-
-
 
 
 
@@ -29,9 +25,6 @@ export const ResourceProvider = (props) => {
 
 
 
-
-
-
     const getResourceByResourceId = (resourceId) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/GetResourceByResourceId/${resourceId}`, {
@@ -43,8 +36,6 @@ export const ResourceProvider = (props) => {
                 .then((res) => res.json())
         )
     }
-
-
 
 
 
@@ -63,8 +54,6 @@ export const ResourceProvider = (props) => {
 
 
 
-
-
     const editResource = (resource) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/Edit/${resource.id}`, {
@@ -80,8 +69,6 @@ export const ResourceProvider = (props) => {
 
 
 
-
-
     const deleteResource = (resourceId) => {
         return getToken().then((token) =>
             fetch(`${apiUrl}/Delete/${resourceId}`, {
@@ -94,11 +81,9 @@ export const ResourceProvider = (props) => {
 
 
 
-
-
     return (
         <ResourceContext.Provider value={{
-            resources, getResourcesByLanguageId, getResourceByResourceId,
+            getResourcesByLanguageId, getResourceByResourceId,
             addResource, editResource, deleteResource
         }}>
             {props.children}

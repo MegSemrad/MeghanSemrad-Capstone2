@@ -12,7 +12,7 @@ import {
 
 const LanguageList = (props) => {
     const history = useHistory();
-    const { GetUserLanguages } = useContext(LanguageContext);
+    const { getUserLanguages } = useContext(LanguageContext);
     const [languages, setLanguages] = useState([]);
     const [knownLanguages, setKnownLanguages] = useState([]);
     const [learningLanguages, setLearningLanguages] = useState([]);
@@ -26,7 +26,7 @@ const LanguageList = (props) => {
 
 
     useEffect(() => {
-        GetUserLanguages()
+        getUserLanguages()
             .then(resp => setLanguages(resp))
     }, []);
 

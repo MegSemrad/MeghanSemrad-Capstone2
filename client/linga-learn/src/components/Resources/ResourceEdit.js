@@ -8,7 +8,7 @@ import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 const ResourceEdit = (props) => {
     const history = useHistory();
     const { ResourceId } = useParams();
-    const { GetUserLanguages } = useContext(LanguageContext);
+    const { getUserLanguages } = useContext(LanguageContext);
     const { getResourceTypes } = useContext(ResourceTypeContext);
     const { getResourceByResourceId, editResource } = useContext(ResourceContext);
 
@@ -26,7 +26,7 @@ const ResourceEdit = (props) => {
     useEffect(() => {
         getResourceByResourceId(ResourceId)
             .then(resourceObject => setResource(resourceObject))
-        GetUserLanguages()
+        getUserLanguages()
             .then(languagesArray => setLanguages(languagesArray))
         getResourceTypes()
             .then(resourceTypeArray => setResourceTypes(resourceTypeArray))

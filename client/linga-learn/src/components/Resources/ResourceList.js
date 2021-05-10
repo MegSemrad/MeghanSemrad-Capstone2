@@ -8,7 +8,7 @@ import { Button, Container, Label, Table } from 'reactstrap';
 
 const ResourcesList = (props) => {
     const history = useHistory();
-    const { GetUserLanguages } = useContext(LanguageContext);
+    const { getUserLanguages } = useContext(LanguageContext);
     const { getResourcesByLanguageId, deleteResource } = useContext(ResourceContext)
 
     const [languages, setLanguages] = useState([]);
@@ -21,7 +21,7 @@ const ResourcesList = (props) => {
     const [otherResources, setOtherResources] = useState([]);
 
     useEffect(() => {
-        GetUserLanguages()
+        getUserLanguages()
             .then(resp => setLanguages(resp))
     }, []);
 
