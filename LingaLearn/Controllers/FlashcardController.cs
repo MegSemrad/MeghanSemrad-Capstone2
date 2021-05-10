@@ -34,10 +34,10 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpGet("GetFlashcardByFlashcardId/{id}")]
-        public IActionResult GetFlashcard(int id)
+        [HttpGet("GetFlashcardByFlashcardId/{FlashcardId}")]
+        public IActionResult GetFlashcard(int FlashcardId)
         {
-            return Ok(_flashcardRepository.GetFlashcardByFlashcardId(id));
+            return Ok(_flashcardRepository.GetFlashcardByFlashcardId(FlashcardId));
         }
 
 

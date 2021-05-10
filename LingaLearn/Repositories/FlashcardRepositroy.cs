@@ -61,7 +61,7 @@ namespace LingaLearn.Repositories
      
 
 
-        public Flashcard GetFlashcardByFlashcardId(int id)
+        public Flashcard GetFlashcardByFlashcardId(int FlashcardId)
         {
             using (SqlConnection conn = Connection)
             {
@@ -78,7 +78,7 @@ namespace LingaLearn.Repositories
                         WHERE f.Id = @id
                     ";
 
-                    cmd.Parameters.AddWithValue("@id", id);
+                    cmd.Parameters.AddWithValue("@id", FlashcardId);
 
                     SqlDataReader reader = cmd.ExecuteReader();
 

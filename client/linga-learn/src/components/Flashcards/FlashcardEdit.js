@@ -7,7 +7,7 @@ import { Button, Card, Col, Input, Label } from 'reactstrap';
 const FlashcardEdit = () => {
     const { FlashcardId } = useParams();
     const history = useHistory();
-    const { getFlashcardById, editFlashcard } = useContext(FlashcardContext);
+    const { getFlashcardById, editFlashcard, deleteSingleFlashcard } = useContext(FlashcardContext);
 
 
     const [flashcard, setFlashcard] = useState({
@@ -42,6 +42,13 @@ const FlashcardEdit = () => {
     };
 
 
+    const handleDeleteFlashcard = (flashcard) => {
+        const flashcardCollectionId = flashcard.flashcardCollectionId
+        deleteSingleFlashcard(flashcard.id)
+            .then(() => history.push(`/FlashcardList/${flashcardCollectionId}`))
+    }
+
+
 
 
 
@@ -53,7 +60,14 @@ const FlashcardEdit = () => {
                     <Card key={flashcard.id}>
                         <fieldset>
                             <div className="form-group">
-                                <Button outline>✖</Button>
+
+                                <Button outline onClick={event => {
+                                    event.preventDefault()
+                                    handleDeleteFlashcard(flashcard)
+                                }}>✖</Button>
+
+
+
                                 <Label htmlFor="word">Word:</Label>
                                 <Input type="text" id="word" onChange={handleControlledInputChange}
                                     required autoFocus

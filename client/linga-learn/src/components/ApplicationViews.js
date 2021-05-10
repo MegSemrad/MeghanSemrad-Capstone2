@@ -60,6 +60,16 @@ export default function ApplicationViews() {
 
 
 
+
+
+
+
+
+
+
+
+
+
             <Route path="/FlashcardCollectionList" >
                 <FlashcardCollectionProvider>
                     <LanguageProvider>
@@ -111,6 +121,17 @@ export default function ApplicationViews() {
                     </FlashcardProvider>
                 </FlashcardCollectionProvider>
             </Route>
+
+
+
+
+
+
+
+
+
+
+
 
 
 

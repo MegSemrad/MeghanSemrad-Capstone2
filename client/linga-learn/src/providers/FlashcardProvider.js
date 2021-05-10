@@ -30,9 +30,9 @@ export const FlashcardProvider = (props) => {
 
 
 
-    const getFlashcardById = (id) => {
+    const getFlashcardById = (FlashcardId) => {
         return getToken().then((token) =>
-            fetch(`${apiUrl}/GetFlashcardByFlashcardId/${id}`, {
+            fetch(`${apiUrl}/GetFlashcardByFlashcardId/${FlashcardId}`, {
                 method: "GET",
                 headers: {
                     Authorization: `Bearer ${token}`
@@ -76,20 +76,6 @@ export const FlashcardProvider = (props) => {
             })
         )
     };
-
-
-    // const editFlashcardCollectionAndFlashcards = (flashcardCollection) => {
-    //     return getToken().then((token) =>
-    //         fetch(`${apiUrl}/Edit/${flashcardCollection.id}`, {
-    //             method: "PUT",
-    //             headers: {
-    //                 Authorization: `Bearer ${token}`,
-    //                 "Content-Type": "application/json",
-    //             },
-    //             body: JSON.stringify(flashcardCollection),
-    //         })
-    //     )
-    // };
 
 
 
