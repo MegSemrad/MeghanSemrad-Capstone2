@@ -60,7 +60,50 @@ namespace LingaLearn.Repositories
 
 
 
-             public void AddResource(Resource resource)
+        public Resource GetResourceByResourceId(int ResourceId)
+        {
+            using (SqlConnection conn = Connection)
+            {
+                conn.Open();
+                using (SqlCommand cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        SELECT r.Id AS ResourceId, r.UserId, r.LanguageId, r.ResourceTypeId, r.Source
+                        FROM Resource r
+                        WHERE r.Id = @id";
+
+                    cmd.Parameters.AddWithValue("@id", ResourceId);
+
+                    SqlDataReader reader = cmd.ExecuteReader();
+
+                    if (reader.Read())
+                    {
+                        Resource resource = new Resource
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("ResourceId")),
+                            UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
+                            LanguageId = reader.GetInt32(reader.GetOrdinal("LanguageId")),
+                            ResourceTypeId = reader.GetInt32(reader.GetOrdinal("ResourceTypeId")),
+                            Source = reader.GetString(reader.GetOrdinal("Source")),
+                        };
+
+                        reader.Close();
+                        return resource;
+                    }
+                    else
+                    {
+                        reader.Close();
+                        return null;
+                    }
+                }
+            }
+        }
+
+
+
+
+
+        public void AddResource(Resource resource)
         {
             using (var conn = Connection)
             {
@@ -97,14 +140,16 @@ namespace LingaLearn.Repositories
                     cmd.CommandText = @"
                         UPDATE Resource
                            SET LanguageId = @LanguageId, 
-                               ResourceTypeId = @ResourceTypeId
-                               Source = @Source
-                         WHERE id = @id";
+                               ResourceTypeId = @ResourceTypeId,
+                               Source = @Source,
+                               UserId = @UserId
+                         WHERE Id = @Id";
 
+                    DbUtils.AddParameter(cmd, "@UserId", resource.UserId);
                     DbUtils.AddParameter(cmd, "@LanguageId", resource.LanguageId);
                     DbUtils.AddParameter(cmd, "@ResourceTypeId", resource.ResourceTypeId);
                     DbUtils.AddParameter(cmd, "@Source", resource.Source);
-                    DbUtils.AddParameter(cmd, "@id", resource.Id);
+                    DbUtils.AddParameter(cmd, "@Id", resource.Id);
 
                     cmd.ExecuteNonQuery();
                 }

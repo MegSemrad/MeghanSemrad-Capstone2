@@ -7,6 +7,7 @@ namespace LingaLearn.Repositories
     {
         void AddResource(Resource resource);
         void Delete(int resourceId);
+        Resource GetResourceByResourceId(int ResourceId);
         List<Resource> GetResourcesByLanguageId(int LanguageId);
         void Update(Resource resource);
     }

@@ -35,6 +35,16 @@ namespace LingaLearn.Controllers
 
 
 
+        [HttpGet("GetResourceByResourceId/{ResourceId}")]
+        public IActionResult GetResource(int ResourceId)
+        {
+            return Ok(_resourceRepository.GetResourceByResourceId(ResourceId));
+        }
+
+
+
+
+
         [HttpPost("CreateResource")]
         public IActionResult Resource(Resource resource)
         {
