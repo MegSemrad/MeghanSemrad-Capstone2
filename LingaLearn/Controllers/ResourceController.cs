@@ -48,6 +48,23 @@ namespace LingaLearn.Controllers
 
 
 
+        [HttpPut("Edit/{resourceId}")]
+        public IActionResult Put(int resourceId, Resource resource)
+        {
+            if (resourceId != resource.Id)
+            {
+                return BadRequest();
+            }
+            var currentUser = GetCurrentUser();
+            resource.UserId = currentUser.Id;
+            _resourceRepository.Update(resource);
+            return NoContent();
+        }
+
+
+
+
+
         [HttpDelete("Delete/{resourceId}")]
         public IActionResult Delete(int resourceId)
         {

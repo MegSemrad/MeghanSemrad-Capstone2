@@ -87,6 +87,34 @@ namespace LingaLearn.Repositories
 
 
 
+        public void Update(Resource resource)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    cmd.CommandText = @"
+                        UPDATE Resource
+                           SET LanguageId = @LanguageId, 
+                               ResourceTypeId = @ResourceTypeId
+                               Source = @Source
+                         WHERE id = @id";
+
+                    DbUtils.AddParameter(cmd, "@LanguageId", resource.LanguageId);
+                    DbUtils.AddParameter(cmd, "@ResourceTypeId", resource.ResourceTypeId);
+                    DbUtils.AddParameter(cmd, "@Source", resource.Source);
+                    DbUtils.AddParameter(cmd, "@id", resource.Id);
+
+                    cmd.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
+
         public void Delete(int resourceId)
         {
             using (var conn = Connection)
