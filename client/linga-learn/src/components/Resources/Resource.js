@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Button } from 'reactstrap';
 
 
-const Resource = ({ resource, handleEditResource, handleDeleteResource }) => {
+const Resource = ({ resource, handleDeleteResource }) => {
 
     return (
         <>
@@ -12,7 +12,7 @@ const Resource = ({ resource, handleEditResource, handleDeleteResource }) => {
 
                     <td>{resource.source}</td>
                     <td>
-                        <Button outline onClick={() => handleEditResource(resource)}>✏</Button>
+                        <Button outline onClick={() => history.push(`/EditResource/${resource.id}`)}>✏</Button>
                         <Button outline onClick={event => {
                             event.preventDefault()
                             handleDeleteResource(resource)

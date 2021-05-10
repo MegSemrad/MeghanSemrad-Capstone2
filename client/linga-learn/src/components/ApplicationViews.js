@@ -21,6 +21,7 @@ import FlashcardEdit from "./Flashcards/FlashcardEdit.js";
 import ResourceList from "./Resources/ResourceList.js";
 import ResourceAdd from "./Resources/ResourceAdd.js";
 import ResourceAddMore from "./Resources/ResourceAddMore.js";
+import ResourceEdit from "./Resources/ResourceEdit.js";
 
 
 
@@ -160,6 +161,18 @@ export default function ApplicationViews() {
                     <LanguageProvider>
                         <ResourceProvider>
                             {isLoggedIn ? <ResourceAddMore /> : <Redirect to="/login" />}
+                        </ResourceProvider>
+                    </LanguageProvider>
+                </ResourceTypeProvider>
+            </Route>
+
+
+
+            <Route path="/EditResource/:ResourceId(\d+)">
+                <ResourceTypeProvider>
+                    <LanguageProvider>
+                        <ResourceProvider>
+                            {isLoggedIn ? <ResourceEdit /> : <Redirect to="/login" />}
                         </ResourceProvider>
                     </LanguageProvider>
                 </ResourceTypeProvider>

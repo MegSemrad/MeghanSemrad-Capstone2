@@ -57,8 +57,6 @@ const ResourcesList = (props) => {
 
 
 
-    // const handleEditResource
-
 
     const handleDeleteResource = (resource) => {
         const resourceLanguageId = resource.languageId
