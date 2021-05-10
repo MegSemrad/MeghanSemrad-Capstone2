@@ -87,7 +87,6 @@ export function UserProvider(props) {
                     Authorization: `Bearer ${token}`
                 }
             }).then(resp => {
-                console.log("testing", resp)
                 return resp.json()
             }));
     };

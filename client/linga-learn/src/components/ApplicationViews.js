@@ -13,6 +13,7 @@ import { ResourceTypeProvider } from "../providers/ResourceTypeProvider.js";
 import LanguageList from "./Languages/LanguageList.js";
 import LanguageAdd from "./Languages/LanguageAdd.js";
 import LanguageEdit from "./Languages/LanguageEdit.js";
+import LanguageDeletionConfirmation from "./Languages/LanguageDeletionConfirmation.js";
 import FlashcardCollectionList from "./FlashcardCollections/FlashcardCollectionList";
 import FlashcardCollectionAndFlashcardAdd from "./FlashcardCollections/FlashcardCollectionAndFlashcardAdd.js";
 import FlashcardCollectionDeletionConfirmation from "./FlashcardCollections/FlashcardDeletionConfirmation.js";
@@ -55,6 +56,16 @@ export default function ApplicationViews() {
                 <LanguageProvider>
                     <LanguageProficiencyProvider>
                         {isLoggedIn ? <LanguageEdit /> : <Redirect to="/login" />}
+                    </LanguageProficiencyProvider>
+                </LanguageProvider>
+            </Route>
+
+
+
+            <Route path="/DeleteLanguage/:languageId(\d+)" exact>
+                <LanguageProvider>
+                    <LanguageProficiencyProvider>
+                        {isLoggedIn ? <LanguageDeletionConfirmation /> : <Redirect to="/login" />}
                     </LanguageProficiencyProvider>
                 </LanguageProvider>
             </Route>

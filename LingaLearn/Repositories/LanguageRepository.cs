@@ -171,8 +171,12 @@ public Language GetLanguageByLanguageId(int LanguageId)
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"DELETE FROM Language WHERE Id = @Id;
-                                        DELETE FROM Resource WHERE LanguageId = @Id";
+                    cmd.CommandText = @"DELETE FROM [Resource] WHERE LanguageId = @Id;
+                                        DELETE FROM Flashcard
+                                        WHERE FlashcardCollectionId IN (SELECT FlashcardCollection.Id FROM FlashcardCollection 
+                                        WHERE LanguageId = @Id);
+                                        DELETE FROM FlashcardCollection WHERE LanguageId = @Id;
+                                        DELETE FROM Language WHERE Id = @Id";
                     DbUtils.AddParameter(cmd, "@Id", languageId);
                     cmd.ExecuteNonQuery();
                 }
