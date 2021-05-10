@@ -17,17 +17,21 @@ code {
   border: black solid 1px;
 }
 
+
 #AddFlashcardRowVisibility {
   visibility: hidden;
 }
+
 
 #AddStudyTimeButtonVisibility {
   visibility: hidden;
 }
 
+
 #hideFlashcardCollectionButtonVisibility {
   visibility: visible;
 }
+
 
 .showEditandDeleteButton {
   visibility: hidden;
