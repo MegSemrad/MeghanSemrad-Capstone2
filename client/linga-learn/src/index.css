@@ -36,3 +36,22 @@ code {
 .showEditandDeleteButton {
   visibility: hidden;
 }
+
+/* ------------------ Flashcard Container CSS ------------------ */
+.flashcardCollectionFormContainer {
+  border: solid black 1px;
+}
+
+/* ------------------ Resource CSS ------------------ */
+
+.languageResourceButtonContainer {
+  text-align-last: center;
+}
+
+.languageResourceButton {
+  margin: 15px;
+}
+
+.resourcesContainerWithAddButton {
+  border: solid black 0.5px;
+}

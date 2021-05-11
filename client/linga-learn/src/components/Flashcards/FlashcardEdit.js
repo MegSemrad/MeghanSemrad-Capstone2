@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FlashcardContext } from "../../providers/FlashcardProvider.js";
 import { useHistory, useParams } from 'react-router-dom';
-import { Button, Card, Col, Input, Label } from 'reactstrap';
+import { Button, Card, CardBody, CardHeader, Col, Input, Label } from 'reactstrap';
 
 
 const FlashcardEdit = () => {
@@ -55,12 +55,12 @@ const FlashcardEdit = () => {
                     <Card key={flashcard.id}>
                         <fieldset>
                             <div className="form-group">
-
-                                <Button outline onClick={event => {
-                                    event.preventDefault()
-                                    handleDeleteFlashcard(flashcard)
-                                }}>✖</Button>
-
+                                <CardHeader>
+                                    <Button outline onClick={event => {
+                                        event.preventDefault()
+                                        handleDeleteFlashcard(flashcard)
+                                    }}>✖</Button>
+                                </CardHeader>
                                 <Label htmlFor="word">Word:</Label>
                                 <Input type="text" id="word" onChange={handleControlledInputChange}
                                     required autoFocus
