@@ -8,20 +8,18 @@ const Language = ({ language }) => {
 
 
     return (
-        <Card key={language.id}>
-            <Card key={language.id}>
-                <CardBody>{language.languageName}</CardBody>
-                <Button outline
-                    className="showEditandDeleteButton"
-                    onClick={() => {
-                        history.push(`/EditLanguage/${language.id}`)
-                    }}>✏</Button>
-                <Button outline
-                    className="showEditandDeleteButton"
-                    onClick={() => {
-                        history.push(`/DeleteLanguage/${language.id}`)
-                    }}>✖</Button>
-            </Card>
+        <Card key={language.id} className="languageCard">
+            <CardBody>{language.languageName}</CardBody>
+            <Button outline
+                className="showEditandDeleteButton"
+                onClick={() => {
+                    history.push(`/EditLanguage/${language.id}`)
+                }}>✏</Button>
+            <Button outline
+                className="showEditandDeleteButton"
+                onClick={() => {
+                    history.push(`/DeleteLanguage/${language.id}`)
+                }}>✖</Button>
         </Card>
     );
 };
