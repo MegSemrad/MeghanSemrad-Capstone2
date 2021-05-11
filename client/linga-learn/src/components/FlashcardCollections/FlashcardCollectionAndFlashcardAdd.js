@@ -169,7 +169,7 @@ const FlashcardCollectionAndFlashcardAdd = () => {
             <Row className="flashcardContainer">
                 {
                     flashcards.map(newFlashcard => {
-                        return <><Card key={newFlashcard.id} >{newFlashcard.word}</Card><Card key={newFlashcard.id} >{newFlashcard.translatedWord}</Card></>
+                        return <><Card key={newFlashcard.id} >{newFlashcard.word}</Card><Card>{newFlashcard.translatedWord}</Card></>
                     })
                 }
             </Row>
