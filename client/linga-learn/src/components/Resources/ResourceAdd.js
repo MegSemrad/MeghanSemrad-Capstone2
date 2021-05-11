@@ -53,7 +53,8 @@ const ResourceAdd = (props) => {
             .then(() => {
                 setResource({
                     resourceTypeId: 0,
-                    source: ""
+                    source: "",
+                    languageId: LanguageId,
                 })
             })
     };

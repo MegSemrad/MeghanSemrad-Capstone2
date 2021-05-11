@@ -12,6 +12,7 @@ const ResourcesList = (props) => {
     const { getResourcesByLanguageId, deleteResource } = useContext(ResourceContext)
 
     const [languages, setLanguages] = useState([]);
+    const [selectedLanguage, setSelectedLanguage] = useState({});
     const [resources, setResources] = useState([]);
     const [onlineResources, setOnlineResources] = useState([]);
     const [videoResources, setVideoResources] = useState([]);
@@ -80,6 +81,7 @@ const ResourcesList = (props) => {
                             className="languageResourceButton"
                             onClick={event => {
                                 event.preventDefault()
+                                setSelectedLanguage(language)
                                 handleSaveSelectedLanguage(language)
                             }}>{language.languageName}</Button>
                     })
@@ -95,7 +97,7 @@ const ResourcesList = (props) => {
                             <Container className="resourcesContainerWithAddButton">
                                 <Button outline onClick={event => {
                                     event.preventDefault()
-                                    history.push("/AddAdditionalResources")
+                                    history.push(`/AddResources/${selectedLanguage.id}`)
                                 }}>+</Button>
                                 <Table borderless>
                                     <thead>
