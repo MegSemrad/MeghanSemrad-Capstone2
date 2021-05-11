@@ -42,6 +42,18 @@ code {
   border: solid black 1px;
 }
 
+
+/* ------------------ Flashcard Edit CSS ------------------ */
+.flashcardEditCard {
+  padding: 10px 10px 0px 10px;
+}
+
+.flashcardEditDeleteButton{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
 /* ------------------ Resource CSS ------------------ */
 
 .languageResourceButtonContainer {
