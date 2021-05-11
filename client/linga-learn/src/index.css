@@ -29,14 +29,6 @@ code {
 }
 
 
-.showEditandDeleteButton {
-  visibility: hidden;
-}
-
-
-
-
-
 
 
 /* ------------------ Homepage Language Container CSS ------------------ */
@@ -55,10 +47,30 @@ code {
   margin-top:10px;
 }
 
+.languageCardBody {
+  text-align: center;
+  
+}
+
 .languageDropdownButton {
   display: flex;
   justify-content: flex-end;
   padding: 15px;
+}
+
+
+/* ------------------ Language Manage CSS ------------------ */
+.showEditandDeleteButton {
+  visibility: hidden;
+}
+
+.showEditandDeleteButtonSpan {
+  font-size: 15px;
+}
+
+.langaugeManageButtonRow {
+  display: flex;
+  justify-content: flex-end;
 }
 
 
