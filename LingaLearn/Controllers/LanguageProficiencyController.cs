@@ -1,7 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Security.Claims;
-using LingaLearn.Models;
 using LingaLearn.Repositories;
 
 namespace LingaLearn.Controllers

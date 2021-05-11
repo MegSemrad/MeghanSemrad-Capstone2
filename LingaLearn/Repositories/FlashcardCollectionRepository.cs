@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using LingaLearn.Models;
 using LingaLearn.Utils.cs;
-using Microsoft.Data.SqlClient;
+
 
 namespace LingaLearn.Repositories
 {
@@ -51,7 +51,6 @@ namespace LingaLearn.Repositories
 
                             }
                         });
-
                     }
                     reader.Close();
                     return flashcardCollections;
@@ -60,57 +59,6 @@ namespace LingaLearn.Repositories
         }
 
         
-
-        public FlashcardCollection GetFlashcardCollectionById(int FlashcardCollectionId)
-        {
-            using (SqlConnection conn = Connection)
-            {
-                conn.Open();
-                using (SqlCommand cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = @"
-                        SELECT  fc.Id, 
-                                fc.UserId, 
-                                fc.LanguageId, 
-                                fc.Date, 
-                                fc.Topic
-                        FROM FlashcardCollection fc
-                        WHERE fc.Id = @id";
-
-                    cmd.Parameters.AddWithValue("@id", FlashcardCollectionId);
-
-                    SqlDataReader reader = cmd.ExecuteReader();
-
-                    if (reader.Read())
-                    {
-                        FlashcardCollection flashcardCollection = new FlashcardCollection
-                        {
-                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
-                            UserId = reader.GetInt32(reader.GetOrdinal("UserId")),
-                            LanguageId = reader.GetInt32(reader.GetOrdinal("LanguageId")),
-                            Date = reader.GetDateTime(reader.GetOrdinal("Date")).ToString("MM/dd/yyyy"),
-                            Topic = reader.GetString(reader.GetOrdinal("Topic"))
-                        };
-
-                        reader.Close();
-                        return flashcardCollection;
-                    }
-                    else
-                    {
-                        reader.Close();
-                        return null;
-                    }
-                }
-            }
-        }
-
-
-
-
-
-
-
-
 
 
 
@@ -140,36 +88,6 @@ namespace LingaLearn.Repositories
 
 
 
-        public void Update(FlashcardCollection flashcardCollection)
-        {
-            using (var conn = Connection)
-            {
-                conn.Open();
-                using (var cmd = conn.CreateCommand())
-                {
-                    cmd.CommandText = @"
-                        UPDATE FlashcardCollection
-                           SET UserId = @UserId,
-                               LanguageId = @LanguageId,
-                               Topic = @Topic,
-                               Date = @Date
-                         WHERE Id = @Id";
-
-                    DbUtils.AddParameter(cmd, "@UserId", flashcardCollection.UserId);
-                    DbUtils.AddParameter(cmd, "@LanguageId", flashcardCollection.LanguageId);
-                    DbUtils.AddParameter(cmd, "@Topic", flashcardCollection.Topic);
-                    DbUtils.AddParameter(cmd, "@Date", flashcardCollection.Date);
-                    DbUtils.AddParameter(cmd, "@Id", flashcardCollection.Id);
-
-                    cmd.ExecuteNonQuery();
-                }
-            }
-        }
-
-
-
-
-
         public void DeleteEntireCollection(int FlashcardCollectionId)
         {
             using (var conn = Connection)
@@ -185,7 +103,5 @@ namespace LingaLearn.Repositories
                 }
             }
         }
-
-
     }
 };     

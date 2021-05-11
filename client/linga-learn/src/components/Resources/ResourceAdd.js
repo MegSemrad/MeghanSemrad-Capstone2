@@ -5,6 +5,7 @@ import { ResourceTypeContext } from "../../providers/ResourceTypeProvider.js";
 import { ResourceContext } from "../../providers/ResourceProvider.js";
 import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
 
+
 const ResourceAdd = (props) => {
     const history = useHistory();
     const { getLanguageById } = useContext(LanguageContext);
@@ -58,7 +59,6 @@ const ResourceAdd = (props) => {
     };
 
 
-
     return (
         <>
             {
@@ -67,7 +67,6 @@ const ResourceAdd = (props) => {
                     :
                     <Label>Add more resources for {language.languageName}</Label>
             }
-
 
             <Form>
 
@@ -98,7 +97,6 @@ const ResourceAdd = (props) => {
                         id="source"
                         value={resource.source} />
                 </FormGroup>
-
 
                 <Button onClick={handleClickAddResource}>Add</Button>
 

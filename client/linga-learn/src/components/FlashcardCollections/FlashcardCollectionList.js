@@ -22,13 +22,11 @@ const FlashcardCollectionList = () => {
     }, []);
 
 
-
     const handleControlledInputChange = (event) => {
         const newLanguageId = { ...languageId }
         newLanguageId[event.target.id] = event.target.value
         setLanguageId(newLanguageId)
-    }
-
+    };
 
 
     useEffect(() => {
@@ -41,8 +39,6 @@ const FlashcardCollectionList = () => {
                 setfilteredFlashcardCollections(filteredCollections)
             })
     }, [languageId]);
-
-
 
 
     return (
@@ -67,7 +63,6 @@ const FlashcardCollectionList = () => {
                 </FormGroup>
             </Form>
 
-
             <Container >
                 <Col>
                     {filteredFlashcardCollections.map(filteredFlashcardCollection => <Link to={`/FlashcardList/${filteredFlashcardCollection.id}`}> {filteredFlashcardCollection.topic}</Link>)}
@@ -76,7 +71,6 @@ const FlashcardCollectionList = () => {
         </>
     );
 };
-
 
 
 export default FlashcardCollectionList;

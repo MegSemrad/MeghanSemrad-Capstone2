@@ -22,8 +22,6 @@ const FlashcardEdit = () => {
     }, []);
 
 
-
-
     const handleControlledInputChange = (event) => {
         const newFlashcard = { ...flashcard }
         newFlashcard[event.target.id] = event.target.value
@@ -49,9 +47,6 @@ const FlashcardEdit = () => {
     }
 
 
-
-
-
     return (
         <div className="CommentForm">
             <h2 className="CommentForm__title">Edit Flashcards</h2>
@@ -65,8 +60,6 @@ const FlashcardEdit = () => {
                                     event.preventDefault()
                                     handleDeleteFlashcard(flashcard)
                                 }}>✖</Button>
-
-
 
                                 <Label htmlFor="word">Word:</Label>
                                 <Input type="text" id="word" onChange={handleControlledInputChange}
@@ -95,7 +88,7 @@ const FlashcardEdit = () => {
                     Save</button>
             </Col>
         </div>
-    )
-}
+    );
+};
 
 export default FlashcardEdit;

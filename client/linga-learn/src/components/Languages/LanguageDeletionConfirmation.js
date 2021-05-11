@@ -16,6 +16,7 @@ const LanguageDeletionConfirmation = () => {
             })
     }
 
+
     return (
         <>
             <h1> Delete </h1>

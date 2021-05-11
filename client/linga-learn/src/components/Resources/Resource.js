@@ -23,10 +23,8 @@ const Resource = ({ resource, handleDeleteResource }) => {
                 </tr>
             </tbody>
         </>
-
     )
 }
-
 
 
 export default Resource;

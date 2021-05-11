@@ -5,7 +5,6 @@ import { useHistory, useParams } from 'react-router-dom';
 import { Button, Card, Container, Form, FormGroup, Input, Label, Row } from 'reactstrap';
 
 
-
 const LanguageEdit = () => {
     const { languageId } = useParams();
     const history = useHistory();
@@ -13,11 +12,8 @@ const LanguageEdit = () => {
     const { getLanguageProficiencies } = useContext(LanguageProficiencyContext)
 
 
-
-
     const [language, setLanguage] = useState({});
     const [languageProficiencies, setLanguageProficiencies] = useState([]);
-
 
 
     useEffect(() => {
@@ -32,13 +28,12 @@ const LanguageEdit = () => {
     }, []);
 
 
-
-
     const handleControlledInputChange = (event) => {
         const newLanguage = { ...language }
         newLanguage[event.target.id] = event.target.value
         setLanguage(newLanguage)
     };
+
 
     const handleClickSaveLanguage = () => {
         editLanguage({
@@ -55,6 +50,7 @@ const LanguageEdit = () => {
             <Row xs="2">
                 <Card>
                     <Form>
+
                         <FormGroup>
                             <Label for="examplePassword">Language</Label>
                             <Input type="text"
@@ -89,6 +85,7 @@ const LanguageEdit = () => {
                             event.preventDefault()
                             handleClickSaveLanguage()
                         }}>Save</Button>
+
                     </Form>
                 </Card>
             </Row>

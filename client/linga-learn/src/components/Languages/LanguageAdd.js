@@ -7,13 +7,15 @@ import { Button, Card, Container, Form, FormGroup, Input, Label, Row } from 'rea
 
 
 const LanguageAdd = (props) => {
-
     const history = useHistory();
     const { addLanguage } = useContext(LanguageContext)
     const { getLanguageProficiencies } = useContext(LanguageProficiencyContext)
 
-
     const [languageProficiencies, setLanguageProficiencies] = useState([]);
+    const [language, setLanguage] = useState({
+        languageName: "",
+        languageProficiencyId: 0,
+    });
 
 
     useEffect(() => {
@@ -22,19 +24,11 @@ const LanguageAdd = (props) => {
     }, []);
 
 
-
-    const [language, setLanguage] = useState({
-        languageName: "",
-        languageProficiencyId: 0,
-    });
-
-
     const handleControlledInputChange = (event) => {
         const newLanguage = { ...language }
         newLanguage[event.target.id] = event.target.value
         setLanguage(newLanguage)
     }
-
 
 
     const handleClickAddLanguage = () => {
@@ -46,11 +40,9 @@ const LanguageAdd = (props) => {
     };
 
 
-
-
-
     return (
         <Container>
+
             <Row xs="2">
                 <Card>
                     <Form>
@@ -84,8 +76,6 @@ const LanguageAdd = (props) => {
                     </Form>
                 </Card>
             </Row>
-
-
 
         </Container>
     );

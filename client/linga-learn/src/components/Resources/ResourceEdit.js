@@ -13,7 +13,6 @@ const ResourceEdit = (props) => {
     const { getResourceByResourceId, editResource } = useContext(ResourceContext);
 
 
-
     const [languages, setLanguages] = useState([]);
     const [resourceTypes, setResourceTypes] = useState([]);
     const [resource, setResource] = useState({
@@ -39,6 +38,7 @@ const ResourceEdit = (props) => {
         setResource(newResource)
     }
 
+
     const handleClickEditResource = () => {
         editResource({
             id: ResourceId,
@@ -50,14 +50,9 @@ const ResourceEdit = (props) => {
     };
 
 
-
     return (
         <>
             <Form>
-
-
-
-
 
                 <FormGroup>
                     <Label for="languageId">Language</Label>
@@ -76,10 +71,6 @@ const ResourceEdit = (props) => {
                         }
                     </Input>
                 </FormGroup>
-
-
-
-
 
                 <FormGroup>
                     <Label for="resourceTypeId">Resource Type</Label>
@@ -108,7 +99,6 @@ const ResourceEdit = (props) => {
                         id="source"
                         value={resource.source} />
                 </FormGroup>
-
 
                 <Button onClick={handleClickEditResource}>Save</Button>
 

@@ -20,6 +20,7 @@ const ResourcesList = (props) => {
     const [textbookResources, setTextbookResources] = useState([]);
     const [otherResources, setOtherResources] = useState([]);
 
+
     useEffect(() => {
         getUserLanguages()
             .then(resp => setLanguages(resp))
@@ -66,8 +67,6 @@ const ResourcesList = (props) => {
                     .then(returnedResources => setResources(returnedResources))
             })
     }
-
-
 
 
     return (

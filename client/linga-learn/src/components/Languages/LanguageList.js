@@ -9,7 +9,6 @@ import {
 
 
 
-
 const LanguageList = (props) => {
     const history = useHistory();
     const { getUserLanguages } = useContext(LanguageContext);
@@ -19,10 +18,8 @@ const LanguageList = (props) => {
     const [futureLanguages, setFutureLanguages] = useState([]);
 
 
-
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const toggle = () => setDropdownOpen(prevState => !prevState);
-
 
 
     useEffect(() => {
@@ -36,10 +33,12 @@ const LanguageList = (props) => {
         setKnownLanguages(knownLanguages)
     }, [languages]);
 
+
     useEffect(() => {
         const learningLanguages = languages.filter(language => language.languageProficiencyId === 2)
         setLearningLanguages(learningLanguages)
     }, [languages]);
+
 
     useEffect(() => {
         const futureLanguages = languages.filter(language => language.languageProficiencyId === 3)
@@ -54,7 +53,6 @@ const LanguageList = (props) => {
             item.style.visibility = "visible";
         }
     }
-
 
 
     return (
@@ -112,7 +110,6 @@ const LanguageList = (props) => {
                     </Dropdown>
                 </Row>
             </Container>
-
         </>
     );
 };

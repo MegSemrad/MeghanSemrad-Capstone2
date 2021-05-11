@@ -3,6 +3,7 @@ using Microsoft.Extensions.Configuration;
 using LingaLearn.Models;
 using LingaLearn.Utils.cs;
 
+
 namespace LingaLearn.Repositories
 {
     public class ResourceTypeRepository : BaseRepository, IResourceTypeRepository

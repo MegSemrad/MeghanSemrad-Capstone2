@@ -14,7 +14,8 @@ const FlashcardCollectionDeletionConfirmation = () => {
             .then(() => {
                 history.push("/FlashcardCollectionList")
             })
-    }
+    };
+
 
     return (
         <>

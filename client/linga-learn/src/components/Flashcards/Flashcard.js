@@ -8,7 +8,6 @@ const Flashcard = ({ flashcard, handleSwitchToKnowIt, handleSwitchToStudyIt }) =
     const [flipped, setFlipped] = useState(true);
 
 
-
     return (
         <>
             <Card key={flashcard.id}>
@@ -21,7 +20,6 @@ const Flashcard = ({ flashcard, handleSwitchToKnowIt, handleSwitchToStudyIt }) =
                     {flipped ?
                         flashcard.word
                         : flashcard.translatedWord}
-
                 </CardBody>
                 <CardFooter>
                     <Row>
@@ -31,11 +29,8 @@ const Flashcard = ({ flashcard, handleSwitchToKnowIt, handleSwitchToStudyIt }) =
                     </Row>
                 </CardFooter>
             </Card>
-
-
-
         </>
-    )
+    );
 };
 
 export default Flashcard;

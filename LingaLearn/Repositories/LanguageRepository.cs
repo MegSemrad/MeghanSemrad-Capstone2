@@ -4,6 +4,7 @@ using LingaLearn.Models;
 using LingaLearn.Utils.cs;
 using Microsoft.Data.SqlClient;
 
+
 namespace LingaLearn.Repositories
 {
     public class LanguageRepository : BaseRepository, ILanguageRepository
@@ -63,10 +64,8 @@ namespace LingaLearn.Repositories
 
 
 
-
-
         
-public Language GetLanguageByLanguageId(int LanguageId)
+    public Language GetLanguageByLanguageId(int LanguageId)
         {
             using (SqlConnection conn = Connection)
             {
@@ -107,7 +106,6 @@ public Language GetLanguageByLanguageId(int LanguageId)
                 }
             }
         }
-
 
 
 
@@ -182,6 +180,5 @@ public Language GetLanguageByLanguageId(int LanguageId)
                 }
             }
         }
-
     }
 }

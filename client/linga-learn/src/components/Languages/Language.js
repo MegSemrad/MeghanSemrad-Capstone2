@@ -1,12 +1,11 @@
-
 import React from "react";
 import { useHistory } from 'react-router-dom';
 import { Card, CardBody, Button } from 'reactstrap';
 
 
-
 const Language = ({ language }) => {
     const history = useHistory();
+
 
     return (
         <Card key={language.id}>

@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
-using Microsoft.Data.SqlClient;
 using LingaLearn.Models;
 using LingaLearn.Utils.cs;
 
@@ -9,7 +8,6 @@ namespace LingaLearn.Repositories
 {
     public class LanguageProficiencyRepository : BaseRepository, ILanguageProficiencyRepository
     {
-
         public LanguageProficiencyRepository(IConfiguration configuration) : base(configuration) { }
 
         public List<LanguageProficiency> GetAll()
@@ -41,6 +39,5 @@ namespace LingaLearn.Repositories
                 }
             }
         }
-
     }
 }

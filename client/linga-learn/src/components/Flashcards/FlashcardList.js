@@ -41,7 +41,6 @@ const FlashcardList = () => {
     };
 
 
-
     return (
         <Container className="flashcardContainer">
             <Row>
@@ -72,7 +71,6 @@ const FlashcardList = () => {
                         }
                     </>
                 </Col>
-
             </Row>
 
             <Row>
@@ -82,13 +80,7 @@ const FlashcardList = () => {
             </Row>
         </Container>
     )
-
-
-
 };
 
 
-
-
 export default FlashcardList;
-

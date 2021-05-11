@@ -9,9 +9,7 @@ namespace LingaLearn.Repositories
 {
     public class ResourceRepository : BaseRepository, IResourceRepository
     {
-
         public ResourceRepository(IConfiguration configuration) : base(configuration) { }
-
 
         public List<Resource> GetResourcesByLanguageId(int LanguageId)
         {
@@ -125,6 +123,7 @@ namespace LingaLearn.Repositories
                 }
             }
         }
+
 
 
 

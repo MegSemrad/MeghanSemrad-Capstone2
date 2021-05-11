@@ -4,6 +4,7 @@ using LingaLearn.Models;
 using LingaLearn.Repositories;
 using Microsoft.AspNetCore.Authorization;
 
+
 namespace LingaLearn.Controllers
 {
     [Authorize]
@@ -42,17 +43,6 @@ namespace LingaLearn.Controllers
 
 
 
-        [HttpGet("GetFlashcardCollectionById/{FlashcardCollectionId}")]
-        public IActionResult Get(int FlashcardCollectionId)
-        {
-            return Ok(_flashcardCollectionRepository.GetFlashcardCollectionById(FlashcardCollectionId));
-        }
-
-
-
-
-
-
         [HttpPost("Create")]
         public IActionResult FlashcardCollection(FlashcardCollection flashcardCollection)
         {
@@ -61,25 +51,6 @@ namespace LingaLearn.Controllers
             _flashcardCollectionRepository.Add(flashcardCollection);
             return CreatedAtAction("GetByUser", new { userId = flashcardCollection.UserId }, flashcardCollection);
         }
-
-
-
-
-
-
-        [HttpPut("Edit/{FlashcardCollectionId}")]
-        public IActionResult Put(int FlashcardCollectionId, FlashcardCollection flashcardCollection) 
-        {
-            if (FlashcardCollectionId != flashcardCollection.Id)
-            {
-                return BadRequest();
-            }
-            var currentUser = GetCurrentUser();
-            flashcardCollection.UserId = currentUser.Id;
-            _flashcardCollectionRepository.Update(flashcardCollection);
-            return NoContent();
-        }
-
 
 
 

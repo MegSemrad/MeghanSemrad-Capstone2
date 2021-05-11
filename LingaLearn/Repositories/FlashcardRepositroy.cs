@@ -4,16 +4,15 @@ using LingaLearn.Models;
 using LingaLearn.Utils.cs;
 using Microsoft.Data.SqlClient;
 
+
 namespace LingaLearn.Repositories
 {
     public class FlashcardRepository : BaseRepository, IFlashcardRepository
     {
         public FlashcardRepository(IConfiguration configuration) : base(configuration) { }
 
-
         public List<Flashcard> GetFlashcardsFromCollection(int FlashcardCollectionId)
         {
-
             using (var conn = Connection)
             {
                 conn.Open();
@@ -50,7 +49,6 @@ namespace LingaLearn.Repositories
                             }
                         });
                     }
-
                     reader.Close();
                     return flashcards;
                 }
@@ -135,7 +133,6 @@ namespace LingaLearn.Repositories
 
 
 
-
         public void Update(Flashcard flashcard)
         {
             using (var conn = Connection)
@@ -166,7 +163,6 @@ namespace LingaLearn.Repositories
 
 
 
-
         public void DeleteSingleFlashcardCollection(int flashcardId)
             {
                 using (var conn = Connection)
@@ -180,8 +176,5 @@ namespace LingaLearn.Repositories
                     }
                 }
             }
-
-
-
     }
 }

@@ -6,13 +6,12 @@ import { FlashcardContext } from "../../providers/FlashcardProvider.js";
 import { Card, Col, Row, Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
 
-
 const FlashcardCollectionAndFlashcardAdd = () => {
-
     const history = useHistory();
     const { getUserLanguages } = useContext(LanguageContext);
     const { flashcardCollection, addFlashcardCollection } = useContext(FlashcardCollectionContext);
     const { flashcards, addFlashcard } = useContext(FlashcardContext);
+
 
     const [newFlashcardCollection, setNewFlashcardCollection] = useState({
         languageId: 0,
@@ -28,12 +27,10 @@ const FlashcardCollectionAndFlashcardAdd = () => {
     const [languages, setLanguages] = useState([]);
 
 
-
     useEffect(() => {
         getUserLanguages()
             .then(resp => setLanguages(resp))
     }, []);
-
 
 
     const handleControlledInputChangeForFlashcardCollection = (event) => {
@@ -42,12 +39,12 @@ const FlashcardCollectionAndFlashcardAdd = () => {
         setNewFlashcardCollection(newFlashcardColl)
     }
 
+
     const handleControlledInputChangeForFlashcard = (event) => {
         const newFlashcard = { ...flashcard }
         newFlashcard[event.target.id] = event.target.value
         setFlashcard(newFlashcard)
     }
-
 
 
     const handleSaveFlashcardCollection = () => {
@@ -85,8 +82,6 @@ const FlashcardCollectionAndFlashcardAdd = () => {
                 })
             })
     };
-
-
 
 
     return (
@@ -184,8 +179,6 @@ const FlashcardCollectionAndFlashcardAdd = () => {
         </Form >
     );
 }
-
-
 
 
 export default FlashcardCollectionAndFlashcardAdd;
