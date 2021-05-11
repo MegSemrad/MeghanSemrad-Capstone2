@@ -34,7 +34,8 @@ const FlashcardEdit = () => {
             id: FlashcardId,
             word: flashcard.word,
             translatedWord: flashcard.translatedWord,
-            flashcardCollectionId: flashcard.flashcardCollectionId
+            flashcardCollectionId: flashcard.flashcardCollectionId,
+            isStudying: flashcard.isStudying
         })
             .then(() => history.push(`/FlashcardList/${flashcard.flashcardCollectionId}`))
     };

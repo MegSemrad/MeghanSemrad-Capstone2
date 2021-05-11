@@ -61,6 +61,7 @@ export const FlashcardProvider = (props) => {
 
 
     const editFlashcard = (flashcard) => {
+        console.log("true?", flashcard)
         return getToken().then((token) =>
             fetch(`${apiUrl}/Edit/${flashcard.id}`, {
                 method: "PUT",

@@ -8,6 +8,7 @@ const Flashcard = ({ flashcard, handleSwitchToKnowIt, handleSwitchToStudyIt }) =
     const [flipped, setFlipped] = useState(true);
 
 
+
     return (
         <>
             <Card key={flashcard.id}>
