@@ -60,7 +60,7 @@ const LanguageList = (props) => {
             <Container className="languageContainer">
                 <Row xs="3">
                     <Col>
-                        <Label tag="h5">Know</Label>
+                        <Label tag="h5" className="languageProficiecnyHeaders">Know</Label>
                         {
                             knownLanguages.map(knownLanguage => {
                                 return <Language key={knownLanguage.id}
@@ -71,7 +71,7 @@ const LanguageList = (props) => {
                     </Col>
 
                     <Col>
-                        <Label tag="h5">Learning</Label>
+                        <Label tag="h5" className="languageProficiecnyHeaders">Learning</Label>
                         {
                             learningLanguages.map(learningLanguage => {
                                 return <Language key={learningLanguage.id}
@@ -82,7 +82,7 @@ const LanguageList = (props) => {
                     </Col>
 
                     <Col>
-                        <Label tag="h5">Future</Label>
+                        <Label tag="h5" className="languageProficiecnyHeaders">Future</Label>
                         {
                             futureLanguages.map(futureLanguage => {
                                 return <Language key={futureLanguage.id}
@@ -94,7 +94,7 @@ const LanguageList = (props) => {
                 </Row>
 
 
-                <Row>
+                <Row className="languageDropdownButton">
                     <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                         <DropdownToggle>
                             <Col sm={{ size: 'auto', offset: 1 }}>...</Col>

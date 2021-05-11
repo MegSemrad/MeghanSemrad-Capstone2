@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from 'react-router-dom';
-import { Card, CardBody, Button } from 'reactstrap';
+import { Card, CardBody, CardFooter, Button, Row } from 'reactstrap';
 
 
 const Language = ({ language }) => {
@@ -8,20 +8,25 @@ const Language = ({ language }) => {
 
 
     return (
-        <Card key={language.id}>
-            <Card key={language.id}>
-                <CardBody>{language.languageName}</CardBody>
-                <Button outline
+        <Card key={language.id} className="languageCard">
+            <CardBody className="languageCardBody">
+                <Row>{language.languageName}</Row>
+                <Row className="langaugeManageButtonRow"><Button
+                    outline
+                    close
                     className="showEditandDeleteButton"
                     onClick={() => {
                         history.push(`/EditLanguage/${language.id}`)
-                    }}>✏</Button>
-                <Button outline
-                    className="showEditandDeleteButton"
-                    onClick={() => {
-                        history.push(`/DeleteLanguage/${language.id}`)
-                    }}>✖</Button>
-            </Card>
+                    }}><span aria-hidden className="showEditandDeleteButtonSpan">✏</span></Button>
+                    <Button
+                        outline
+                        close
+                        className="showEditandDeleteButton"
+                        onClick={() => {
+                            history.push(`/DeleteLanguage/${language.id}`)
+                        }}><span aria-hidden className="showEditandDeleteButtonSpan">✖</span></Button>
+                </Row>
+            </CardBody>
         </Card>
     );
 };

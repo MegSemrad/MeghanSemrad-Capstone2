@@ -51,16 +51,21 @@ const FlashcardEdit = () => {
         <div className="CommentForm">
             <h2 className="CommentForm__title">Edit Flashcards</h2>
             <Col xs="4">
-                return <>
-                    <Card key={flashcard.id}>
+                <>
+                    <Card key={flashcard.id} className="flashcardEditCard">
                         <fieldset>
                             <div className="form-group">
+                                <div className="cardHeaderForFlashcardEditForm">
+                                    <Button
+                                        outline
+                                        close
+                                        className="flashcardEditDeleteButton"
+                                        onClick={event => {
+                                            event.preventDefault()
+                                            handleDeleteFlashcard(flashcard)
+                                        }}><span aria-hidden>✖</span></Button>
 
-                                <Button outline onClick={event => {
-                                    event.preventDefault()
-                                    handleDeleteFlashcard(flashcard)
-                                }}>✖</Button>
-
+                                </div>
                                 <Label htmlFor="word">Word:</Label>
                                 <Input type="text" id="word" onChange={handleControlledInputChange}
                                     required autoFocus

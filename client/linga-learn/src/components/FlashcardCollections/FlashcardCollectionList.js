@@ -63,11 +63,14 @@ const FlashcardCollectionList = () => {
                 </FormGroup>
             </Form>
 
-            <Container >
-                <Col>
-                    {filteredFlashcardCollections.map(filteredFlashcardCollection => <Link to={`/FlashcardList/${filteredFlashcardCollection.id}`}> {filteredFlashcardCollection.topic}</Link>)}
-                </Col>
-            </Container>
+            <Col>
+
+                <ul>
+                    {filteredFlashcardCollections.map(filteredFlashcardCollection => <li><Link to={`/FlashcardList/${filteredFlashcardCollection.id}`}>
+                        {filteredFlashcardCollection.topic}</Link></li>)}
+                </ul>
+
+            </Col>
         </>
     );
 };

@@ -13,10 +13,6 @@ code {
 }
 
 
-.languageContainer {
-  border: black solid 1px;
-}
-
 
 #AddFlashcardRowVisibility {
   visibility: hidden;
@@ -33,6 +29,84 @@ code {
 }
 
 
+
+
+/* ------------------ Homepage Language Container CSS ------------------ */
+
+.languageContainer {
+  border: black solid 1px;
+  margin: 50px;
+}
+
+.languageProficiecnyHeaders {
+  padding-top: 15px;
+  text-align-last: center;
+}
+
+.languageCard {
+  margin-top:10px;
+}
+
+.languageCardBody {
+  text-align: center;
+  
+}
+
+.languageDropdownButton {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+
+/* ------------------ Language Manage CSS ------------------ */
 .showEditandDeleteButton {
   visibility: hidden;
+}
+
+.showEditandDeleteButtonSpan {
+  font-size: 15px;
+}
+
+.langaugeManageButtonRow {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+
+
+/* ------------------ Flashcard Container CSS ------------------ */
+.flashcardCollectionFormContainer {
+  border: solid black 1px;
+}
+
+
+/* ------------------ Flashcard Edit CSS ------------------ */
+.CommentForm__title {
+  text-align: center
+}
+
+.flashcardEditCard {
+  padding: 10px 10px 0px 10px;
+}
+
+.flashcardEditDeleteButton{
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ------------------ Resource CSS ------------------ */
+
+.languageResourceButtonContainer {
+  text-align-last: center;
+}
+
+.languageResourceButton {
+  margin: 15px;
+}
+
+.resourcesContainerWithAddButton {
+  border: solid black 0.5px;
 }
