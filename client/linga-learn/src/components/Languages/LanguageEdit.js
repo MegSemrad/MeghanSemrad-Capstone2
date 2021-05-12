@@ -46,49 +46,48 @@ const LanguageEdit = () => {
 
 
     return (
-        <Container>
-            <Row xs="2">
-                <Card>
-                    <Form>
+        <Container className="editLanguageContainer">
+            <Card>
+                <Form>
+                    <FormGroup className="editLanguageForm">
+                        <Label for="examplePassword">Language</Label>
+                        <Input type="text"
+                            id="languageName"
+                            value={language.languageName}
+                            onChange={handleControlledInputChange}
+                            requiredAutoClassName="form-control"
+                            placeholder="language" />
+                    </FormGroup>
 
-                        <FormGroup>
-                            <Label for="examplePassword">Language</Label>
-                            <Input type="text"
-                                id="languageName"
-                                value={language.languageName}
-                                onChange={handleControlledInputChange}
-                                requiredAutoClassName="form-control"
-                                placeholder="language" />
-                        </FormGroup>
+                    <FormGroup className="editLanguageForm">
+                        <Label for="exampleSelect">Proficiency</Label>
+                        <Input type="select"
+                            id="languageProficiencyId"
+                            onChange={handleControlledInputChange}>
+                            <option value="0"></option>
+                            {
+                                languageProficiencies.map(languageProficiency => {
+                                    return (
+                                        <>
+                                            <option key={languageProficiency.id} value={languageProficiency.id}>
+                                                {languageProficiency.proficiency}
+                                            </option>
+                                        </>
+                                    )
+                                })
+                            }
+                        </Input>
+                    </FormGroup>
 
-                        <FormGroup>
-                            <Label for="exampleSelect">Proficiency</Label>
-                            <Input type="select"
-                                id="languageProficiencyId"
-                                onChange={handleControlledInputChange}>
-                                <option value="0"></option>
-                                {
-                                    languageProficiencies.map(languageProficiency => {
-                                        return (
-                                            <>
-                                                <option key={languageProficiency.id} value={languageProficiency.id}>
-                                                    {languageProficiency.proficiency}
-                                                </option>
-                                            </>
-                                        )
-                                    })
-                                }
-                            </Input>
-                        </FormGroup>
-
+                    <div className="editLanguageSaveButton">
                         <Button onClick={event => {
                             event.preventDefault()
                             handleClickSaveLanguage()
                         }}>Save</Button>
+                    </div>
 
-                    </Form>
-                </Card>
-            </Row>
+                </Form>
+            </Card>
         </Container>
     )
 };

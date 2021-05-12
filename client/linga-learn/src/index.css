@@ -60,6 +60,7 @@ code {
 
 
 /* ------------------ Language Manage CSS ------------------ */
+
 .showEditandDeleteButton {
   visibility: hidden;
 }
@@ -72,6 +73,24 @@ code {
   display: flex;
   justify-content: flex-end;
 }
+
+.editLanguageContainer {
+  margin: 50px;
+}
+
+.editLanguageForm {
+  margin: 15px;
+}
+
+.editLanguageSaveButton {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+
+
+/* ------------------ Language Add CSS ------------------ */
 
 .addLanguageContainer {
   margin: 50px;
@@ -88,12 +107,14 @@ code {
 
 
 /* ------------------ Flashcard Container CSS ------------------ */
+
 .flashcardCollectionFormContainer {
   border: solid black 1px;
 }
 
 
 /* ------------------ Flashcard Edit CSS ------------------ */
+
 .CommentForm__title {
   text-align: center
 }
