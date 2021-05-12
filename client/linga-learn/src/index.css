@@ -259,3 +259,18 @@ code {
 .addResourceButton {
   margin: 15px;
 }
+
+/* ------------------ Resource Edit CSS ------------------ */
+
+.editResourceContainer {
+  margin: 50px;
+}
+
+.editResourceForm {
+  margin: 15px;
+}
+
+.editResourceSaveButton {
+  display: flex;
+  justify-content: flex-end;
+}

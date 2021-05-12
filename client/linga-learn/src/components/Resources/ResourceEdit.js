@@ -3,7 +3,7 @@ import { useHistory, useParams } from "react-router-dom";
 import { LanguageContext } from "../../providers/LanguageProvider";
 import { ResourceTypeContext } from "../../providers/ResourceTypeProvider.js";
 import { ResourceContext } from "../../providers/ResourceProvider.js";
-import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Button, Card, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 
 const ResourceEdit = (props) => {
     const history = useHistory();
@@ -52,57 +52,59 @@ const ResourceEdit = (props) => {
 
     return (
         <>
-            <Form>
+            <Container className="editResourceContainer">
+                <Card>
+                    <Form>
+                        <FormGroup className="editResourceForm">
+                            <Label for="languageId">Language</Label>
+                            <Input type="select" id="languageId" onChange={handleControlledInputChange}>
+                                <option value="0"></option>
+                                {
+                                    languages.map(language => {
+                                        return (
+                                            <>
+                                                <option key={language.id} value={language.id}>
+                                                    {language.languageName}
+                                                </option>
+                                            </>
+                                        )
+                                    })
+                                }
+                            </Input>
+                        </FormGroup>
 
-                <FormGroup>
-                    <Label for="languageId">Language</Label>
-                    <Input type="select" id="languageId" onChange={handleControlledInputChange}>
-                        <option value="0"></option>
-                        {
-                            languages.map(language => {
-                                return (
-                                    <>
-                                        <option key={language.id} value={language.id}>
-                                            {language.languageName}
-                                        </option>
-                                    </>
-                                )
-                            })
-                        }
-                    </Input>
-                </FormGroup>
+                        <FormGroup className="editResourceForm">
+                            <Label for="resourceTypeId">Resource Type</Label>
+                            <Input type="select" id="resourceTypeId" onChange={handleControlledInputChange}>
+                                <option value="0"></option>
+                                {
+                                    resourceTypes.map(resourceType => {
+                                        return (
+                                            <>
+                                                <option key={resourceType.id} value={resourceType.id}>
+                                                    {resourceType.type}
+                                                </option>
+                                            </>
+                                        )
+                                    })
+                                }
+                            </Input>
+                        </FormGroup>
 
-                <FormGroup>
-                    <Label for="resourceTypeId">Resource Type</Label>
-                    <Input type="select" id="resourceTypeId" onChange={handleControlledInputChange}>
-                        <option value="0"></option>
-                        {
-                            resourceTypes.map(resourceType => {
-                                return (
-                                    <>
-                                        <option key={resourceType.id} value={resourceType.id}>
-                                            {resourceType.type}
-                                        </option>
-                                    </>
-                                )
-                            })
-                        }
-                    </Input>
-                </FormGroup>
+                        <FormGroup className="editResourceForm">
+                            <Label for="source">Resource</Label>
+                            <Input type="text"
+                                onChange={handleControlledInputChange}
+                                requiredAutoClassName="form-control"
+                                name="source"
+                                id="source"
+                                value={resource.source} />
+                        </FormGroup>
 
-                <FormGroup>
-                    <Label for="source">Resource</Label>
-                    <Input type="text"
-                        onChange={handleControlledInputChange}
-                        requiredAutoClassName="form-control"
-                        name="source"
-                        id="source"
-                        value={resource.source} />
-                </FormGroup>
-
-                <Button onClick={handleClickEditResource}>Save</Button>
-
-            </Form>
+                        <Button className="editResourceForm" onClick={handleClickEditResource}>Save</Button>
+                    </Form>
+                </Card>
+            </Container>
         </>
     );
 };
