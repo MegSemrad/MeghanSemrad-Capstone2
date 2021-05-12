@@ -42,17 +42,17 @@ const FlashcardCollectionList = () => {
 
 
     return (
-        <>
-            <Form>
+        <Container className="flashcardCollectionFilterContainer">
+            <Form className="flashcardCollectionForm">
                 <FormGroup>
                     <Label for="languageSelect">Sort by Language: </Label>
                     <Input type="select" onChange={handleControlledInputChange} id="languageId">
-                        <option value="0" ></option>
+                        <option value="0"></option>
                         {
                             languages.map(language => {
                                 return (
                                     <>
-                                        <option key={language.id} value={language.id} >
+                                        <option key={language.id} value={language.id}>
                                             {language.languageName}
                                         </option>
                                     </>
@@ -63,15 +63,13 @@ const FlashcardCollectionList = () => {
                 </FormGroup>
             </Form>
 
-            <Col>
-
+            <Col className="flashcardCollectionFilteredList">
                 <ul>
                     {filteredFlashcardCollections.map(filteredFlashcardCollection => <li><Link to={`/FlashcardList/${filteredFlashcardCollection.id}`}>
                         {filteredFlashcardCollection.topic}</Link></li>)}
                 </ul>
-
             </Col>
-        </>
+        </Container>
     );
 };
 

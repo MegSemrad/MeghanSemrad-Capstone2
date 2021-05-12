@@ -126,6 +126,8 @@ code {
 
 
 
+
+
 /* ------------------ Flashcard Study CSS ------------------ */
 
 .flashcardStudyKnowRow {
@@ -183,6 +185,19 @@ code {
   margin: 15px 0px;
 }
 
+
+/* ------------------ Flashcard Collection List CSS ------------------ */
+.flashcardCollectionFilterContainer {
+  margin: 20px 0px;
+}
+
+.flashcardCollectionForm {
+  margin: 0px 100px;
+}
+
+.flashcardCollectionFilteredList {
+  margin: 0px 70px;
+}
 
 
 /* ------------------ Flashcard Collection Delete CSS ------------------ */
