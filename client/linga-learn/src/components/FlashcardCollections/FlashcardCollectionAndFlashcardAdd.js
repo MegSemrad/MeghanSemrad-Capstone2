@@ -168,8 +168,8 @@ const FlashcardCollectionAndFlashcardAdd = () => {
 
 
 
-            <Row className="flashcardStudyTimeButton">
-                <Button id="AddStudyTimeButtonVisibility" onClick={() => {
+            <Row className="flashcardStudyTimeButton" id="AddStudyTimeButtonVisibility">
+                <Button onClick={() => {
                     history.push(`/FlashcardList/${flashcardCollection.id}`)
                 }}>Study Time!</Button>
             </Row>

@@ -180,8 +180,13 @@ code {
   justify-content: space-around;
 }
 
+#AddFlashcardRowVisibility {
+  visibility: hidden;
+}
+
 #AddStudyTimeButtonVisibility {
   display: flex;
+  visibility: hidden;
 }
 
 #hideFlashcardCollectionButtonVisibility {
@@ -201,6 +206,7 @@ code {
 .flashcardDiv {
   display: flex;
   justify-content: space-between;
+  margin: 20px;
 }
 
 
