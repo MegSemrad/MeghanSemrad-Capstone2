@@ -147,10 +147,25 @@ code {
   text-align-last: center;
 }
 
+.resourceWelcomeLabel {
+  display: flex;
+  justify-content: center;
+}
+
 .languageResourceButton {
   margin: 15px;
 }
 
 .resourcesContainerWithAddButton {
   border: solid black 0.5px;
+}
+
+.addResourceForm {
+  margin: 15px;
+}
+
+.resourceAddLabel {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
 }

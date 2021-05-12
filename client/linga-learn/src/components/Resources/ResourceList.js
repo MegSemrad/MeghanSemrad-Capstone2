@@ -91,7 +91,7 @@ const ResourcesList = (props) => {
             <Container>
                 {
                     resources.length === 0 ?
-                        <Label>Welcome to the resources page!</Label>
+                        <Label className="resourceWelcomeLabel">Welcome to the resources page!</Label>
                         :
                         <>
                             <Container className="resourcesContainerWithAddButton">
