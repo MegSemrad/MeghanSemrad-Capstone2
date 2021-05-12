@@ -165,10 +165,12 @@ code {
 /* ------------------ Flashcard Edit CSS ------------------ */
 
 .CommentForm__title {
-  text-align: center
+  text-align: center;
+  margin: 20px 0px;
 }
 
 .flashcardEditCard {
+  margin: 0px 250px;
   padding: 10px 10px 0px 10px;
 }
 
@@ -176,6 +178,9 @@ code {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+}
+.flashcardEditButtonSave {
+  margin: 15px 0px;
 }
 
 

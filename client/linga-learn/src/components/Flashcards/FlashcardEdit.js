@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { FlashcardContext } from "../../providers/FlashcardProvider.js";
 import { useHistory, useParams } from 'react-router-dom';
-import { Button, Card, Col, Input, Label } from 'reactstrap';
+import { Button, Card, Container, Input, Label } from 'reactstrap';
 
 
 const FlashcardEdit = () => {
@@ -49,51 +49,52 @@ const FlashcardEdit = () => {
 
 
     return (
-        <div className="CommentForm">
-            <h2 className="CommentForm__title">Edit Flashcards</h2>
-            <Col xs="4">
-                <>
-                    <Card key={flashcard.id} className="flashcardEditCard">
-                        <fieldset>
-                            <div className="form-group">
-                                <div className="cardHeaderForFlashcardEditForm">
-                                    <Button
-                                        outline
-                                        close
-                                        className="flashcardEditDeleteButton"
-                                        onClick={event => {
-                                            event.preventDefault()
-                                            handleDeleteFlashcard(flashcard)
-                                        }}><span aria-hidden>✖</span></Button>
+        <>
+            <h2 className="CommentForm__title">Edit Flashcard</h2>
+            <Container>
+                <Card key={flashcard.id} className="flashcardEditCard">
+                    <fieldset>
+                        <div className="form-group">
+                            <div className="cardHeaderForFlashcardEditForm">
+                                <Button
+                                    outline
+                                    close
+                                    className="flashcardEditDeleteButton"
+                                    onClick={event => {
+                                        event.preventDefault()
+                                        handleDeleteFlashcard(flashcard)
+                                    }}><span aria-hidden>✖</span></Button>
 
-                                </div>
-                                <Label htmlFor="word">Word:</Label>
-                                <Input type="text" id="word" onChange={handleControlledInputChange}
-                                    required autoFocus
-                                    className="form-control"
-                                    placeholder="Word"
-                                    defaultValue={flashcard.word} />
                             </div>
-                        </fieldset>
+                            <Label htmlFor="word">Word:</Label>
+                            <Input type="text" id="word" onChange={handleControlledInputChange}
+                                required autoFocus
+                                className="form-control"
+                                placeholder="Word"
+                                defaultValue={flashcard.word} />
+                        </div>
+                    </fieldset>
 
-                        <fieldset>
-                            <div className="form-group">
-                                <Label htmlFor="translatedWord">Translation:</Label>
-                                <Input type="text" id="translatedWord" onChange={handleControlledInputChange}
-                                    required autoFocus
-                                    className="form-control"
-                                    placeholder="Translation"
-                                    defaultValue={flashcard.translatedWord} />
-                            </div>
-                        </fieldset>
-                    </Card>
-                </>
+                    <fieldset>
+                        <div className="form-group">
+                            <Label htmlFor="translatedWord">Translation:</Label>
+                            <Input type="text" id="translatedWord" onChange={handleControlledInputChange}
+                                required autoFocus
+                                className="form-control"
+                                placeholder="Translation"
+                                defaultValue={flashcard.translatedWord} />
+                        </div>
+                    </fieldset>
 
-                <button className="btn btn-primary"
-                    onClick={handleClickSaveFlashcard}>
-                    Save</button>
-            </Col>
-        </div>
+                    <div>
+                        <Button className="flashcardEditButtonSave btn btn-primary"
+                            onClick={handleClickSaveFlashcard}>
+                            Save</Button>
+                    </div>
+                </Card>
+
+            </Container>
+        </>
     );
 };
 
