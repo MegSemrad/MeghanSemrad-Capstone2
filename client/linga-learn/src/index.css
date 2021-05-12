@@ -73,7 +73,18 @@ code {
   justify-content: flex-end;
 }
 
+.addLanguageContainer {
+  margin: 50px;
+}
 
+.addLanguageForm {
+  margin: 15px;
+}
+
+.addLanguageSaveButton {
+  display: flex;
+  justify-content: flex-end;
+}
 
 
 /* ------------------ Flashcard Container CSS ------------------ */

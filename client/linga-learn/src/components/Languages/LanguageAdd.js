@@ -41,42 +41,46 @@ const LanguageAdd = (props) => {
 
 
     return (
-        <Container>
+        <Container className="addLanguageContainer">
+            <Card>
+                <Form>
+                    <FormGroup className="addLanguageForm">
+                        <Label for="languageName">Language</Label>
+                        <Input type="text"
+                            id="languageName"
+                            value={language.languageName}
+                            onChange={handleControlledInputChange}
+                            requiredAutoClassName="form-control" />
+                    </FormGroup>
 
-            <Row xs="2">
-                <Card>
-                    <Form>
-                        <FormGroup>
-                            <Label for="languageName">Language</Label>
-                            <Input type="text" id="languageName" value={language.languageName} onChange={handleControlledInputChange} requiredAutoClassName="form-control" placeholder="language" />
-                        </FormGroup>
+                    <FormGroup className="addLanguageForm">
+                        <Label for="languageProficiencyId">Proficiency</Label>
+                        <Input type="select" id="languageProficiencyId" onChange={handleControlledInputChange}>
+                            <option value="0"></option>
+                            {
+                                languageProficiencies.map(languageProficiency => {
+                                    return (
+                                        <>
+                                            <option key={languageProficiency.id} value={languageProficiency.id}>
+                                                {languageProficiency.proficiency}
+                                            </option>
+                                        </>
+                                    )
+                                })
+                            }
+                        </Input>
+                    </FormGroup>
 
-                        <FormGroup>
-                            <Label for="languageProficiencyId">Proficiency</Label>
-                            <Input type="select" id="languageProficiencyId" onChange={handleControlledInputChange}>
-                                <option value="0"></option>
-                                {
-                                    languageProficiencies.map(languageProficiency => {
-                                        return (
-                                            <>
-                                                <option key={languageProficiency.id} value={languageProficiency.id}>
-                                                    {languageProficiency.proficiency}
-                                                </option>
-                                            </>
-                                        )
-                                    })
-                                }
-                            </Input>
-                        </FormGroup>
+                    <div className="addLanguageSaveButton">
+                        <Button className="addLanguageForm"
+                            onClick={event => {
+                                event.preventDefault()
+                                handleClickAddLanguage()
+                            }}>Add</Button>
+                    </div>
 
-                        <Button onClick={event => {
-                            event.preventDefault()
-                            handleClickAddLanguage()
-                        }}>Add</Button>
-                    </Form>
-                </Card>
-            </Row>
-
+                </Form>
+            </Card>
         </Container>
     );
 };
