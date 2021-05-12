@@ -14,21 +14,6 @@ code {
 
 
 
-#AddFlashcardRowVisibility {
-  visibility: hidden;
-}
-
-
-#AddStudyTimeButtonVisibility {
-  visibility: hidden;
-}
-
-
-#hideFlashcardCollectionButtonVisibility {
-  visibility: visible;
-}
-
-
 
 
 /* ------------------ Homepage Language Container CSS ------------------ */
@@ -118,16 +103,6 @@ code {
 }
 
 
-/* ------------------ Flashcard Container CSS ------------------ */
-
-.flashcardCollectionFormContainer {
-  border: solid black 1px;
-}
-
-
-
-
-
 /* ------------------ Flashcard Study CSS ------------------ */
 
 .flashcardStudyKnowRow {
@@ -186,7 +161,54 @@ code {
 }
 
 
+
+
+/* ------------------ Flashcard Collection Add CSS ------------------ */
+
+.flashcardFormsRow {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flashcardCollectionFormCard, .flashcardFormCard{
+  margin: 30px;
+  padding:20px;
+}
+
+.flashcardStudyTimeButton {
+  display: flex;
+  justify-content: space-around;
+}
+
+#AddStudyTimeButtonVisibility {
+  display: flex;
+}
+
+#hideFlashcardCollectionButtonVisibility {
+  visibility: visible;
+  margin: 0px 0px 20px 45px;
+}
+
+.flashcardAddButton {
+  display: flex;
+  justify-content: space-around;
+}
+
+.addFlashcardButton {
+  margin: 0px 0px 20px 45px;
+}
+
+.flashcardDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+
 /* ------------------ Flashcard Collection List CSS ------------------ */
+
+
+
 .flashcardCollectionFilterContainer {
   margin: 20px 0px;
 }
@@ -198,9 +220,11 @@ code {
 .flashcardCollectionFilteredList {
   margin: 0px 70px;
 }
+ 
 
 
 /* ------------------ Flashcard Collection Delete CSS ------------------ */
+
 
 .flashcardCollectionDeletionConfirmationContainer {
   margin: 15px;
