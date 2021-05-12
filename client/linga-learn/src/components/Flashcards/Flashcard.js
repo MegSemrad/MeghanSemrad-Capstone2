@@ -11,22 +11,34 @@ const Flashcard = ({ flashcard, handleSwitchToKnowIt, handleSwitchToStudyIt }) =
 
     return (
         <>
-            <Card key={flashcard.id}>
-                <CardHeader>
-                    <div onClick={() => {
-                        history.push(`/Manage/${flashcard.id}`)
-                    }}>✏</div>
+            <Card key={flashcard.id} className="flashcardCard">
+                <CardHeader className="flashcardCardHeader">
+                    <Button
+                        close
+                        outline
+                        onClick={() => {
+                            history.push(`/Manage/${flashcard.id}`)
+                        }}><span aria-hidden className="flashcardEditButton">✏</span></Button>
                 </CardHeader>
-                <CardBody>
+                <CardBody className="flashcardCardBodyWord">
                     {flipped ?
                         flashcard.word
                         : flashcard.translatedWord}
                 </CardBody>
                 <CardFooter>
-                    <Row>
-                        <Button outline onClick={() => handleSwitchToStudyIt(flashcard)}>◀</Button>
-                        <Button outline onClick={() => setFlipped(!flipped)}>🔁</Button>
-                        <Button outline onClick={() => handleSwitchToKnowIt(flashcard)}>▶</Button>
+                    <Row className="flashcardButtons">
+                        <Button
+                            outline
+                            close
+                            onClick={() => handleSwitchToStudyIt(flashcard)}><span aria-hidden>◀</span></Button>
+                        <Button
+                            outline
+                            close
+                            onClick={() => setFlipped(!flipped)}><span aria-hidden>🔁</span></Button>
+                        <Button
+                            outline
+                            close
+                            onClick={() => handleSwitchToKnowIt(flashcard)}><span aria-hidden>▶</span></Button>
                     </Row>
                 </CardFooter>
             </Card>

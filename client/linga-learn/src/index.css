@@ -125,6 +125,43 @@ code {
 }
 
 
+
+/* ------------------ Flashcard Study CSS ------------------ */
+
+.flashcardStudyKnowRow {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.flashcardColumnHeader {
+  margin: 30px 0px;
+  text-align: center;
+}
+
+.flashcardCard {
+  margin: 15px 0px;
+}
+
+.flashcardCardHeader {
+  display: flex;
+  justify-content:flex-start
+}
+
+.flashcardEditButton {
+  font-size: 15px;
+}
+
+.flashcardCardBodyWord {
+  text-align: center;
+  font-size: 20px;
+}
+
+.flashcardButtons {
+ display: flex;
+ justify-content: space-evenly;
+}
+
+
 /* ------------------ Flashcard Edit CSS ------------------ */
 
 .CommentForm__title {
@@ -140,6 +177,7 @@ code {
   display: flex;
   justify-content: flex-end;
 }
+
 
 /* ------------------ Resource CSS ------------------ */
 

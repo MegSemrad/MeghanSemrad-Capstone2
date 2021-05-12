@@ -43,10 +43,10 @@ const FlashcardList = () => {
 
     return (
         <Container className="flashcardContainer">
-            <Row>
-                <Col xs="4">
+            <Row className="flashcardStudyKnowRow">
+                <Col xs="4" className="flashcardStudyKnowColumn">
                     <>
-                        <h4>Study It</h4>
+                        <h4 className="flashcardColumnHeader">Study It</h4>
                         {
                             studyItFlashcards.map(studyItFlashcard => {
                                 return <Flashcard key={studyItFlashcard.id}
@@ -60,7 +60,7 @@ const FlashcardList = () => {
 
                 <Col xs="4">
                     <>
-                        <h4>Know It</h4>
+                        <h4 className="flashcardColumnHeader">Know It</h4>
                         {
                             knowItFlashcards.map(knowItFlashcard => {
                                 return <Flashcard key={knowItFlashcard.id}
