@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { LanguageContext } from "../../providers/LanguageProvider.js";
 import { useHistory, useParams } from 'react-router-dom';
+import { Button, Container } from 'reactstrap';
 
 
 const LanguageDeletionConfirmation = () => {
@@ -18,14 +19,13 @@ const LanguageDeletionConfirmation = () => {
 
 
     return (
-        <>
-            <h1> Delete </h1>
+        <Container className="languageDeletionConfirmationContainer">
             <h3>Are you sure you wish to delete this language? Everything associated with this language will be deleted as well.</h3>
-            <button onClick={handleRelease}>Delete</button>
-            <button onClick={() => {
+            <Button className="languageDeleteButton" onClick={handleRelease}>Delete</Button>
+            <Button className="languageCancelDeleteButton" onClick={() => {
                 history.push("/")
-            }}>Cancel</button>
-        </>
+            }}>Cancel</Button>
+        </Container>
     );
 };
 

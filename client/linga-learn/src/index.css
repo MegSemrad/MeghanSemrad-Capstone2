@@ -88,6 +88,18 @@ code {
   padding: 15px;
 }
 
+.languageDeletionConfirmationContainer {
+  margin: 15px;
+}
+
+.languageDeleteButton {
+  margin: 5px;
+}
+
+.languageCancelDeleteButton {
+  margin: 5px;
+}
+
 
 
 /* ------------------ Language Add CSS ------------------ */
