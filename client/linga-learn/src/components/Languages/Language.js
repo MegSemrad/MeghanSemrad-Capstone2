@@ -11,13 +11,14 @@ const Language = ({ language }) => {
         <Card key={language.id} className="languageCard">
             <CardBody className="languageCardBody">
                 <Row>{language.languageName}</Row>
-                <Row className="langaugeManageButtonRow"><Button
-                    outline
-                    close
-                    className="showEditandDeleteButton"
-                    onClick={() => {
-                        history.push(`/EditLanguage/${language.id}`)
-                    }}><span aria-hidden className="showEditandDeleteButtonSpan">✏</span></Button>
+                <Row className="langaugeManageButtonRow">
+                    <Button
+                        outline
+                        close
+                        className="showEditandDeleteButton"
+                        onClick={() => {
+                            history.push(`/EditLanguage/${language.id}`)
+                        }}><span aria-hidden className="showEditandDeleteButtonSpan">✏</span></Button>
                     <Button
                         outline
                         close

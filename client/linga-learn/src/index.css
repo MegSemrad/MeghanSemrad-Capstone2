@@ -169,3 +169,19 @@ code {
   justify-content: center;
   margin: 30px;
 }
+
+.resourceSourceElement {
+  margin: 0.1px;
+}
+
+.resourceEditButtonSpan {
+  font-size: 15px;
+}
+
+.resourceDeleteButtonSpan {
+  font-size: 15px;
+}
+
+.addResourceButton {
+  margin: 15px;
+}

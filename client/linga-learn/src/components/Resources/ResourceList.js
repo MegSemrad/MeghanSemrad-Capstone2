@@ -95,10 +95,13 @@ const ResourcesList = (props) => {
                         :
                         <>
                             <Container className="resourcesContainerWithAddButton">
-                                <Button outline onClick={event => {
-                                    event.preventDefault()
-                                    history.push(`/AddResources/${selectedLanguage.id}`)
-                                }}>+</Button>
+                                <Button
+                                    outline
+                                    className="addResourceButton"
+                                    onClick={event => {
+                                        event.preventDefault()
+                                        history.push(`/AddResources/${selectedLanguage.id}`)
+                                    }}>+</Button>
                                 <Table borderless>
                                     <thead>
                                         <tr>
