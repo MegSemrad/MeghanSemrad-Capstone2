@@ -3,7 +3,7 @@ import { useParams, useHistory } from "react-router-dom";
 import { LanguageContext } from "../../providers/LanguageProvider";
 import { ResourceTypeContext } from "../../providers/ResourceTypeProvider.js";
 import { ResourceContext } from "../../providers/ResourceProvider.js";
-import { Button, Form, FormGroup, Input, Label } from 'reactstrap';
+import { Button, Card, Container, Form, FormGroup, Input, Label } from 'reactstrap';
 
 
 const ResourceAdd = (props) => {
@@ -64,49 +64,53 @@ const ResourceAdd = (props) => {
         <>
             {
                 resourcesArray.length === 0 ?
-                    <Label>Looks like you have no resources for {language.languageName}. Add some now!</Label>
+                    <Label className="resourceAddLabel">Looks like you have no resources for {language.languageName}. Add some now!</Label>
                     :
-                    <Label>Add more resources for {language.languageName}</Label>
+                    <Label className="resourceAddLabel">Add more resources for {language.languageName}</Label>
             }
 
-            <Form>
+            <Container className="addResourceContainer">
+                <Card>
+                    <Form>
 
-                <FormGroup>
-                    <Label for="resourceTypeId">Resource Type</Label>
-                    <Input type="select" id="resourceTypeId" onChange={handleControlledInputChange}>
-                        <option value="0"></option>
-                        {
-                            resourceTypes.map(resourceType => {
-                                return (
-                                    <>
-                                        <option key={resourceType.id} value={resourceType.id}>
-                                            {resourceType.type}
-                                        </option>
-                                    </>
-                                )
-                            })
-                        }
-                    </Input>
-                </FormGroup>
+                        <FormGroup className="addResourceForm">
+                            <Label for="resourceTypeId">Resource Type</Label>
+                            <Input type="select" id="resourceTypeId" onChange={handleControlledInputChange}>
+                                <option value="0"></option>
+                                {
+                                    resourceTypes.map(resourceType => {
+                                        return (
+                                            <>
+                                                <option key={resourceType.id} value={resourceType.id}>
+                                                    {resourceType.type}
+                                                </option>
+                                            </>
+                                        )
+                                    })
+                                }
+                            </Input>
+                        </FormGroup>
 
-                <FormGroup>
-                    <Label for="source">Resource</Label>
-                    <Input type="text"
-                        onChange={handleControlledInputChange}
-                        requiredAutoClassName="form-control"
-                        name="source"
-                        id="source"
-                        value={resource.source} />
-                </FormGroup>
+                        <FormGroup className="addResourceForm">
+                            <Label for="source">Resource</Label>
+                            <Input type="text"
+                                onChange={handleControlledInputChange}
+                                requiredAutoClassName="form-control"
+                                name="source"
+                                id="source"
+                                value={resource.source} />
+                        </FormGroup>
 
-                <Button onClick={handleClickAddResource}>Add</Button>
+                        <Button className="addResourceForm" onClick={handleClickAddResource}>Add</Button>
 
-                <Button onClick={event => {
-                    event.preventDefault()
-                    history.push(`/resources`)
-                }}>View Resources</Button>
+                        <Button className="addResourceForm" onClick={event => {
+                            event.preventDefault()
+                            history.push(`/resources`)
+                        }}>View Resources</Button>
 
-            </Form>
+                    </Form>
+                </Card>
+            </Container>
         </>
     );
 };

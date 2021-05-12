@@ -60,6 +60,7 @@ code {
 
 
 /* ------------------ Language Manage CSS ------------------ */
+
 .showEditandDeleteButton {
   visibility: hidden;
 }
@@ -73,21 +74,103 @@ code {
   justify-content: flex-end;
 }
 
+.editLanguageContainer {
+  margin: 50px;
+}
 
+.editLanguageForm {
+  margin: 15px;
+}
+
+.editLanguageSaveButton {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px;
+}
+
+.languageDeletionConfirmationContainer {
+  margin: 15px;
+}
+
+.languageDeleteButton {
+  margin: 5px;
+}
+
+.languageCancelDeleteButton {
+  margin: 5px;
+}
+
+
+
+/* ------------------ Language Add CSS ------------------ */
+
+.addLanguageContainer {
+  margin: 50px;
+}
+
+.addLanguageForm {
+  margin: 15px;
+}
+
+.addLanguageSaveButton {
+  display: flex;
+  justify-content: flex-end;
+}
 
 
 /* ------------------ Flashcard Container CSS ------------------ */
+
 .flashcardCollectionFormContainer {
   border: solid black 1px;
 }
 
 
+
+/* ------------------ Flashcard Study CSS ------------------ */
+
+.flashcardStudyKnowRow {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.flashcardColumnHeader {
+  margin: 30px 0px;
+  text-align: center;
+}
+
+.flashcardCard {
+  margin: 15px 0px;
+}
+
+.flashcardCardHeader {
+  display: flex;
+  justify-content:flex-start
+}
+
+.flashcardEditButton {
+  font-size: 15px;
+}
+
+.flashcardCardBodyWord {
+  text-align: center;
+  font-size: 20px;
+}
+
+.flashcardButtons {
+ display: flex;
+ justify-content: space-evenly;
+}
+
+
 /* ------------------ Flashcard Edit CSS ------------------ */
+
 .CommentForm__title {
-  text-align: center
+  text-align: center;
+  margin: 20px 0px;
 }
 
 .flashcardEditCard {
+  margin: 0px 250px;
   padding: 10px 10px 0px 10px;
 }
 
@@ -96,11 +179,20 @@ code {
   display: flex;
   justify-content: flex-end;
 }
+.flashcardEditButtonSave {
+  margin: 15px 0px;
+}
+
 
 /* ------------------ Resource CSS ------------------ */
 
 .languageResourceButtonContainer {
   text-align-last: center;
+}
+
+.resourceWelcomeLabel {
+  display: flex;
+  justify-content: center;
 }
 
 .languageResourceButton {
@@ -109,4 +201,30 @@ code {
 
 .resourcesContainerWithAddButton {
   border: solid black 0.5px;
+}
+
+.addResourceForm {
+  margin: 15px;
+}
+
+.resourceAddLabel {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+.resourceSourceElement {
+  margin: 0.1px;
+}
+
+.resourceEditButtonSpan {
+  font-size: 15px;
+}
+
+.resourceDeleteButtonSpan {
+  font-size: 15px;
+}
+
+.addResourceButton {
+  margin: 15px;
 }

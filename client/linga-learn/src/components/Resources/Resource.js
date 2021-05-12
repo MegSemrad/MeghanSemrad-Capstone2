@@ -12,13 +12,21 @@ const Resource = ({ resource, handleDeleteResource }) => {
             <tbody>
                 <tr key={resource.id}>
 
-                    <td>{resource.source}</td>
-                    <td>
-                        <Button outline onClick={() => history.push(`/EditResource/${resource.id}`)}>✏</Button>
-                        <Button outline onClick={event => {
-                            event.preventDefault()
-                            handleDeleteResource(resource)
-                        }}>✖</Button>
+                    <td className="resourceSourceElement">{resource.source}</td>
+                    <td className="resourceButtonsElement">
+                        <Button
+                            outline
+                            close
+                            onClick={event => {
+                                event.preventDefault()
+                                handleDeleteResource(resource)
+                            }}><span aria-hidden className="resourceDeleteButtonSpan">✖</span></Button>
+                        <Button
+                            outline
+                            close
+                            onClick={() =>
+                                history.push(`/EditResource/${resource.id}`)
+                            }><span aria-hidden className="resourceEditButtonSpan">✏</span></Button>
                     </td>
                 </tr>
             </tbody>
