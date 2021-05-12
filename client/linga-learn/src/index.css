@@ -184,6 +184,22 @@ code {
 }
 
 
+
+/* ------------------ Flashcard Collection Delete CSS ------------------ */
+
+.flashcardCollectionDeletionConfirmationContainer {
+  margin: 15px;
+}
+
+.flashcardCollectionDeleteButton {
+  margin: 5px;
+}
+
+.flashcardCollectionCancelDeleteButton {
+  margin: 5px;
+}
+
+
 /* ------------------ Resource CSS ------------------ */
 
 .languageResourceButtonContainer {
