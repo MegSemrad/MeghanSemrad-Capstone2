@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { FlashcardCollectionContext } from "../../providers/FlashcardCollectionProvider.js";
 import { useHistory, useParams } from 'react-router-dom';
+import { Button, Container } from 'reactstrap';
 
 
 const FlashcardCollectionDeletionConfirmation = () => {
@@ -18,14 +19,13 @@ const FlashcardCollectionDeletionConfirmation = () => {
 
 
     return (
-        <>
-            <h1> Delete </h1>
+        <Container className="flashcardCollectionDeletionConfirmationContainer">
             <h3>Are you sure you wish to delete this collection? All flashcards belonging to this collection will be deleted as well.</h3>
-            <button onClick={handleRelease}>Delete</button>
-            <button onClick={() => {
+            <Button className="flashcardCollectionDeleteButton" onClick={handleRelease}>Delete</Button>
+            <Button className="flashcardCollectionCancelDeleteButton" onClick={() => {
                 history.push(`/FlashcardList/${FlashcardCollectionId}`)
-            }}>Cancel</button>
-        </>
+            }}>Cancel</Button>
+        </Container>
     );
 };
 

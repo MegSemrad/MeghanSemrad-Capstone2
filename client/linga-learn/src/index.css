@@ -12,23 +12,33 @@ code {
     monospace;
 }
 
-
-
-#AddFlashcardRowVisibility {
-  visibility: hidden;
+#bodyStyling {
+  background-color: #d1d8d3;
 }
 
 
-#AddStudyTimeButtonVisibility {
-  visibility: hidden;
+/* ------------------ Login CSS ------------------ */
+.loginCard {
+  margin: 80px 250px;
+  padding:20px;
 }
 
 
-#hideFlashcardCollectionButtonVisibility {
-  visibility: visible;
+/* ------------------ Register CSS ------------------ */
+.registerCard {
+  margin: 80px 250px;
+  padding:20px;
 }
 
 
+/* ------------------ NavBar CSS ------------------ */
+.navbar-light .navbar-nav .nav-link {
+  color:black
+}
+
+#navBarDropdownFlashcards {
+  color: black;
+}
 
 
 /* ------------------ Homepage Language Container CSS ------------------ */
@@ -36,6 +46,8 @@ code {
 .languageContainer {
   border: black solid 1px;
   margin: 50px;
+  width: 700px;
+  background-color: white;
 }
 
 .languageProficiecnyHeaders {
@@ -44,12 +56,16 @@ code {
 }
 
 .languageCard {
-  margin-top:10px;
+  margin: 10px 30px;
 }
 
 .languageCardBody {
   text-align: center;
-  
+  background-color: #f2f3f2;
+}
+
+#languageCardLanguageName {
+  margin-left: 15px;
 }
 
 .languageDropdownButton {
@@ -118,14 +134,6 @@ code {
 }
 
 
-/* ------------------ Flashcard Container CSS ------------------ */
-
-.flashcardCollectionFormContainer {
-  border: solid black 1px;
-}
-
-
-
 /* ------------------ Flashcard Study CSS ------------------ */
 
 .flashcardStudyKnowRow {
@@ -184,6 +192,86 @@ code {
 }
 
 
+
+/* ------------------ Flashcard Collection Add CSS ------------------ */
+
+.flashcardFormsRow {
+  display: flex;
+  justify-content: space-around;
+}
+
+.flashcardCollectionFormCard, .flashcardFormCard{
+  margin: 30px;
+  padding:20px;
+}
+
+.flashcardStudyTimeButton {
+  display: flex;
+  justify-content: space-around;
+}
+
+#AddFlashcardRowVisibility {
+  visibility: hidden;
+}
+
+#AddStudyTimeButtonVisibility {
+  display: flex;
+  visibility: hidden;
+}
+
+#hideFlashcardCollectionButtonVisibility {
+  visibility: visible;
+  margin: 0px 0px 20px 45px;
+}
+
+.flashcardAddButton {
+  display: flex;
+  justify-content: space-around;
+}
+
+.addFlashcardButton {
+  margin: 0px 0px 20px 45px;
+}
+
+.flashcardDiv {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px;
+}
+
+
+
+/* ------------------ Flashcard Collection List CSS ------------------ */
+
+.flashcardCollectionFilterContainer {
+  margin: 20px 0px;
+}
+
+.flashcardCollectionForm {
+  margin: 0px 100px;
+}
+
+.flashcardCollectionFilteredList {
+  margin: 0px 70px;
+}
+ 
+
+
+/* ------------------ Flashcard Collection Delete CSS ------------------ */
+
+.flashcardCollectionDeletionConfirmationContainer {
+  margin: 15px;
+}
+
+.flashcardCollectionDeleteButton {
+  margin: 5px;
+}
+
+.flashcardCollectionCancelDeleteButton {
+  margin: 5px;
+}
+
+
 /* ------------------ Resource CSS ------------------ */
 
 .languageResourceButtonContainer {
@@ -195,22 +283,14 @@ code {
   justify-content: center;
 }
 
-.languageResourceButton {
+#languageResourceButton {
   margin: 15px;
+  background-color: white;
 }
 
 .resourcesContainerWithAddButton {
   border: solid black 0.5px;
-}
-
-.addResourceForm {
-  margin: 15px;
-}
-
-.resourceAddLabel {
-  display: flex;
-  justify-content: center;
-  margin: 30px;
+  background-color: white;
 }
 
 .resourceSourceElement {
@@ -225,6 +305,44 @@ code {
   font-size: 15px;
 }
 
-.addResourceButton {
+#addResourceButton {
   margin: 15px;
+}
+
+
+/* ------------------ Resource Add CSS ------------------ */
+
+.addResourceCard {
+  margin: 0px 250px;
+}
+
+.addResourceForm {
+  margin: 15px;
+}
+
+.resourceAddLabel {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+
+
+/* ------------------ Resource Edit CSS ------------------ */
+
+.editResourceContainer {
+  margin: 50px;
+}
+
+.editResourceCard {
+  margin: 0px 250px;
+}
+
+.editResourceForm {
+  margin: 15px;
+}
+
+.editResourceSaveButton {
+  display: flex;
+  justify-content: flex-end;
 }

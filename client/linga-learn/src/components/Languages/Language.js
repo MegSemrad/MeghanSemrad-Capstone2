@@ -10,7 +10,7 @@ const Language = ({ language }) => {
     return (
         <Card key={language.id} className="languageCard">
             <CardBody className="languageCardBody">
-                <Row>{language.languageName}</Row>
+                <Row id="languageCardLanguageName">{language.languageName}</Row>
                 <Row className="langaugeManageButtonRow">
                     <Button
                         outline

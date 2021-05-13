@@ -23,11 +23,12 @@ export default function NavBar() {
     return (
 
         <div>
-            <Navbar color="light" light expand="md">
+            <Navbar color="dark" dark expand="md">
                 <NavbarBrand tag={RRNavLink} to="/">LingaLearn</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
+
 
                         <UncontrolledDropdown nav inNavbar>
 
@@ -37,7 +38,7 @@ export default function NavBar() {
 
                             <DropdownMenu right>
                                 <UncontrolledDropdown nav inNavbar>
-                                    <DropdownToggle nav caret>
+                                    <DropdownToggle nav caret id="navBarDropdownFlashcards">
                                         Flashcards
                                     </DropdownToggle>
 
