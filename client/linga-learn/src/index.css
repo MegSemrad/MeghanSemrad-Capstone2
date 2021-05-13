@@ -28,6 +28,13 @@ code {
   padding:20px;
 }
 
+
+/* ------------------ NavBar CSS ------------------ */
+.navbar-light .navbar-nav .nav-link {
+  color:black
+}
+
+
 /* ------------------ Homepage Language Container CSS ------------------ */
 
 .languageContainer {
@@ -42,12 +49,16 @@ code {
 }
 
 .languageCard {
-  margin:10px 30px;
+  margin: 10px 30px;
 }
 
 .languageCardBody {
   text-align: center;
   
+}
+
+#languageCardLanguageName {
+  margin-left: 15px;
 }
 
 .languageDropdownButton {
@@ -175,7 +186,6 @@ code {
 
 
 
-
 /* ------------------ Flashcard Collection Add CSS ------------------ */
 
 .flashcardFormsRow {
@@ -226,8 +236,6 @@ code {
 
 /* ------------------ Flashcard Collection List CSS ------------------ */
 
-
-
 .flashcardCollectionFilterContainer {
   margin: 20px 0px;
 }
@@ -243,7 +251,6 @@ code {
 
 
 /* ------------------ Flashcard Collection Delete CSS ------------------ */
-
 
 .flashcardCollectionDeletionConfirmationContainer {
   margin: 15px;
@@ -277,16 +284,6 @@ code {
   border: solid black 0.5px;
 }
 
-.addResourceForm {
-  margin: 15px;
-}
-
-.resourceAddLabel {
-  display: flex;
-  justify-content: center;
-  margin: 30px;
-}
-
 .resourceSourceElement {
   margin: 0.1px;
 }
@@ -303,10 +300,33 @@ code {
   margin: 15px;
 }
 
+
+/* ------------------ Resource Add CSS ------------------ */
+
+.addResourceCard {
+  margin: 0px 250px;
+}
+
+.addResourceForm {
+  margin: 15px;
+}
+
+.resourceAddLabel {
+  display: flex;
+  justify-content: center;
+  margin: 30px;
+}
+
+
+
 /* ------------------ Resource Edit CSS ------------------ */
 
 .editResourceContainer {
   margin: 50px;
+}
+
+.editResourceCard {
+  margin: 0px 250px;
 }
 
 .editResourceForm {

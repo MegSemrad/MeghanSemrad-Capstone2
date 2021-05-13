@@ -56,61 +56,59 @@ const LanguageList = (props) => {
 
 
     return (
-        <>
-            <Container className="languageContainer">
-                <Row xs="3">
-                    <Col>
-                        <Label tag="h5" className="languageProficiecnyHeaders">Know</Label>
-                        {
-                            knownLanguages.map(knownLanguage => {
-                                return <Language key={knownLanguage.id}
-                                    language={knownLanguage}
-                                />
-                            })
-                        }
-                    </Col>
+        <Container className="languageContainer">
+            <Row xs="3">
+                <Col>
+                    <Label tag="h5" className="languageProficiecnyHeaders">Know</Label>
+                    {
+                        knownLanguages.map(knownLanguage => {
+                            return <Language key={knownLanguage.id}
+                                language={knownLanguage}
+                            />
+                        })
+                    }
+                </Col>
 
-                    <Col>
-                        <Label tag="h5" className="languageProficiecnyHeaders">Learning</Label>
-                        {
-                            learningLanguages.map(learningLanguage => {
-                                return <Language key={learningLanguage.id}
-                                    language={learningLanguage}
-                                />
-                            })
-                        }
-                    </Col>
+                <Col>
+                    <Label tag="h5" className="languageProficiecnyHeaders">Learning</Label>
+                    {
+                        learningLanguages.map(learningLanguage => {
+                            return <Language key={learningLanguage.id}
+                                language={learningLanguage}
+                            />
+                        })
+                    }
+                </Col>
 
-                    <Col>
-                        <Label tag="h5" className="languageProficiecnyHeaders">Future</Label>
-                        {
-                            futureLanguages.map(futureLanguage => {
-                                return <Language key={futureLanguage.id}
-                                    language={futureLanguage}
-                                />
-                            })
-                        }
-                    </Col>
-                </Row>
+                <Col>
+                    <Label tag="h5" className="languageProficiecnyHeaders">Future</Label>
+                    {
+                        futureLanguages.map(futureLanguage => {
+                            return <Language key={futureLanguage.id}
+                                language={futureLanguage}
+                            />
+                        })
+                    }
+                </Col>
+            </Row>
 
 
-                <Row className="languageDropdownButton">
-                    <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                        <DropdownToggle>
-                            <Col sm={{ size: 'auto', offset: 1 }}>...</Col>
-                        </DropdownToggle>
-                        <DropdownMenu container="body">
-                            <DropdownItem onClick={() => {
-                                history.push("/AddLanguage")
-                            }} >Add</DropdownItem>
-                            <DropdownItem
-                                onClick={handleManageClick}>Manage
+            <Row className="languageDropdownButton">
+                <Dropdown isOpen={dropdownOpen} toggle={toggle}>
+                    <DropdownToggle>
+                        <Col sm={{ size: 'auto', offset: 1 }}>...</Col>
+                    </DropdownToggle>
+                    <DropdownMenu container="body">
+                        <DropdownItem onClick={() => {
+                            history.push("/AddLanguage")
+                        }} >Add</DropdownItem>
+                        <DropdownItem
+                            onClick={handleManageClick}>Manage
                             </DropdownItem>
-                        </DropdownMenu>
-                    </Dropdown>
-                </Row>
-            </Container>
-        </>
+                    </DropdownMenu>
+                </Dropdown>
+            </Row>
+        </Container>
     );
 };
 

@@ -23,7 +23,7 @@ export default function NavBar() {
     return (
 
         <div>
-            <Navbar color="light" light expand="md">
+            <Navbar color="dark" dark expand="md">
                 <NavbarBrand tag={RRNavLink} to="/">LingaLearn</NavbarBrand>
                 <NavbarToggler onClick={toggle} />
                 <Collapse isOpen={isOpen} navbar>
@@ -41,7 +41,7 @@ export default function NavBar() {
                                         Flashcards
                                     </DropdownToggle>
 
-                                    <DropdownMenu>
+                                    <DropdownMenu >
                                         <DropdownItem href="/FlashcardCollectionList">
                                             Study
                                         </DropdownItem>

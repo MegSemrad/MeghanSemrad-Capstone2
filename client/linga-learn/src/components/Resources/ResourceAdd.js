@@ -70,7 +70,7 @@ const ResourceAdd = (props) => {
             }
 
             <Container className="addResourceContainer">
-                <Card>
+                <Card className="addResourceCard">
                     <Form>
 
                         <FormGroup className="addResourceForm">

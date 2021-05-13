@@ -53,7 +53,7 @@ const ResourceEdit = (props) => {
     return (
         <>
             <Container className="editResourceContainer">
-                <Card>
+                <Card className="editResourceCard">
                     <Form>
                         <FormGroup className="editResourceForm">
                             <Label for="languageId">Language</Label>
