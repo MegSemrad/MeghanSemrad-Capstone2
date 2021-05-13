@@ -29,6 +29,7 @@ export default function NavBar() {
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
 
+
                         <UncontrolledDropdown nav inNavbar>
 
                             <DropdownToggle nav>
@@ -37,11 +38,11 @@ export default function NavBar() {
 
                             <DropdownMenu right>
                                 <UncontrolledDropdown nav inNavbar>
-                                    <DropdownToggle nav caret>
+                                    <DropdownToggle nav caret id="navBarDropdownFlashcards">
                                         Flashcards
                                     </DropdownToggle>
 
-                                    <DropdownMenu >
+                                    <DropdownMenu>
                                         <DropdownItem href="/FlashcardCollectionList">
                                             Study
                                         </DropdownItem>

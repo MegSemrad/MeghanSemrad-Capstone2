@@ -78,7 +78,7 @@ const ResourcesList = (props) => {
                         return <Button
                             outline
                             key={language.id}
-                            className="languageResourceButton"
+                            id="languageResourceButton"
                             onClick={event => {
                                 event.preventDefault()
                                 setSelectedLanguage(language)
@@ -97,7 +97,7 @@ const ResourcesList = (props) => {
                             <Container className="resourcesContainerWithAddButton">
                                 <Button
                                     outline
-                                    className="addResourceButton"
+                                    id="addResourceButton"
                                     onClick={event => {
                                         event.preventDefault()
                                         history.push(`/AddResources/${selectedLanguage.id}`)

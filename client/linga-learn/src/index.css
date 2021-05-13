@@ -12,7 +12,9 @@ code {
     monospace;
 }
 
-
+#bodyStyling {
+  background-color: #d1d8d3;
+}
 
 
 /* ------------------ Login CSS ------------------ */
@@ -32,6 +34,10 @@ code {
 /* ------------------ NavBar CSS ------------------ */
 .navbar-light .navbar-nav .nav-link {
   color:black
+}
+
+#navBarDropdownFlashcards {
+  color: black;
 }
 
 
@@ -276,12 +282,14 @@ code {
   justify-content: center;
 }
 
-.languageResourceButton {
+#languageResourceButton {
   margin: 15px;
+  background-color: white;
 }
 
 .resourcesContainerWithAddButton {
   border: solid black 0.5px;
+  background-color: white;
 }
 
 .resourceSourceElement {
@@ -296,7 +304,7 @@ code {
   font-size: 15px;
 }
 
-.addResourceButton {
+#addResourceButton {
   margin: 15px;
 }
 
