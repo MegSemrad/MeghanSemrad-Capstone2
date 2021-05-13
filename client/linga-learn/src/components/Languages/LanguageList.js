@@ -103,7 +103,7 @@ const LanguageList = (props) => {
                             <DropdownItem onClick={() => {
                                 history.push("/AddLanguage")
                             }} >Add</DropdownItem>
-                            <DropdownItem id="hideFlashcardCollectionButtonVisibility"
+                            <DropdownItem
                                 onClick={handleManageClick}>Manage
                             </DropdownItem>
                         </DropdownMenu>

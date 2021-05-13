@@ -15,6 +15,18 @@ code {
 
 
 
+/* ------------------ Login CSS ------------------ */
+.loginCard {
+  margin: 80px 250px;
+  padding:20px;
+}
+
+
+/* ------------------ Register CSS ------------------ */
+.registerCard {
+  margin: 80px 250px;
+  padding:20px;
+}
 
 /* ------------------ Homepage Language Container CSS ------------------ */
 
