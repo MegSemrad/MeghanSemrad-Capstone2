@@ -33,6 +33,7 @@ code {
 .languageContainer {
   border: black solid 1px;
   margin: 50px;
+  width: 700px;
 }
 
 .languageProficiecnyHeaders {
@@ -41,7 +42,7 @@ code {
 }
 
 .languageCard {
-  margin-top:10px;
+  margin:10px 30px;
 }
 
 .languageCardBody {
