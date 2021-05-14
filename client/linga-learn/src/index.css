@@ -254,6 +254,13 @@ code {
 .flashcardCollectionFilteredList {
   margin: 0px 70px;
 }
+
+
+.filteredFlashcardCollectionList {
+  list-style-type: none; 
+  padding: 0.5; 
+  margin: 0; 
+}
  
 
 

@@ -64,7 +64,7 @@ const FlashcardCollectionList = () => {
             </Form>
 
             <Col className="flashcardCollectionFilteredList">
-                <ul>
+                <ul className="filteredFlashcardCollectionList">
                     {filteredFlashcardCollections.map(filteredFlashcardCollection => <li><Link to={`/FlashcardList/${filteredFlashcardCollection.id}`}>
                         {filteredFlashcardCollection.topic}</Link></li>)}
                 </ul>
