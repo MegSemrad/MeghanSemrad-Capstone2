@@ -26,8 +26,7 @@
 
 
   ### Development Tools
-   <img src="./client/linga-learn/src/images/githublogo.png" width="8%"></img>  
-   <img src="./client/linga-learn/src/images/visualstudiocodelogo.png" width="8%"></img>   
+   <img src="./client/linga-learn/src/images/githublogo.png" width="8%"></img> <img src="./client/linga-learn/src/images/visualstudiocodelogo.png" width="8%"></img>   
    <img src="./client/linga-learn/src/images/visualstudiologo.png" width="13%"></img> 
    <img src="./client/linga-learn/src/images/sketchboard.jpg" width="8%"></img>  
    <img src="./client/linga-learn/src/images/dbdiagram.png" width="7%"></img>     
