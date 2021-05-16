@@ -71,7 +71,7 @@
 
  
   ### Wireframe
- <img src="./src/images/githublogo.png" width="10%"></img>
+ <img src="./client/lingalearn/src/images/githublogo.png" width="10%"></img>
  
  _____________________________________
 &copy; 2021   | Web app designed by Meghan Semrad
