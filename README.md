@@ -16,19 +16,17 @@
 
 ## Features
 * List of languages a user knows, is learning, and might wish to learn in the future
-* Section to create flashcard collections by language and topic and flashcards within the collections that can be flipped, and moved back and forth between a 'study it' column and a 'know it' column 
+* Section to create flashcard collections by language and topic with ability to flip and moved back and forth the flashcards between a 'study it' column and a 'know it' column 
 * Place to keep a record of resources used while studying, such as online, videos, textbooks, etc., for each language 
 
 
 
 ## Technologies Used
   ### Development Languages and Libraries
-  <img src="./src/images/css.png" width="10%"></img>   <img src="./src/images/react.png" width="20%"></img> 
-  <img src="./src/images/reactBootstrap.png" width="15%"></img>   <img src="./src/images/json.png" width="15%"></img>
+
 
   ### Development Tools
-  <img src="./src/images/github.png" width="10%"></img>   <img src="./src/images/vscode.jpeg" width="10%"></img>
-  <img src="./src/images/dbdiagram.png" width="10%" heigh="10%"></img>   <img src="./src/images/sketchboard.jpeg" width="10%"></img> 
+
 
 
 
