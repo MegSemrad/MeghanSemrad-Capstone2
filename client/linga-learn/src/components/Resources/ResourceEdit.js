@@ -75,7 +75,7 @@ const ResourceEdit = (props) => {
 
                         <FormGroup className="editResourceForm">
                             <Label for="resourceTypeId">Resource Type</Label>
-                            <Input type="select" id="resourceTypeId" onChange={handleControlledInputChange}>
+                            <Input type="select" id="resourceTypeId" value={resource.resourceTypeId} onChange={handleControlledInputChange}>
                                 <option value="0"></option>
                                 {
                                     resourceTypes.map(resourceType => {
