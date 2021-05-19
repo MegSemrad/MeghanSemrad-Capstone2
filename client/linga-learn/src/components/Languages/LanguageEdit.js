@@ -62,6 +62,7 @@ const LanguageEdit = () => {
                     <FormGroup className="editLanguageForm">
                         <Label for="exampleSelect">Proficiency</Label>
                         <Input type="select"
+                            value={language.languageProficiencyId}
                             id="languageProficiencyId"
                             onChange={handleControlledInputChange}>
                             <option value="0"></option>
