@@ -57,7 +57,7 @@ const ResourceEdit = (props) => {
                     <Form>
                         <FormGroup className="editResourceForm">
                             <Label for="languageId">Language</Label>
-                            <Input type="select" id="languageId" onChange={handleControlledInputChange}>
+                            <Input type="select" id="languageId" value={resource.languageId} onChange={handleControlledInputChange}>
                                 <option value="0"></option>
                                 {
                                     languages.map(language => {
